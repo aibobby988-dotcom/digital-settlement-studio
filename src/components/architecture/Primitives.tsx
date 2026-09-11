@@ -22,6 +22,35 @@ export const palette = {
   emerald100: "#d1fae5",
 };
 
+export function StepBadge({
+  x,
+  y,
+  n,
+  muted = false,
+}: {
+  x: number;
+  y: number;
+  n: number;
+  muted?: boolean;
+}) {
+  return (
+    <g>
+      <circle cx={x} cy={y} r={11} fill={muted ? palette.ink400 : palette.brand500} stroke={palette.paper0} strokeWidth={2} />
+      <text
+        x={x}
+        y={y + 4}
+        textAnchor="middle"
+        fontFamily="Inter, sans-serif"
+        fontSize={11}
+        fontWeight={700}
+        fill={palette.paper0}
+      >
+        {n}
+      </text>
+    </g>
+  );
+}
+
 export function ArrowMarkers({ id, color }: { id: string; color: string }) {
   return (
     <defs>

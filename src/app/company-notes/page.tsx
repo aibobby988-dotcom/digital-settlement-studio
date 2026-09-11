@@ -1,16 +1,18 @@
-import { ArrowDown, Info } from "lucide-react";
+import { ArrowDown, Info, Layers } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import {
   appointments,
   careerTimeline,
+  caseStudyScopeMapping,
   currentFocusTags,
   education,
   globalStats,
   hkStats,
   orgChain,
   recentNews,
+  siblingFunctions,
   strategyPillars,
   values,
 } from "@/lib/mock/companyContext";
@@ -60,6 +62,62 @@ export default function CompanyNotesPage() {
             Money team and the Group Head of Digital Assets &amp; Currencies — a legitimate,
             interest-signalling question to ask directly.
           </p>
+        </Card>
+      </section>
+
+      <section>
+        <h2 className="mb-2 text-[18px] font-semibold text-charcoal-900">
+          &ldquo;Digital assets&rdquo; is a big umbrella — this is one part of it
+        </h2>
+        <p className="mb-5 text-[13px] text-ink-500">
+          Sibling functions under the same Group Head, organisationally distinct from the team
+          this role sits in.
+        </p>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {siblingFunctions.map((s) => (
+            <Card key={s.name}>
+              <p className="text-[13px] font-semibold text-charcoal-900">{s.name}</p>
+              <p className="mt-1 text-[12px] text-ink-500">{s.focus}</p>
+              <p className="mt-2 text-[12px] leading-relaxed text-charcoal-900">{s.relation}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div className="mb-1 flex items-center gap-2">
+          <Layers size={18} className="text-brand-500" />
+          <h2 className="text-[18px] font-semibold text-charcoal-900">
+            How this case study maps to that scope
+          </h2>
+        </div>
+        <p className="mb-5 text-[13px] text-ink-500">
+          Not everything in the case study is equally central to this specific mandate — worth
+          being precise about which is which.
+        </p>
+        <Card padded={false}>
+          <div className="overflow-x-auto scrollbar-thin">
+            <table className="w-full min-w-[560px] border-collapse text-left">
+              <thead>
+                <tr className="border-b border-paper-200 text-[11px] uppercase tracking-wide text-ink-400">
+                  <th className="py-2.5 pl-5 pr-4 font-medium">Case study page</th>
+                  <th className="py-2.5 pr-4 font-medium">Fit</th>
+                  <th className="py-2.5 pr-5 font-medium">Why</th>
+                </tr>
+              </thead>
+              <tbody>
+                {caseStudyScopeMapping.map((m) => (
+                  <tr key={m.page} className="border-b border-paper-100 text-[12.5px] last:border-0">
+                    <td className="py-3.5 pl-5 pr-4 font-semibold text-charcoal-900">{m.page}</td>
+                    <td className="py-3.5 pr-4">
+                      <Badge tone={m.alignment === "Core" ? "brand" : "neutral"}>{m.alignment}</Badge>
+                    </td>
+                    <td className="py-3.5 pr-5 max-w-[380px] text-ink-500">{m.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </Card>
       </section>
 

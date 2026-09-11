@@ -1,10 +1,10 @@
-import { Check, X } from "lucide-react";
+import { Check, HelpCircle, X } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/ui/Badge";
 import { PrintButton } from "@/components/ui/PrintButton";
 import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
-import { roadmapPhases } from "@/lib/mock/roadmap";
+import { gateExplanations, roadmapPhases } from "@/lib/mock/roadmap";
 import { cn } from "@/lib/utils";
 
 export default function RoadmapPage() {
@@ -17,6 +17,31 @@ export default function RoadmapPage() {
         description="Each phase expands scope only after measurable go/no-go gates are met — client value, legal readiness, operational and financial-crime controls, resilience, and a supportable commercial model."
         actions={<PrintButton />}
       />
+
+      <Card>
+        <div className="flex items-start gap-2.5">
+          <HelpCircle size={16} className="mt-0.5 shrink-0 text-brand-500" />
+          <div>
+            <p className="text-[13px] font-semibold text-charcoal-900">
+              What&apos;s a &ldquo;go/no-go gate&rdquo;?
+            </p>
+            <p className="mt-1 text-[12.5px] leading-relaxed text-ink-500">
+              A checklist of conditions that must all be true before a phase is allowed to expand
+              — a green tick doesn&apos;t mean &ldquo;we&apos;d like to,&rdquo; it means someone
+              accountable has actually confirmed it. If a gate isn&apos;t met, the phase doesn&apos;t
+              move forward, no matter how good the technology looks.
+            </p>
+          </div>
+        </div>
+        <div className="mt-4 grid grid-cols-1 gap-2.5 border-t border-paper-200 pt-4 sm:grid-cols-2">
+          {Object.entries(gateExplanations).map(([label, explanation]) => (
+            <div key={label} className="rounded-lg bg-paper-50 px-3.5 py-2.5">
+              <p className="text-[12px] font-semibold text-charcoal-900">{label}</p>
+              <p className="mt-0.5 text-[11.5px] leading-relaxed text-ink-500">{explanation}</p>
+            </div>
+          ))}
+        </div>
+      </Card>
 
       <div className="relative space-y-6">
         <div className="absolute left-[19px] top-2 bottom-2 hidden w-px bg-paper-200 sm:block" />
@@ -66,7 +91,11 @@ export default function RoadmapPage() {
                   </p>
                   <ul className="space-y-1.5">
                     {phase.gates.map((g) => (
-                      <li key={g.label} className="flex items-center gap-2 text-[12.5px]">
+                      <li
+                        key={g.label}
+                        className="flex items-center gap-2 text-[12.5px]"
+                        title={gateExplanations[g.label]}
+                      >
                         <span
                           className={cn(
                             "flex h-4 w-4 shrink-0 items-center justify-center rounded-full",
@@ -75,7 +104,9 @@ export default function RoadmapPage() {
                         >
                           {g.met ? <Check size={10} strokeWidth={3} /> : <X size={10} strokeWidth={3} />}
                         </span>
-                        <span className={g.met ? "text-charcoal-900" : "text-ink-500"}>{g.label}</span>
+                        <span className={cn("cursor-help underline decoration-dotted underline-offset-2", g.met ? "text-charcoal-900" : "text-ink-500")}>
+                          {g.label}
+                        </span>
                       </li>
                     ))}
                   </ul>

@@ -17,8 +17,11 @@ import {
   BookOpen,
   Users,
   Bot,
+  GitCompareArrows,
+  Scale,
+  FileText,
 } from "lucide-react";
-import { navItems, studyNavItems, type NavItem } from "@/lib/nav";
+import { navGroups, studyNavItems, type NavItem } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
@@ -28,11 +31,14 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/bond-dvp": ArrowLeftRight,
   "/fx-pvp": Repeat,
   "/architecture": Network,
+  "/transaction-flow": GitCompareArrows,
+  "/legacy-comparison": Scale,
   "/ecosystem": Globe,
   "/risk-controls": ShieldCheck,
   "/roadmap": Map,
   "/backlog": ListChecks,
   "/interview-prep": GraduationCap,
+  "/user-stories-guide": FileText,
   "/industry-knowledge": BookOpen,
   "/company-notes": Users,
   "/ai-preparation": Bot,
@@ -94,7 +100,16 @@ export function Sidebar() {
         <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
           Product case study
         </p>
-        <NavList items={navItems} pathname={pathname} />
+        <div className="space-y-4">
+          {navGroups.map((group) => (
+            <div key={group.section}>
+              <p className="px-3 pb-1.5 text-[10.5px] font-medium text-brand-300/80">
+                {group.section}
+              </p>
+              <NavList items={group.items} pathname={pathname} />
+            </div>
+          ))}
+        </div>
 
         <div className="my-4 border-t border-charcoal-800" />
 

@@ -14,6 +14,16 @@ function gates(met: boolean[]) {
   return standardGateLabels.map((label, i) => ({ label, met: met[i] }));
 }
 
+export const gateExplanations: Record<string, string> = {
+  "Client-value validation": "A real client has confirmed this actually solves their problem — not just an internal assumption.",
+  "Legal and regulatory readiness": "Lawyers and regulators have confirmed this is allowed to operate in that market.",
+  "Financial-crime controls tested": "Sanctions and money-laundering checks have been tested and proven to work, not just designed.",
+  "Operational readiness": "The team can actually run this day to day — support, monitoring, fixing problems — not just build it.",
+  "Resilience / incident testing completed": "The system has been tested for what happens when something breaks, and it recovers safely.",
+  "Commercial economics approved": "Finance has confirmed the numbers make business sense at scale, not just in a pilot.",
+  "Client-support readiness": "There's a real support model in place — someone a client can actually reach when something goes wrong.",
+};
+
 export const roadmapPhases: RoadmapPhase[] = [
   {
     id: "phase-1",

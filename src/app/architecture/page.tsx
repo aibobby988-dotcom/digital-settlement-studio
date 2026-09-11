@@ -58,6 +58,16 @@ export default function ArchitecturePage() {
               <SystemArchitectureDiagram />
             </div>
           </div>
+          <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11.5px] text-ink-500">
+            <span className="flex items-center gap-1.5">
+              <span className="flex h-4 w-4 items-center justify-center rounded-full bg-brand-500 text-[9px] font-bold text-paper-0">1</span>
+              Numbered 1–7: the primary request path, in order
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="flex h-4 w-4 items-center justify-center rounded-full bg-ink-400 text-[9px] font-bold text-paper-0">8</span>
+              Numbered 8–10: cross-cutting reads/logging, continuous rather than sequential
+            </span>
+          </p>
           <div className="mt-5 grid grid-cols-1 gap-4 border-t border-paper-200 pt-5 text-[12.5px] leading-relaxed text-ink-500 sm:grid-cols-2">
             <p>
               Every client request enters through a single <strong className="text-charcoal-900">orchestration

@@ -4,15 +4,50 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { navItems, studyNavItems } from "@/lib/nav";
+import { navGroups, navItems, studyNavItems, type NavItem } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const allItems = [...navItems, ...studyNavItems];
+
+function MobileNavList({
+  items,
+  pathname,
+  onNavigate,
+}: {
+  items: NavItem[];
+  pathname: string;
+  onNavigate: () => void;
+}) {
+  return (
+    <ul className="space-y-1">
+      {items.map((item) => {
+        const active = pathname === item.href;
+        return (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              onClick={onNavigate}
+              className={cn(
+                "block rounded-lg px-3 py-2.5 text-[13px] font-medium",
+                active
+                  ? "bg-brand-500/12 text-paper-0 ring-1 ring-inset ring-brand-400/25"
+                  : "text-ink-400 hover:bg-charcoal-800/70"
+              )}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const current = allItems.find((item) => item.href === pathname);
+  const close = () => setOpen(false);
 
   return (
     <div className="lg:hidden sticky top-0 z-40 bg-charcoal-950 text-paper-50 border-b border-charcoal-800">
@@ -32,58 +67,27 @@ export function MobileNav() {
         </button>
       </div>
       {open && (
-        <nav className="border-t border-charcoal-800 px-3 py-3">
+        <nav className="border-t border-charcoal-800 px-3 py-3 max-h-[75vh] overflow-y-auto">
           <p className="px-3 pb-2 pt-1 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
             Product case study
           </p>
-          <ul className="space-y-1">
-            {navItems.map((item) => {
-              const active = pathname === item.href;
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "block rounded-lg px-3 py-2.5 text-[13px] font-medium",
-                      active
-                        ? "bg-brand-500/12 text-paper-0 ring-1 ring-inset ring-brand-400/25"
-                        : "text-ink-400 hover:bg-charcoal-800/70"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="space-y-3">
+            {navGroups.map((group) => (
+              <div key={group.section}>
+                <p className="px-3 pb-1.5 text-[10.5px] font-medium text-brand-300/80">
+                  {group.section}
+                </p>
+                <MobileNavList items={group.items} pathname={pathname} onNavigate={close} />
+              </div>
+            ))}
+          </div>
 
           <div className="my-3 border-t border-charcoal-800" />
 
           <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
             Study materials
           </p>
-          <ul className="space-y-1">
-            {studyNavItems.map((item) => {
-              const active = pathname === item.href;
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "block rounded-lg px-3 py-2.5 text-[13px] font-medium",
-                      active
-                        ? "bg-brand-500/12 text-paper-0 ring-1 ring-inset ring-brand-400/25"
-                        : "text-ink-400 hover:bg-charcoal-800/70"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <MobileNavList items={studyNavItems} pathname={pathname} onNavigate={close} />
         </nav>
       )}
     </div>

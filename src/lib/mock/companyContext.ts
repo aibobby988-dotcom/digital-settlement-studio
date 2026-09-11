@@ -7,11 +7,11 @@ export interface OrgNode {
 export const orgChain: OrgNode[] = [
   {
     role: "Group Head of Digital Assets & Currencies",
-    who: "Managing Director — owns Orion (digital bonds), CBDC, stablecoins and crypto strategy group-wide",
+    who: "Managing Director — the umbrella covering Orion (digital bonds), custody, CBDC, stablecoins and crypto strategy group-wide",
   },
   {
     role: "Global Payments Solutions (GPS)",
-    who: "The payments and transaction-banking business line",
+    who: "The payments and transaction-banking business line — one of several functions under the umbrella above",
   },
   {
     role: "Global Head of Digital Money",
@@ -19,7 +19,55 @@ export const orgChain: OrgNode[] = [
   },
   {
     role: "Senior Product Manager — Digital Currencies",
-    who: "This role sits within the Digital Money team",
+    who: "This role sits within the Digital Money team, inside GPS",
+  },
+];
+
+export interface SiblingFunction {
+  name: string;
+  focus: string;
+  relation: string;
+}
+
+export const siblingFunctions: SiblingFunction[] = [
+  {
+    name: "HSBC Orion",
+    focus: "Digitally native bond issuance and capital-markets tokenisation",
+    relation:
+      "Under the same overall umbrella (Group Head of Digital Assets & Currencies) but organisationally closer to Capital Markets / Securities Services — not part of the Digital Money / GPS team this role sits in.",
+  },
+  {
+    name: "Digital assets custody",
+    focus: "Institutional custody for tokenised securities (built on Metaco's Harmonize platform)",
+    relation:
+      "Also under the same umbrella, run as a distinct custody/safekeeping function — adjacent to, not part of, the Digital Money team.",
+  },
+];
+
+export interface ScopeMapping {
+  page: string;
+  alignment: "Core" | "Adjacent";
+  note: string;
+}
+
+export const caseStudyScopeMapping: ScopeMapping[] = [
+  {
+    page: "Tokenised Treasury (flagship)",
+    alignment: "Core",
+    note:
+      "A near-exact match to the real HSBC Tokenised Deposit Service — 24/7 tokenised-deposit movement for corporate treasury is squarely GPS / Digital Money territory.",
+  },
+  {
+    page: "FX PvP Settlement",
+    alignment: "Core",
+    note:
+      "Cross-border payments and PvP settlement sit directly in GPS's remit, and the JD names PvP settlement models explicitly.",
+  },
+  {
+    page: "Bond DvP Settlement",
+    alignment: "Adjacent",
+    note:
+      "Tokenised bond DvP is closer to Orion / Capital Markets territory than to Digital Money specifically. Included because the JD lists familiarity with tokenised-asset settlement mechanisms as 'an advantage' — useful breadth, not the centre of this mandate. Worth being precise about this distinction if it comes up.",
   },
 ];
 

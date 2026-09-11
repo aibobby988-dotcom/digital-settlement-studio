@@ -1,4 +1,4 @@
-import { ArrowMarkers, Arrow, Box, EdgeLabel, SectionLabel, palette } from "./Primitives";
+import { ArrowMarkers, Arrow, Box, EdgeLabel, SectionLabel, StepBadge, palette } from "./Primitives";
 
 export function SystemArchitectureDiagram() {
   return (
@@ -25,6 +25,7 @@ export function SystemArchitectureDiagram() {
         subLines={["Web app · exceptions, screening review"]}
         bold
       />
+      <StepBadge x={40} y={20} n={1} />
 
       <Arrow markerId="arch-arrow" d="M200,76 L200,130" />
       <Arrow markerId="arch-arrow" d="M560,76 L560,130" />
@@ -43,6 +44,7 @@ export function SystemArchitectureDiagram() {
         subColor={palette.paper200}
         bold
       />
+      <StepBadge x={40} y={130} n={2} />
       <Arrow markerId="arch-arrow" d="M720,158 L770,158" dashed color={palette.ink400} />
       <EdgeLabel x={745} y={148} text="logs" fontSize={8.5} />
 
@@ -60,6 +62,7 @@ export function SystemArchitectureDiagram() {
         lines={["Entitlement &", "Access Service"]}
         subLines={["approved entities, roles"]}
       />
+      <StepBadge x={40} y={240} n={3} />
       <Box
         x={210}
         y={240}
@@ -70,6 +73,7 @@ export function SystemArchitectureDiagram() {
         fill={palette.brand50}
         stroke={palette.brand100}
       />
+      <StepBadge x={210} y={240} n={4} />
       <Box
         x={380}
         y={240}
@@ -78,6 +82,7 @@ export function SystemArchitectureDiagram() {
         lines={["Tokenised Ledger"]}
         subLines={["permissioned DLT"]}
       />
+      <StepBadge x={380} y={240} n={5} />
       <Box
         x={550}
         y={240}
@@ -89,6 +94,7 @@ export function SystemArchitectureDiagram() {
         stroke={palette.brand500}
         textColor={palette.brand600}
       />
+      <StepBadge x={550} y={240} n={6} />
 
       <Arrow markerId="arch-arrow" d="M195,277 L210,277" />
       <Arrow markerId="arch-arrow" d="M365,277 L380,277" />
@@ -108,6 +114,7 @@ export function SystemArchitectureDiagram() {
         subLines={["HKD · USD · GBP · SGD accounts"]}
         bold
       />
+      <StepBadge x={40} y={420} n={7} />
       <Box
         x={390}
         y={420}
@@ -134,6 +141,7 @@ export function SystemArchitectureDiagram() {
         lines={["Audit & Event Log"]}
         subLines={["immutable, append-only"]}
       />
+      <StepBadge x={770} y={130} n={9} muted />
       <Box
         x={770}
         y={240}
@@ -142,6 +150,7 @@ export function SystemArchitectureDiagram() {
         lines={["Reconciliation Engine"]}
         subLines={["automated, intraday"]}
       />
+      <StepBadge x={770} y={240} n={8} muted />
       <Box
         x={770}
         y={420}
@@ -150,6 +159,7 @@ export function SystemArchitectureDiagram() {
         lines={["Risk & Compliance", "Case Management"]}
         subLines={["financial crime cases"]}
       />
+      <StepBadge x={770} y={420} n={10} muted />
 
       <Arrow markerId="arch-arrow" d="M705,277 L770,277" dashed />
       <EdgeLabel x={737} y={270} text="reads" fontSize={8} />
