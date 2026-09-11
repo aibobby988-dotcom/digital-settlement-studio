@@ -13,8 +13,10 @@ import {
   Repeat,
   Network,
   Globe,
+  GraduationCap,
+  BookOpen,
 } from "lucide-react";
-import { navItems } from "@/lib/nav";
+import { navItems, studyNavItems, type NavItem } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
@@ -28,7 +30,37 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/risk-controls": ShieldCheck,
   "/roadmap": Map,
   "/backlog": ListChecks,
+  "/interview-prep": GraduationCap,
+  "/industry-knowledge": BookOpen,
 };
+
+function NavList({ items, pathname }: { items: NavItem[]; pathname: string }) {
+  return (
+    <ul className="space-y-1">
+      {items.map((item) => {
+        const active = pathname === item.href;
+        const Icon = icons[item.href];
+        return (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className={cn(
+                "group flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-colors",
+                active
+                  ? "bg-brand-500/12 text-paper-0 ring-1 ring-inset ring-brand-400/25"
+                  : "text-ink-400 hover:bg-charcoal-800/70 hover:text-paper-100"
+              )}
+            >
+              <Icon size={16} strokeWidth={2} />
+              <span className="flex-1">{item.label}</span>
+              {active && <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -55,29 +87,17 @@ export function Sidebar() {
       </div>
 
       <nav className="flex-1 overflow-y-auto px-3 py-5">
-        <ul className="space-y-1">
-          {navItems.map((item) => {
-            const active = pathname === item.href;
-            const Icon = icons[item.href];
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={cn(
-                    "group flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-colors",
-                    active
-                      ? "bg-brand-500/12 text-paper-0 ring-1 ring-inset ring-brand-400/25"
-                      : "text-ink-400 hover:bg-charcoal-800/70 hover:text-paper-100"
-                  )}
-                >
-                  <Icon size={16} strokeWidth={2} />
-                  <span className="flex-1">{item.label}</span>
-                  {active && <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
+          Product case study
+        </p>
+        <NavList items={navItems} pathname={pathname} />
+
+        <div className="my-4 border-t border-charcoal-800" />
+
+        <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
+          Study materials
+        </p>
+        <NavList items={studyNavItems} pathname={pathname} />
       </nav>
 
       <div className="border-t border-charcoal-800 px-6 py-5">
