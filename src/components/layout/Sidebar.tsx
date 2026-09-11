@@ -20,6 +20,7 @@ import {
   GitCompareArrows,
   Scale,
   FileText,
+  Rocket,
 } from "lucide-react";
 import { navGroups, studyNavItems, type NavItem } from "@/lib/nav";
 import { cn } from "@/lib/utils";
@@ -32,6 +33,7 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/fx-pvp": Repeat,
   "/architecture": Network,
   "/transaction-flow": GitCompareArrows,
+  "/zero-to-one": Rocket,
   "/legacy-comparison": Scale,
   "/ecosystem": Globe,
   "/risk-controls": ShieldCheck,

@@ -33,6 +33,7 @@ export const navGroups: NavGroup[] = [
     items: [
       { href: "/architecture", label: "Architecture", description: "System design & decision flows" },
       { href: "/transaction-flow", label: "Transaction Flow", description: "Animated happy path vs. exception path" },
+      { href: "/zero-to-one", label: "Building 0 → 1", description: "Full build narrative for all three products" },
     ],
   },
   {
