@@ -117,6 +117,151 @@ export const capabilityLandscape: CapabilityRow[] = [
   },
 ];
 
+export interface VendorProfile {
+  name: string;
+  url?: string;
+  offer: string;
+  differentiator: string;
+  hsbcSignal: string;
+  isPick?: boolean;
+}
+
+export interface VendorCategory {
+  category: string;
+  context: string;
+  vendors: VendorProfile[];
+  verdict: string;
+  verdictUrl?: string;
+}
+
+export const vendorDeepDive: VendorCategory[] = [
+  {
+    category: "Tokenised asset / institutional network infrastructure",
+    context:
+      "The shared ledger multiple banks (or multiple parts of one bank) actually transact on — the single most consequential build/buy/partner call in this whole product area, since switching later means re-platforming live client balances.",
+    vendors: [
+      {
+        name: "Canton Network",
+        url: "https://www.canton.network",
+        offer:
+          "A public, interoperable blockchain purpose-built for institutional finance, built on the Daml smart-contract language. Its distinguishing feature is configurable privacy at the transaction level — each counterparty only sees the sub-ledger slice relevant to them, not the whole network's activity, which a normal permissioned chain can't do without a separate privacy layer.",
+        differentiator:
+          "Newer (spun out of Digital Asset in 2023) but has grown fast: over 600 institutions and 30+ 'super validators' including Goldman Sachs (via its GS DAP platform), DTCC and Google Cloud were live on it by 2026, with $9 trillion in reported monthly transaction volume.",
+        hsbcSignal:
+          "HSBC publicly completed a pilot simulating the issuance, transfer and atomic settlement of its own Tokenised Deposit Service on Canton Network — the most recent and most product-specific piece of evidence in this whole comparison, since it's this case study's own flagship product being tested.",
+        isPick: true,
+      },
+      {
+        name: "R3 (Corda)",
+        url: "https://www.r3.com",
+        offer:
+          "A permissioned enterprise DLT platform, purpose-built from day one for regulated financial-services workloads rather than adapted from a public-chain design — used for syndicated loans (NatWest/Finastra), reinsurance (B3i/ACORD) and multiple central-bank digital-currency pilots.",
+        differentiator:
+          "The longest track record of any enterprise DLT platform in regulated finance — Corda launched in 2016, and R3 today counts the Bank of Italy, MAS, the Swiss National Bank, Euroclear and SDX among its participants.",
+        hsbcSignal:
+          "HSBC's relationship with R3 predates Canton Network's existence by eight years: HSBC joined the R3 consortium within weeks of its September 2015 launch and was one of roughly 40 banks that invested $107M into R3 in 2017 — a much deeper capital and governance relationship, just not one tied to this specific tokenised-deposit use case.",
+      },
+    ],
+    verdict:
+      "Canton Network is the better answer for this specific product, because HSBC has already run its own Tokenised Deposit Service through a pilot there — that's a direct, product-specific signal, not an inference. The nuance worth having ready in the room: R3 is not a loser here, it's a longer and broader relationship (HSBC has been a member and investor since 2015-17) that likely still underpins other parts of HSBC's DLT footprint. A strong answer shows you know both facts rather than picking one network as if the other doesn't exist — real banks run multi-rail strategies precisely because switching a live ledger later is expensive.",
+    verdictUrl: "https://www.canton.network/news/hsbc-completes-tokenised-deposit-pilot-on-canton-network",
+  },
+  {
+    category: "Digital-asset custody and wallet infrastructure",
+    context:
+      "Who actually holds the cryptographic keys and enforces maker-checker policy on every transfer — the control layer a regulator will scrutinise hardest, because a custody failure is a client-money failure.",
+    vendors: [
+      {
+        name: "Metaco",
+        url: "https://www.metaco.com",
+        offer:
+          "The Harmonize platform — a custody orchestration layer with an HSM-backed policy engine, built specifically to plug into a bank's existing core systems and control framework rather than to run standalone.",
+        differentiator:
+          "Built bank-first from the outset, not adapted from an exchange or fintech product — acquired by Ripple in 2023 specifically to deepen its institutional custody focus.",
+        hsbcSignal:
+          "This one isn't hypothetical. HSBC's own digital-assets custody service for tokenised securities runs on Metaco's Harmonize platform — publicly announced in November 2023 and already live.",
+        isPick: true,
+      },
+      {
+        name: "Fireblocks",
+        offer:
+          "MPC (multi-party computation)-based wallet infrastructure plus a transfer network connecting counterparties directly, and — since gaining a NYDFS trust charter in 2024 — its own regulated qualified-custody offering.",
+        differentiator:
+          "The broadest institutional footprint of any vendor in this category: 80+ banks in live production (including BNY Mellon and ABN AMRO) across 150+ blockchains — but it started by serving exchanges and crypto-native firms before banks, a different origin than Metaco's bank-first design.",
+        hsbcSignal: "No publicly disclosed HSBC relationship — the credible benchmark to compare Metaco against, not the incumbent.",
+        url: "https://www.fireblocks.com",
+      },
+      {
+        name: "Taurus",
+        url: "https://www.taurushq.com",
+        offer:
+          "A Swiss-regulated platform (TDN — Taurus Digital Network) spanning custody, issuance and trading in one stack, for both crypto and tokenised traditional assets.",
+        differentiator:
+          "Strongest in Europe specifically: Deutsche Bank signed a global partnership with Taurus in 2023 to run its own crypto and tokenisation custody, and Credit Suisse was an early investor.",
+        hsbcSignal: "No public HSBC relationship — effectively 'the Deutsche Bank equivalent choice,' useful as a contrast, not a contender here.",
+      },
+      {
+        name: "BitGo",
+        url: "https://www.bitgo.com",
+        offer:
+          "One of the original institutional crypto custodians (founded 2013), now operating as BitGo Bank & Trust — a federally chartered (OCC) national trust bank offering qualified custody with up to $250M of insurance.",
+        differentiator:
+          "The deepest pure-custody regulatory license stack of any vendor here (state trust charters plus a new federal OCC charter) — the strongest fit for a firm that needs custody as a standalone regulated product, not integrated into a bank's own platform.",
+        hsbcSignal: "No public HSBC relationship — more relevant to asset managers and exchanges than to a universal bank building its own custody stack.",
+      },
+      {
+        name: "Copper",
+        url: "https://copper.co",
+        offer:
+          "UK-based custody plus ClearLoop, a network letting institutional clients trade on exchanges without pre-funding them — collateral stays in Copper custody, cutting counterparty exposure to the exchange itself.",
+        differentiator:
+          "ClearLoop's exchange-settlement-risk model is genuinely distinctive versus the other four, but it's a trading/exchange-connectivity play, not a deposit-tokenisation platform.",
+        hsbcSignal: "No public HSBC relationship, and the least relevant of the five to a tokenised-deposit product specifically.",
+      },
+    ],
+    verdict:
+      "Metaco wins outright, and not as a judgement call — it's the vendor HSBC has already selected and gone live with for digital-asset custody. The interview-worthy question isn't 'which vendor' but 'why Metaco over Fireblocks,' given Fireblocks has the broader bank client base: the likely answer is that Metaco's bank-first governance and policy-engine model fit HSBC's existing control framework more directly than a platform whose DNA started with exchanges.",
+    verdictUrl: "https://www.metaco.com/press-release/hsbc-metaco-digital-asset-custody/",
+  },
+  {
+    category: "Financial-crime / blockchain intelligence",
+    context:
+      "The screening layer that watches every wallet and transaction for sanctions exposure, mixer/darknet association and other laundering risk — arguably the single hardest gate to pass in this case study's own risk framework.",
+    vendors: [
+      {
+        name: "Elliptic",
+        url: "https://www.elliptic.co",
+        offer:
+          "UK-founded blockchain analytics and AML/sanctions screening — Elliptic Navigator (a configurable risk-rules engine) and Lens (wallet screening and investigation) — across roughly 700 institutional clients screening about a billion transactions a week.",
+        differentiator:
+          "The only one of the three with disclosed bank ownership stakes, not just customer contracts — backed by four Global Systemically Important Banks.",
+        hsbcSignal:
+          "HSBC made a strategic investment in Elliptic in September 2025, joining JPMorgan (2021), Santander (2022) and Wells Fargo (2025) as GSIB-backers — Elliptic markets itself as 'the first blockchain analytics firm backed by four GSIBs.' That's a materially stronger signal than a vendor contract: HSBC put its own capital behind Elliptic's roadmap.",
+        isPick: true,
+      },
+      {
+        name: "Chainalysis",
+        url: "https://www.chainalysis.com",
+        offer:
+          "The largest, most established blockchain-analytics platform — KYT (Know Your Transaction) for real-time monitoring, Reactor for investigations, and sanctions screening across the broadest chain and currency coverage of any vendor in this category.",
+        differentiator: "Market leader by scale, brand recognition and law-enforcement/government relationships — the industry's default 'safe choice.'",
+        hsbcSignal: "No publicly disclosed HSBC investment or ownership relationship — likely still present somewhere in a group this size's compliance stack, but not the strategically-backed choice.",
+      },
+      {
+        name: "TRM Labs",
+        url: "https://www.trmlabs.com",
+        offer:
+          "Blockchain intelligence focused on fraud, sanctions and national-security risk, with fast-growing AI-driven risk scoring and strong government and law-enforcement partnerships.",
+        differentiator: "Positioned as more investigation-and-intelligence-led than Chainalysis's broader platform, and newer/more nimble as a company.",
+        hsbcSignal: "No public HSBC relationship found.",
+      },
+    ],
+    verdict:
+      "Elliptic is the clear pick specifically for HSBC — not because Chainalysis or TRM Labs are weaker products (both are credible, widely used platforms), but because HSBC chose to put its own capital into Elliptic in September 2025, the same pattern JPMorgan, Santander and Wells Fargo had already set. An investment signals HSBC wants influence over the vendor's product roadmap, not just a subscription to it — a materially stronger relationship than a procurement contract, and a good example of the kind of detail that separates a rehearsed answer from real research.",
+    verdictUrl: "https://www.elliptic.co/newsroom/elliptic-secures-strategic-investment-from-hsbc",
+  },
+];
+
 export const publicIndustryContext = [
   {
     text: "HSBC publicly announced its new digital assets custody service for tokenised securities is underpinned by Metaco's Harmonize platform.",

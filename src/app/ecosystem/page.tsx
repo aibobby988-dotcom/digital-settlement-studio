@@ -1,4 +1,4 @@
-import { Building2, Lightbulb, Link2, Info, Network } from "lucide-react";
+import { Building2, Lightbulb, Link2, Info, Network, Trophy } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -14,6 +14,7 @@ import {
   partnerScorecardDimensions,
   publicContextDisclaimer,
   publicIndustryContext,
+  vendorDeepDive,
 } from "@/lib/mock/ecosystem";
 
 export default function EcosystemPage() {
@@ -132,6 +133,72 @@ export default function EcosystemPage() {
             </table>
           </div>
         </Card>
+      </section>
+
+      <section>
+        <PageHeader
+          eyebrow="Vendor deep-dive"
+          title="What each vendor actually offers — and who wins for HSBC"
+          description="Knowing the category (custody, network, financial crime) is a weak answer on its own. Knowing which specific vendor HSBC has already backed, piloted with, or gone live on — and why — is what separates a rehearsed answer from real research."
+        />
+        <div className="mt-6 space-y-8">
+          {vendorDeepDive.map((cat) => (
+            <div key={cat.category}>
+              <h3 className="text-[15px] font-semibold text-charcoal-900">{cat.category}</h3>
+              <p className="mt-1 max-w-2xl text-[12.5px] leading-relaxed text-ink-500">{cat.context}</p>
+
+              <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
+                {cat.vendors.map((v) => (
+                  <Card
+                    key={v.name}
+                    className={v.isPick ? "border-brand-300 bg-brand-50/30 ring-1 ring-brand-100" : undefined}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex items-center gap-2">
+                        <p className="text-[13.5px] font-semibold text-charcoal-900">
+                          {v.url ? <ExternalLink href={v.url}>{v.name}</ExternalLink> : v.name}
+                        </p>
+                        {v.isPick && (
+                          <span className="inline-flex items-center gap-1 rounded-full bg-brand-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
+                            <Trophy size={10} />
+                            Pick for HSBC
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <p className="mt-2.5 text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                      What they offer
+                    </p>
+                    <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{v.offer}</p>
+
+                    <p className="mt-2.5 text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                      How they differ from the others here
+                    </p>
+                    <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{v.differentiator}</p>
+
+                    <p className="mt-2.5 text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                      The HSBC-specific signal
+                    </p>
+                    <p className="mt-1 text-[12px] leading-relaxed text-ink-700">{v.hsbcSignal}</p>
+                  </Card>
+                ))}
+              </div>
+
+              <div className="mt-4 flex items-start gap-3 rounded-xl border border-brand-100 bg-brand-50/50 px-4 py-3.5">
+                <Trophy size={16} className="mt-0.5 shrink-0 text-brand-600" />
+                <div>
+                  <p className="text-[12.5px] leading-relaxed text-charcoal-900">{cat.verdict}</p>
+                  {cat.verdictUrl && (
+                    <ExternalLink href={cat.verdictUrl} className="mt-2 text-[11.5px]">
+                      Source
+                    </ExternalLink>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section>
