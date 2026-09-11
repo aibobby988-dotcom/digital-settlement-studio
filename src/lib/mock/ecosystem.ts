@@ -110,6 +110,40 @@ export const publicIndustryContext = [
 export const publicContextDisclaimer =
   "This case study does not represent HSBC's systems, architecture, procurement choices or confidential strategy. The items above are drawn from HSBC's own public announcements and independent trade press, referenced here only as market context for how a Digital Currencies product manager should read the competitive landscape.";
 
+export interface InfrastructureInitiative {
+  name: string;
+  description: string;
+  relevance: string;
+  source: string;
+}
+
+export const infrastructureInitiatives: InfrastructureInitiative[] = [
+  {
+    name: "Partior",
+    description:
+      "An interbank tokenised-deposit settlement network founded by DBS, J.P. Morgan and Temasek, with Standard Chartered as a founding shareholder and Deutsche Bank also live on the network. Supports 24/7 cross-border interbank transfers in USD, EUR and SGD, with compliance performed in advance to avoid delaying settlement.",
+    relevance:
+      "The closest real-world shape of this product's Phase 4 (cross-bank interoperability) — multiple banks' tokenised deposits settling on a shared, bank-governed network rather than a single institution's ledger.",
+    source: "Publicly reported industry context",
+  },
+  {
+    name: "BIS Project Agorá",
+    description:
+      "A public-private collaboration convened by the Bank for International Settlements and the Institute of International Finance, bringing together seven central banks and 40+ regulated financial institutions — including HSBC, J.P. Morgan, Citi, Deutsche Bank, Swift, Mastercard and UBS — to explore tokenised commercial-bank deposits settling alongside tokenised central-bank reserves on a shared programmable platform for cross-border payments.",
+    relevance:
+      "HSBC is a named participant. Directly relevant to how this product's cross-border corridors (Phase 2) and interoperability layer (Phase 4) could eventually connect to central-bank money, not just other commercial banks.",
+    source: "Publicly reported industry context, 2024–2026",
+  },
+  {
+    name: "UK Regulated Liability Network (RLN) pilot",
+    description:
+      "A live-transaction pilot exploring a shared ledger for regulated money — commercial bank deposits and potentially other regulated liabilities — with HSBC, Barclays, Lloyds, NatWest, Nationwide and Santander all participating.",
+    relevance:
+      "Shows the UK regulatory and industry appetite for exactly the kind of shared, regulated digital-money infrastructure this roadmap's later phases assume — useful evidence that Phase 5 isn't speculative.",
+    source: "Publicly reported industry context",
+  },
+];
+
 export interface Benchmark {
   name: string;
   focus: string;

@@ -1,4 +1,4 @@
-import { Building2, Lightbulb, Link2, Info } from "lucide-react";
+import { Building2, Lightbulb, Link2, Info, Network } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -9,6 +9,7 @@ import {
   buildBuyPartnerPrinciple,
   capabilityLandscape,
   decisionLog,
+  infrastructureInitiatives,
   partnerScorecardDimensions,
   publicContextDisclaimer,
   publicIndustryContext,
@@ -132,6 +133,34 @@ export default function EcosystemPage() {
             ))}
           </ul>
           <p className="mt-4 text-[11.5px] leading-relaxed text-ink-500">{publicContextDisclaimer}</p>
+        </Card>
+      </section>
+
+      <section>
+        <Card>
+          <CardHeader
+            title="Multi-bank and central-bank infrastructure"
+            subtitle="Where this product's later phases would eventually have to connect — not built by any single bank alone"
+          />
+          <div className="space-y-3">
+            {infrastructureInitiatives.map((item) => (
+              <div key={item.name} className="rounded-lg border border-paper-200 p-4">
+                <div className="flex items-start gap-2.5">
+                  <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-charcoal-900 text-brand-400">
+                    <Network size={14} />
+                  </div>
+                  <div>
+                    <p className="text-[13px] font-semibold text-charcoal-900">{item.name}</p>
+                    <p className="mt-1 text-[12.5px] leading-relaxed text-ink-700">{item.description}</p>
+                    <p className="mt-2 text-[12px] leading-relaxed text-brand-600">
+                      <strong className="font-semibold">Relevance:</strong> {item.relevance}
+                    </p>
+                    <p className="mt-1.5 text-[11px] text-ink-400">{item.source}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </Card>
       </section>
 
