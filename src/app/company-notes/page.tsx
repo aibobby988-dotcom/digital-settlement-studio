@@ -2,6 +2,7 @@ import { ArrowDown, Info, Layers } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 import {
   appointments,
   careerTimeline,
@@ -10,6 +11,7 @@ import {
   education,
   globalStats,
   hkStats,
+  hsbcNewsroomUrl,
   orgChain,
   recentNews,
   siblingFunctions,
@@ -51,7 +53,14 @@ export default function CompanyNotesPage() {
                       : "border-paper-200 bg-paper-50"
                   }`}
                 >
-                  <p className="text-[13px] font-semibold text-charcoal-900">{node.role}</p>
+                  <p className="text-[13px] font-semibold text-charcoal-900">
+                    {node.role}
+                    {node.url && (
+                      <ExternalLink href={node.url} className="ml-2 text-[11px] font-normal">
+                        source
+                      </ExternalLink>
+                    )}
+                  </p>
                   <p className="mt-0.5 text-[12px] text-ink-500">{node.who}</p>
                 </div>
               </div>
@@ -163,9 +172,14 @@ export default function CompanyNotesPage() {
       </section>
 
       <section>
-        <h2 className="mb-2 text-[18px] font-semibold text-charcoal-900">
-          Global Head of Digital Money — career background
-        </h2>
+        <div className="mb-2 flex items-center justify-between">
+          <h2 className="text-[18px] font-semibold text-charcoal-900">
+            Global Head of Digital Money — career background
+          </h2>
+          <ExternalLink href="https://www.fsdc.org.hk/media/2vtpabre/vincent-lau_bio.pdf" className="text-[12px]">
+            Official bio (FSDC)
+          </ExternalLink>
+        </div>
         <p className="mb-5 text-[13px] text-ink-500">
           20+ years of transaction-banking experience across HSBC, Citi and ANZ.
         </p>
@@ -252,7 +266,12 @@ export default function CompanyNotesPage() {
       </section>
 
       <section>
-        <h2 className="mb-5 text-[18px] font-semibold text-charcoal-900">Recent HSBC news</h2>
+        <div className="mb-5 flex items-center justify-between">
+          <h2 className="text-[18px] font-semibold text-charcoal-900">Recent HSBC news</h2>
+          <ExternalLink href={hsbcNewsroomUrl} className="text-[12px]">
+            Browse HSBC newsroom
+          </ExternalLink>
+        </div>
         <Card>
           <ul className="space-y-2.5">
             {recentNews.map((n) => (

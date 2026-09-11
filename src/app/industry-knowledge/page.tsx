@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 import {
   digitalMoneySpectrum,
   glossary,
@@ -42,7 +43,14 @@ export default function IndustryKnowledgePage() {
         <div className="space-y-3">
           {settlementStandards.map((t) => (
             <Card key={t.term}>
-              <p className="text-[13px] font-semibold text-charcoal-900">{t.term}</p>
+              <div className="flex items-start justify-between gap-3">
+                <p className="text-[13px] font-semibold text-charcoal-900">{t.term}</p>
+                {t.url && (
+                  <ExternalLink href={t.url} className="shrink-0 text-[11.5px]">
+                    Reference
+                  </ExternalLink>
+                )}
+              </div>
               <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{t.explanation}</p>
             </Card>
           ))}
@@ -88,7 +96,9 @@ export default function IndustryKnowledgePage() {
                 {regulatoryLandscape.map((r) => (
                   <tr key={r.jurisdiction} className="border-b border-paper-100 text-[12.5px] last:border-0">
                     <td className="py-3.5 pr-4 font-semibold text-charcoal-900">{r.jurisdiction}</td>
-                    <td className="py-3.5 pr-4 max-w-[220px] text-charcoal-900">{r.regime}</td>
+                    <td className="py-3.5 pr-4 max-w-[220px] text-charcoal-900">
+                      {r.url ? <ExternalLink href={r.url}>{r.regime}</ExternalLink> : r.regime}
+                    </td>
                     <td className="py-3.5 pr-4 max-w-[320px] text-ink-500">{r.note}</td>
                   </tr>
                 ))}

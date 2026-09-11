@@ -2,12 +2,14 @@ export interface OrgNode {
   role: string;
   who: string;
   note?: string;
+  url?: string;
 }
 
 export const orgChain: OrgNode[] = [
   {
     role: "Group Head of Digital Assets & Currencies",
     who: "Managing Director — the umbrella covering Orion (digital bonds), custody, CBDC, stablecoins and crypto strategy group-wide",
+    url: "https://www.financeasia.com/article/qa-john-oneill-group-head-of-digital-assets-and-currencies-at-hsbc/503385",
   },
   {
     role: "Global Payments Solutions (GPS)",
@@ -16,6 +18,7 @@ export const orgChain: OrgNode[] = [
   {
     role: "Global Head of Digital Money",
     who: "Director — DLT-payments, Tokenised Deposit Service, stablecoin initiatives",
+    url: "https://www.fsdc.org.hk/media/2vtpabre/vincent-lau_bio.pdf",
   },
   {
     role: "Senior Product Manager — Digital Currencies",
@@ -175,6 +178,11 @@ export const recentNews = [
   "HSBC continues to innovate mobile banking experience with fresh features",
   "HSBC opens first Premier Elite Wealth Centre and first commercial wealth centre in Hong Kong",
 ];
+
+export const hsbcNewsroomUrl = "https://www.hsbc.com/news-and-views";
+export const vincentLauBioUrl = "https://www.fsdc.org.hk/media/2vtpabre/vincent-lau_bio.pdf";
+export const johnONeillProfileUrl =
+  "https://www.financeasia.com/article/qa-john-oneill-group-head-of-digital-assets-and-currencies-at-hsbc/503385";
 
 export interface ValueItem {
   title: string;

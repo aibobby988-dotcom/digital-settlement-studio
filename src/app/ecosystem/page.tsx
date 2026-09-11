@@ -2,6 +2,7 @@ import { Building2, Lightbulb, Link2, Info, Network } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { ExternalLink } from "@/components/ui/ExternalLink";
 import {
   benchmarkLessons,
   benchmarks,
@@ -105,11 +106,23 @@ export default function EcosystemPage() {
                     <td className="py-3.5 pr-4 max-w-[180px] font-medium text-charcoal-900">{row.capability}</td>
                     <td className="py-3.5 pr-4 max-w-[220px]">
                       <div className="flex flex-wrap gap-1">
-                        {row.participants.map((p) => (
-                          <Badge key={p} tone="neutral">
-                            {p}
-                          </Badge>
-                        ))}
+                        {row.participants.map((p) =>
+                          p.url ? (
+                            <a
+                              key={p.name}
+                              href={p.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 rounded-full bg-paper-100 px-2.5 py-1 text-[11px] font-medium text-ink-700 ring-1 ring-inset ring-paper-200 hover:bg-brand-50 hover:text-brand-600 hover:ring-brand-100"
+                            >
+                              {p.name}
+                            </a>
+                          ) : (
+                            <Badge key={p.name} tone="neutral">
+                              {p.name}
+                            </Badge>
+                          )
+                        )}
                       </div>
                     </td>
                     <td className="py-3.5 pr-4 max-w-[280px] text-ink-500">{row.assess}</td>
@@ -128,7 +141,15 @@ export default function EcosystemPage() {
             {publicIndustryContext.map((item) => (
               <li key={item.text} className="rounded-lg border border-paper-200 bg-paper-50 px-4 py-3">
                 <p className="text-[12.5px] leading-relaxed text-charcoal-900">{item.text}</p>
-                <p className="mt-1.5 text-[11px] text-ink-400">{item.source}</p>
+                <p className="mt-1.5 text-[11px] text-ink-400">
+                  {item.url ? (
+                    <ExternalLink href={item.url} className="text-[11px] text-brand-600">
+                      {item.source}
+                    </ExternalLink>
+                  ) : (
+                    item.source
+                  )}
+                </p>
               </li>
             ))}
           </ul>
@@ -155,7 +176,15 @@ export default function EcosystemPage() {
                     <p className="mt-2 text-[12px] leading-relaxed text-brand-600">
                       <strong className="font-semibold">Relevance:</strong> {item.relevance}
                     </p>
-                    <p className="mt-1.5 text-[11px] text-ink-400">{item.source}</p>
+                    <p className="mt-1.5 text-[11px] text-ink-400">
+                      {item.url ? (
+                        <ExternalLink href={item.url} className="text-[11px] text-brand-600">
+                          {item.source}
+                        </ExternalLink>
+                      ) : (
+                        item.source
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -172,7 +201,9 @@ export default function EcosystemPage() {
               <div className="flex h-8 w-8 items-center justify-center rounded-md bg-charcoal-900 text-brand-400">
                 <Building2 size={16} />
               </div>
-              <h3 className="mt-3.5 text-[13.5px] font-semibold text-charcoal-900">{b.name}</h3>
+              <h3 className="mt-3.5 text-[13.5px] font-semibold text-charcoal-900">
+                {b.url ? <ExternalLink href={b.url}>{b.name}</ExternalLink> : b.name}
+              </h3>
               <p className="mt-1.5 text-[12px] font-medium uppercase tracking-wide text-ink-400">Focus</p>
               <p className="text-[12.5px] leading-relaxed text-ink-700">{b.focus}</p>
               <p className="mt-2 text-[12px] font-medium uppercase tracking-wide text-ink-400">Lesson</p>

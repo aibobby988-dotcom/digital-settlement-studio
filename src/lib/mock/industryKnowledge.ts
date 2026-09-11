@@ -1,6 +1,7 @@
 export interface Term {
   term: string;
   explanation: string;
+  url?: string;
 }
 
 export const settlementStandards: Term[] = [
@@ -8,26 +9,31 @@ export const settlementStandards: Term[] = [
     term: "SWIFT MT → ISO 20022 (MX) migration",
     explanation:
       "SWIFT's global migration from legacy MT message formats to the richer, structured ISO 20022 (MX) standard for cross-border payments and reporting. MX carries far more structured data (purpose codes, richer remittance information) than MT ever could — directly relevant to why a tokenised settlement platform's purpose-code tagging and structured audit trail is a genuine improvement, not just a technology preference.",
+    url: "https://www.swift.com/standards/iso-20022",
   },
   {
     term: "SWIFT gpi",
     explanation:
       "SWIFT's Global Payments Innovation initiative — end-to-end payment tracking, same-day use of funds, and transparent fees for correspondent banking payments. The closest legacy-rail equivalent to the real-time visibility this case study's tokenised treasury proposition offers; worth being able to contrast the two directly.",
+    url: "https://www.swift.com/our-solutions/swift-gpi",
   },
   {
     term: "CLS (Continuous Linked Settlement)",
     explanation:
       "The bank-owned market infrastructure that settles the majority of the world's FX trading volume on a PvP basis today, across 18+ currencies. It works by netting and settling both currency legs simultaneously through a central settlement system — eliminating Herstatt risk (the risk that one currency leg pays before the other settles). CLS is the incumbent PvP model; the FX PvP page in this case study is proposing an atomic, DLT-based alternative to the same underlying problem CLS already solves at scale — an interviewer may well ask directly how the two compare.",
+    url: "https://www.cls-group.com",
   },
   {
     term: "BIS Delivery-versus-Payment models (1, 2, 3)",
     explanation:
       "The Bank for International Settlements' classic 1992 framework for DvP: Model 1 settles both the securities and cash legs gross, trade by trade, simultaneously. Model 2 settles securities gross (trade by trade) but nets and settles cash at the end of the cycle. Model 3 nets and settles both legs at the end of the cycle. This case study's Bond DvP simulator is effectively a Model 1 implementation on a permissioned ledger — atomic, gross, trade-by-trade — worth being able to say explicitly.",
+    url: "https://www.bis.org/cpmi/index.htm",
   },
   {
     term: "RTGS (Real-Time Gross Settlement)",
     explanation:
       "Central-bank-operated systems (e.g. CHAPS in the UK, Fedwire in the US) that settle high-value payments individually and irrevocably in real time, in central-bank money. RTGS is the ultimate settlement-finality benchmark tokenised platforms are usually compared against — and the reason 'settlement finality' is such a heavily scrutinised gate in this case study's risk framework.",
+    url: "https://www.bis.org/cpmi/paysysinfo.htm",
   },
 ];
 
@@ -58,6 +64,7 @@ export interface RegRegime {
   jurisdiction: string;
   regime: string;
   note: string;
+  url?: string;
 }
 
 export const regulatoryLandscape: RegRegime[] = [
@@ -65,31 +72,37 @@ export const regulatoryLandscape: RegRegime[] = [
     jurisdiction: "Hong Kong",
     regime: "HKMA — Project Ensemble, Stablecoins Ordinance",
     note: "HKMA's Project Ensemble sandbox is the direct regulatory context for HSBC's Hong Kong Tokenised Deposit Service; Hong Kong separately licenses stablecoin issuers.",
+    url: "https://www.hkma.gov.hk",
   },
   {
     jurisdiction: "Singapore",
     regime: "MAS — Project Guardian, Payment Services Act",
     note: "MAS has run some of the most active wholesale tokenisation pilots globally (Project Guardian) alongside a clear payment-token licensing regime.",
+    url: "https://www.mas.gov.sg/schemes-and-initiatives/project-guardian",
   },
   {
     jurisdiction: "United Kingdom",
     regime: "BoE / FCA — Digital Gilt (DIGIT) pilot, Regulated Liability Network",
     note: "HM Treasury selected HSBC Orion for the UK's first sovereign digital-bond pilot; HSBC also participated in the UK RLN pilot alongside Barclays, Lloyds, NatWest, Nationwide and Santander.",
+    url: "https://www.bankofengland.co.uk",
   },
   {
     jurisdiction: "European Union",
     regime: "MiCA (Markets in Crypto-Assets Regulation)",
     note: "The EU's comprehensive framework for crypto-asset issuance and service provision, including e-money and asset-referenced tokens — the framework any EU stablecoin or tokenisation activity has to clear.",
+    url: "https://finance.ec.europa.eu/regulation-and-supervision/financial-services-legislation/implementing-and-delegated-acts/markets-crypto-assets-regulation-mica_en",
   },
   {
     jurisdiction: "United States",
     regime: "GENIUS Act (enacted July 2025)",
     note: "The first comprehensive US federal framework for payment stablecoins, currently in active rulemaking across OCC, FDIC and Treasury through 2026 — the single most important US regulatory development in this space.",
+    url: "https://www.congress.gov/bill/119th-congress/senate-bill/394",
   },
   {
     jurisdiction: "UAE",
     regime: "VARA (Virtual Assets Regulatory Authority, Dubai)",
     note: "A dedicated virtual-asset regulator with its own licensing regime, distinct from onshore UAE financial regulation — relevant to any Middle East corridor.",
+    url: "https://www.vara.ae",
   },
 ];
 
