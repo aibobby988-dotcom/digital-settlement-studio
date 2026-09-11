@@ -24,4 +24,5 @@ export const studyNavItems: NavItem[] = [
   { href: "/interview-prep", label: "Interview Prep", description: "Case-study Q&A, questions to ask, logistics" },
   { href: "/industry-knowledge", label: "Industry & Regulatory Knowledge", description: "SWIFT, CLS, DvP models, CBDC" },
   { href: "/company-notes", label: "Company & Interviewer Notes", description: "Org structure, background, HSBC facts" },
+  { href: "/ai-preparation", label: "Using AI to Prepare", description: "AI for prep, and AI in the product domain" },
 ];
