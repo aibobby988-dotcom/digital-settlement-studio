@@ -3,12 +3,14 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Card } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/ui/Badge";
 import { PrintButton } from "@/components/ui/PrintButton";
+import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 import { roadmapPhases } from "@/lib/mock/roadmap";
 import { cn } from "@/lib/utils";
 
 export default function RoadmapPage() {
   return (
     <div className="space-y-10">
+      <WalkthroughBar step={5} />
       <PageHeader
         eyebrow="Product Roadmap"
         title="Phased delivery plan"

@@ -4,12 +4,51 @@ export const initiativeName = "24/7 Tokenised Treasury Settlement";
 export const initiativeSummary =
   "Enable corporate treasury clients to issue, transfer and redeem tokenised bank deposits across approved group entities, 24 hours a day, with the same control standards as traditional wholesale payments.";
 
+export const definitionOfReady = [
+  "Acceptance criteria defined and agreed with Risk / Compliance where applicable",
+  "Dependencies identified and sequenced against other stories",
+  "API / data contract agreed where the story touches an integration point",
+  "Estimated and sized by the delivery team",
+  "Non-functional requirements identified (security, resilience, auditability)",
+];
+
+export const definitionOfDone = [
+  "Acceptance criteria met and demonstrated to the product owner",
+  "Automated test coverage in place for the change",
+  "Security and compliance review passed where applicable",
+  "Reconciliation and audit-trail behaviour verified where applicable",
+  "Documentation updated and change released to the target environment",
+];
+
+export const nonFunctionalRequirements = [
+  {
+    area: "Resilience",
+    requirement: "Defined RTO / RPO per service; failover tested; graceful degradation under partial outage.",
+  },
+  {
+    area: "Reconciliation",
+    requirement: "Continuous automated reconciliation between tokenised and core ledgers, with a defined break-resolution SLA.",
+  },
+  {
+    area: "API security",
+    requirement: "Scoped, authenticated API access with payload validation, rate limiting and policy-engine enforcement.",
+  },
+  {
+    area: "Auditability",
+    requirement: "Immutable, timestamped audit trail for every settlement-affecting action, independent of outcome.",
+  },
+];
+
 export const epics: Epic[] = [
   {
     id: "epic-1",
     title: "Client onboarding and entitlements",
     goal: "Bring corporate clients and their entities onto the platform with the right access and approval controls from day one.",
-    owner: "Product — Digital Currencies",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Engineering — Platform Enablement",
+      risk: "Financial Crime Compliance",
+    },
     status: "Done",
     stories: [
       {
@@ -25,6 +64,7 @@ export const epics: Epic[] = [
         ],
         points: 8,
         priority: "Must",
+        dependency: "None",
       },
       {
         id: "DST-102",
@@ -39,6 +79,7 @@ export const epics: Epic[] = [
         ],
         points: 5,
         priority: "Must",
+        dependency: "Depends on DST-101",
       },
       {
         id: "DST-103",
@@ -52,6 +93,7 @@ export const epics: Epic[] = [
         ],
         points: 5,
         priority: "Should",
+        dependency: "Depends on DST-102",
       },
     ],
   },
@@ -59,7 +101,11 @@ export const epics: Epic[] = [
     id: "epic-2",
     title: "Token issuance, transfer and redemption",
     goal: "Provide the core tokenised deposit lifecycle: issue against a funded deposit, transfer between entities, and redeem back to fiat.",
-    owner: "Engineering — Digital Assets Platform",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Engineering — Digital Assets Platform",
+      risk: "Market & Counterparty Risk",
+    },
     status: "In Progress",
     stories: [
       {
@@ -74,6 +120,7 @@ export const epics: Epic[] = [
         ],
         points: 8,
         priority: "Must",
+        dependency: "Depends on DST-101",
       },
       {
         id: "DST-202",
@@ -90,6 +137,7 @@ export const epics: Epic[] = [
         ],
         points: 13,
         priority: "Must",
+        dependency: "Depends on DST-102, DST-201, DST-401",
       },
       {
         id: "DST-203",
@@ -103,6 +151,7 @@ export const epics: Epic[] = [
         ],
         points: 5,
         priority: "Must",
+        dependency: "Depends on DST-201",
       },
       {
         id: "DST-204",
@@ -116,6 +165,7 @@ export const epics: Epic[] = [
         ],
         points: 5,
         priority: "Should",
+        dependency: "None",
       },
     ],
   },
@@ -123,7 +173,11 @@ export const epics: Epic[] = [
     id: "epic-3",
     title: "Payment / ledger integration and reconciliation",
     goal: "Keep the tokenised ledger and core banking systems consistent, with automated reconciliation and clear audit trails.",
-    owner: "Engineering — Core Banking Integration",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Engineering — Core Banking Integration",
+      risk: "Digital Assets Operations",
+    },
     status: "In Progress",
     stories: [
       {
@@ -138,6 +192,7 @@ export const epics: Epic[] = [
         ],
         points: 8,
         priority: "Must",
+        dependency: "Depends on DST-202",
       },
       {
         id: "DST-302",
@@ -151,6 +206,7 @@ export const epics: Epic[] = [
         ],
         points: 8,
         priority: "Must",
+        dependency: "Depends on DST-301",
       },
       {
         id: "DST-303",
@@ -164,6 +220,7 @@ export const epics: Epic[] = [
         ],
         points: 3,
         priority: "Should",
+        dependency: "Depends on DST-302",
       },
     ],
   },
@@ -171,7 +228,11 @@ export const epics: Epic[] = [
     id: "epic-4",
     title: "Financial-crime and wallet controls",
     goal: "Ensure every settlement instruction is screened and monitored to the same standard as traditional wholesale payments.",
-    owner: "Financial Crime Compliance",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Engineering — Digital Assets Platform",
+      risk: "Financial Crime Compliance",
+    },
     status: "In Progress",
     stories: [
       {
@@ -186,6 +247,7 @@ export const epics: Epic[] = [
         ],
         points: 8,
         priority: "Must",
+        dependency: "Depends on DST-101",
       },
       {
         id: "DST-402",
@@ -199,6 +261,7 @@ export const epics: Epic[] = [
         ],
         points: 5,
         priority: "Should",
+        dependency: "Depends on DST-101",
       },
       {
         id: "DST-403",
@@ -212,6 +275,7 @@ export const epics: Epic[] = [
         ],
         points: 8,
         priority: "Must",
+        dependency: "Depends on DST-202",
       },
     ],
   },
@@ -219,7 +283,11 @@ export const epics: Epic[] = [
     id: "epic-5",
     title: "Operations, exceptions and reporting",
     goal: "Give operations teams the tools to monitor settlement health and resolve exceptions quickly and transparently.",
-    owner: "Digital Assets Operations",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Digital Assets Operations",
+      risk: "Operational Risk",
+    },
     status: "Not Started",
     stories: [
       {
@@ -234,6 +302,7 @@ export const epics: Epic[] = [
         ],
         points: 5,
         priority: "Should",
+        dependency: "Depends on DST-302",
       },
       {
         id: "DST-502",
@@ -247,6 +316,7 @@ export const epics: Epic[] = [
         ],
         points: 8,
         priority: "Must",
+        dependency: "Depends on DST-202",
       },
       {
         id: "DST-503",
@@ -260,6 +330,7 @@ export const epics: Epic[] = [
         ],
         points: 5,
         priority: "Should",
+        dependency: "Depends on DST-502",
       },
     ],
   },
@@ -267,7 +338,11 @@ export const epics: Epic[] = [
     id: "epic-6",
     title: "Pilot rollout and client support",
     goal: "Support a controlled pilot group of clients with the commercial, training and support model needed to scale confidently.",
-    owner: "Product — Digital Currencies",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Client Implementation",
+      risk: "Product Governance Committee",
+    },
     status: "Not Started",
     stories: [
       {
@@ -282,6 +357,7 @@ export const epics: Epic[] = [
         ],
         points: 3,
         priority: "Must",
+        dependency: "None",
       },
       {
         id: "DST-602",
@@ -295,6 +371,7 @@ export const epics: Epic[] = [
         ],
         points: 5,
         priority: "Should",
+        dependency: "Depends on DST-101",
       },
       {
         id: "DST-603",
@@ -308,6 +385,90 @@ export const epics: Epic[] = [
         ],
         points: 3,
         priority: "Could",
+        dependency: "Depends on DST-503",
+      },
+    ],
+  },
+  {
+    id: "epic-7",
+    title: "Commercialisation, Client Readiness and Go-to-Market",
+    goal: "Turn a working pilot into a commercially viable, supportable product with a clear path from pilot to scale.",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Commercial & Sales Enablement",
+      risk: "Product Governance Committee",
+    },
+    status: "Not Started",
+    stories: [
+      {
+        id: "DST-701",
+        title: "Client segmentation and eligibility criteria",
+        narrative:
+          "As a product manager, I want defined client segmentation and eligibility criteria so that sales and onboarding focus on the clients this product is built for.",
+        acceptanceCriteria: [
+          "Eligibility criteria cover entity structure, corridor coverage and risk profile",
+          "Segmentation agreed with Sales, Risk and Compliance",
+          "Out-of-scope client profiles are documented with the reason",
+        ],
+        points: 3,
+        priority: "Must",
+        dependency: "Depends on DST-601",
+      },
+      {
+        id: "DST-702",
+        title: "Onboarding and implementation journey",
+        narrative:
+          "As a client implementation manager, I want a defined end-to-end onboarding journey so that new clients have a predictable, well-supported path to go-live.",
+        acceptanceCriteria: [
+          "Journey map covers sales handoff through to first live transaction",
+          "Standard timeline and milestones agreed with clients upfront",
+          "Implementation status is visible to internal stakeholders",
+        ],
+        points: 5,
+        priority: "Must",
+        dependency: "Depends on DST-701, DST-602",
+      },
+      {
+        id: "DST-703",
+        title: "Pricing and commercial model",
+        narrative:
+          "As a product manager, I want an agreed pricing and commercial model so that the product has a viable, explainable path to revenue.",
+        acceptanceCriteria: [
+          "Pricing model covers volume, balance and value-based components as applicable",
+          "Model reviewed and approved by Finance and Product Governance",
+          "Sales has a standard commercial pack to present to clients",
+        ],
+        points: 5,
+        priority: "Must",
+        dependency: "Depends on DST-701",
+      },
+      {
+        id: "DST-704",
+        title: "Relationship-manager and client-support enablement",
+        narrative:
+          "As a relationship manager, I want training and talking points on the product so that I can position it credibly and handle client questions.",
+        acceptanceCriteria: [
+          "RM enablement pack covers proposition, controls and FAQs",
+          "Front-line support trained on first-line troubleshooting",
+          "Escalation path to product and engineering is documented",
+        ],
+        points: 3,
+        priority: "Should",
+        dependency: "Depends on DST-602",
+      },
+      {
+        id: "DST-705",
+        title: "Pilot feedback and scale decision",
+        narrative:
+          "As a product manager, I want structured pilot feedback and a formal scale decision so that expansion is a deliberate choice, not an assumption.",
+        acceptanceCriteria: [
+          "Client and internal feedback captured against pilot success metrics",
+          "Scale decision documented with go/no-go rationale",
+          "Lessons learned feed into the next roadmap phase",
+        ],
+        points: 3,
+        priority: "Must",
+        dependency: "Depends on DST-601, DST-703",
       },
     ],
   },

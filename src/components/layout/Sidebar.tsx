@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  Presentation,
   LayoutDashboard,
   Landmark,
   ArrowLeftRight,
@@ -11,16 +12,19 @@ import {
   ListChecks,
   Repeat,
   Network,
+  Globe,
 } from "lucide-react";
 import { navItems } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
-  "/": LayoutDashboard,
+  "/": Presentation,
+  "/overview": LayoutDashboard,
   "/treasury": Landmark,
   "/bond-dvp": ArrowLeftRight,
   "/fx-pvp": Repeat,
   "/architecture": Network,
+  "/ecosystem": Globe,
   "/risk-controls": ShieldCheck,
   "/roadmap": Map,
   "/backlog": ListChecks,

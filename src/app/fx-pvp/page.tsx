@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { PvpSimulator } from "@/components/settlement/PvpSimulator";
-import { fxTrade, liquidityPool, partyA, partyB } from "@/lib/mock/fx";
+import { fxTrade, liquidityPool, partyA, partyB, pvpDesignConstraints } from "@/lib/mock/fx";
 import { formatCurrency } from "@/lib/utils";
 
 export default function FxPvpPage() {
@@ -64,8 +64,14 @@ export default function FxPvpPage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <StatCard icon={Clock3} label="Cut-off" value={fxTrade.cutOff} />
+      <div className="flex items-start gap-3 rounded-xl border border-paper-200 bg-paper-50 px-4 py-3.5">
+        <Clock3 size={16} className="mt-0.5 shrink-0 text-ink-500" />
+        <p className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <strong className="font-semibold">Settlement availability:</strong> {fxTrade.settlementAvailability}
+        </p>
+      </div>
+
+      <section className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <StatCard
           icon={Droplets}
           label="USD liquidity available"
@@ -77,6 +83,20 @@ export default function FxPvpPage() {
           value={formatCurrency(liquidityPool.HKD.available, "HKD")}
         />
       </section>
+
+      <Card>
+        <CardHeader title="PvP design constraints" />
+        <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+          {pvpDesignConstraints.map((c) => (
+            <li
+              key={c}
+              className="rounded-lg border border-paper-200 bg-paper-50 px-3.5 py-2.5 text-[12px] text-charcoal-900"
+            >
+              {c}
+            </li>
+          ))}
+        </ul>
+      </Card>
 
       <section>
         <PvpSimulator />

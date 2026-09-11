@@ -4,7 +4,8 @@ export const fxTrade = {
   rate: 7.8012,
   tradeDate: "2026-09-11",
   valueDate: "2026-09-11",
-  cutOff: "None — 24/7 atomic settlement window",
+  settlementAvailability:
+    "24/7 for supported corridors, subject to participant funding, liquidity availability, compliance screening, market conditions and local regulatory requirements.",
 };
 
 export const partyA = {
@@ -28,3 +29,11 @@ export const liquidityPoolInsufficient = {
   HKD: { available: 52_000_000, required: 78_012_000 },
   USD: { available: 45_000_000, required: 10_000_000 },
 };
+
+export const pvpDesignConstraints = [
+  "Supported currencies and participant banks",
+  "Intraday liquidity and prefunding model",
+  "FX rate validity / quote expiry",
+  "Legal finality by jurisdiction",
+  "Exception, dispute and unwind framework",
+];

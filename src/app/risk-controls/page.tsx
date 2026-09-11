@@ -13,6 +13,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Card } from "@/components/ui/Card";
 import { RiskBadge, StatusBadge, Badge } from "@/components/ui/Badge";
 import { PrintButton } from "@/components/ui/PrintButton";
+import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 import { cn } from "@/lib/utils";
 import { riskCategoryOrder, riskControls } from "@/lib/mock/risk";
 import type { RiskControl } from "@/lib/types";
@@ -46,6 +47,7 @@ export default function RiskControlsPage() {
 
   return (
     <div className="space-y-8">
+      <WalkthroughBar step={4} />
       <PageHeader
         eyebrow="Risk & Controls"
         title="Risk and control framework"

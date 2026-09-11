@@ -1,17 +1,18 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { ArrowDownToLine, ArrowUpFromLine, Info, Send } from "lucide-react";
+import { ArrowDownToLine, ArrowRight, ArrowUpFromLine, CheckCircle2, Info, Layers, Send } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { StatusBadge } from "@/components/ui/Badge";
+import { StatusBadge, Badge } from "@/components/ui/Badge";
 import { Timeline } from "@/components/ui/Timeline";
 import { TransferWizard } from "@/components/treasury/TransferWizard";
 import { IssueRedeemModal } from "@/components/treasury/IssueRedeemModal";
 import { balances, entities, transactions } from "@/lib/mock/entities";
 import type { CurrencyCode, TransferStage } from "@/lib/types";
 import { formatCurrency } from "@/lib/utils";
+import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 
 const currencies: CurrencyCode[] = ["HKD", "USD", "GBP", "SGD"];
 const stageOrder: TransferStage[] = [
@@ -24,6 +25,23 @@ const stageOrder: TransferStage[] = [
 ];
 
 const SELECTED_ENTITY_KEY = "dss:treasury:selectedEntity";
+
+const clientValue = [
+  "24/7 movement in supported corridors",
+  "Real-time liquidity visibility",
+  "Reduced manual reconciliation",
+  "API-driven and conditional payment capability",
+  "Controlled access and approval workflow",
+];
+
+const integrationSteps = [
+  "Treasury Management System / ERP",
+  "API gateway",
+  "Entitlement & policy engine",
+  "Settlement orchestration",
+  "Tokenised deposit ledger",
+  "Core banking reconciliation",
+];
 
 export default function TreasuryPage() {
   const [entityId, setEntityId] = useState(entities[0].id);
@@ -68,24 +86,28 @@ export default function TreasuryPage() {
 
   return (
     <div className="space-y-10">
-      <PageHeader
-        eyebrow="Tokenised Treasury"
-        title="Corporate treasury dashboard"
-        description="Tokenised deposits are 1:1 digital representations of funded bank deposits — every unit issued is backed by real funds held at the issuing entity, redeemable on demand."
-        actions={
-          <div className="flex flex-wrap gap-2">
-            <Button variant="secondary" size="sm" icon={<ArrowUpFromLine size={14} />} onClick={() => setModal("issue")}>
-              Issue
-            </Button>
-            <Button variant="secondary" size="sm" icon={<Send size={14} />} onClick={() => setModal("transfer")}>
-              Transfer
-            </Button>
-            <Button variant="secondary" size="sm" icon={<ArrowDownToLine size={14} />} onClick={() => setModal("redeem")}>
-              Redeem
-            </Button>
-          </div>
-        }
-      />
+      <WalkthroughBar step={2} />
+      <div>
+        <Badge tone="brand" className="mb-3">Flagship proposition</Badge>
+        <PageHeader
+          eyebrow="Tokenised Treasury"
+          title="Corporate treasury dashboard"
+          description="Tokenised deposits are 1:1 digital representations of funded bank deposits — every unit issued is backed by real funds held at the issuing entity, redeemable on demand."
+          actions={
+            <div className="flex flex-wrap gap-2">
+              <Button variant="secondary" size="sm" icon={<ArrowUpFromLine size={14} />} onClick={() => setModal("issue")}>
+                Issue
+              </Button>
+              <Button variant="secondary" size="sm" icon={<Send size={14} />} onClick={() => setModal("transfer")}>
+                Transfer
+              </Button>
+              <Button variant="secondary" size="sm" icon={<ArrowDownToLine size={14} />} onClick={() => setModal("redeem")}>
+                Redeem
+              </Button>
+            </div>
+          }
+        />
+      </div>
 
       <div className="flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-100/20 px-4 py-3.5">
         <Info size={16} className="mt-0.5 shrink-0 text-blue-600" />
@@ -96,6 +118,54 @@ export default function TreasuryPage() {
           the underlying deposit, and can be redeemed to the originating account at any time.
         </p>
       </div>
+
+      <section className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <Card>
+          <CardHeader title="Client value" />
+          <ul className="space-y-2.5">
+            {clientValue.map((v) => (
+              <li key={v} className="flex items-start gap-2.5 text-[12.5px] leading-relaxed text-ink-700">
+                <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-brand-500" />
+                {v}
+              </li>
+            ))}
+          </ul>
+        </Card>
+        <Card>
+          <CardHeader title="Target client" />
+          <p className="text-[13px] leading-relaxed text-ink-700">
+            Multinational corporate treasury with multiple legal entities and frequent
+            cross-border liquidity requirements — moving cash between entities faster and more
+            visibly than traditional cut-off-constrained payment rails allow.
+          </p>
+        </Card>
+      </section>
+
+      <div className="flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-100/20 px-4 py-3.5">
+        <Layers size={16} className="mt-0.5 shrink-0 text-amber-500" />
+        <p className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <strong className="font-semibold">Not a stablecoin.</strong> A tokenised deposit is a
+          digital representation of a designated commercial-bank deposit. It is not a separately
+          reserved stablecoin — value is not held in a separate reserve pool, it is the underlying
+          bank deposit itself, represented on a permissioned ledger.
+        </p>
+      </div>
+
+      <Card>
+        <CardHeader title="Integration model" subtitle="How a client's own systems connect through to settlement" />
+        <div className="flex flex-col gap-2 overflow-x-auto scrollbar-thin sm:flex-row sm:items-center sm:gap-0">
+          {integrationSteps.map((step, idx) => (
+            <div key={step} className="flex items-center gap-2 sm:flex-1">
+              <div className="flex-1 rounded-lg border border-paper-200 bg-paper-50 px-3.5 py-2.5 text-center text-[11.5px] font-medium text-charcoal-900">
+                {step}
+              </div>
+              {idx < integrationSteps.length - 1 && (
+                <ArrowRight size={14} className="hidden shrink-0 text-ink-400 sm:block" />
+              )}
+            </div>
+          ))}
+        </div>
+      </Card>
 
       <section>
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

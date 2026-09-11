@@ -1,204 +1,273 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
-  Activity,
   Clock3,
-  Building2,
-  Wallet,
-  ArrowUpRight,
-  Landmark,
-  ArrowLeftRight,
-  Repeat,
-  Globe2,
-  Eye,
-  FileSpreadsheet,
+  AlarmClockOff,
+  FileWarning,
+  EyeOff,
+  ShieldAlert,
+  Radar,
+  Workflow,
   ShieldCheck,
+  Scale,
+  Settings2,
+  Rocket,
+  Users,
+  ArrowRight,
+  PlayCircle,
 } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { KpiCard } from "@/components/ui/KpiCard";
-import { Card } from "@/components/ui/Card";
+import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
+import { TOUR_STORAGE_KEY, tourSteps } from "@/lib/tour";
 
-const kpis = [
+const clientProblems = [
   {
-    label: "Settlement success rate",
-    value: "99.98%",
-    helpText: "Trailing 90-day rolling average",
-    icon: <Activity size={15} />,
+    icon: Clock3,
+    title: "Trapped liquidity across time zones",
+    description: "Cash sits idle in one entity while another entity needs it, because banking hours don't overlap.",
   },
   {
-    label: "Average settlement time",
-    value: "< 60 sec",
-    helpText: "Initiation to on-ledger finality",
-    icon: <Clock3 size={15} />,
+    icon: AlarmClockOff,
+    title: "Delayed funding from payment cut-offs",
+    description: "Urgent transfers wait for the next cut-off window instead of moving when the business needs them.",
   },
   {
-    label: "Active corporate entities",
-    value: "24",
-    helpText: "Across 4 currency corridors",
-    icon: <Building2 size={15} />,
+    icon: FileWarning,
+    title: "Manual reconciliation",
+    description: "Treasury and operations teams spend hours matching ledger entries across systems and entities.",
   },
   {
-    label: "Value settled this month",
-    value: "USD 1.84bn",
-    helpText: "Tokenised deposits, bonds and FX",
-    icon: <Wallet size={15} />,
+    icon: EyeOff,
+    title: "Fragmented treasury visibility",
+    description: "Balances and transaction status are scattered across banking portals with no single real-time view.",
+  },
+  {
+    icon: ShieldAlert,
+    title: "Settlement risk on exchange",
+    description: "When cash must exchange against an asset or another currency, one leg can fail after the other has paid.",
   },
 ];
 
-const products = [
+const whyNow = [
+  "Treasury teams now expect real-time liquidity visibility, not next-morning statements.",
+  "Payments are becoming API-driven and increasingly automated by ERPs and treasury systems.",
+  "Tokenisation can support conditional and programmable settlement that legacy rails cannot.",
+  "Institutional digital money needs regulatory, operational and interoperability discipline to be usable at scale.",
+];
+
+const phases = [
+  { phase: "Phase 1", label: "Intrabank corporate treasury" },
+  { phase: "Phase 2", label: "Cross-border selected corridors" },
+  { phase: "Phase 3", label: "Tokenised-asset DvP" },
+  { phase: "Phase 4", label: "Cross-bank interoperability & FX PvP" },
+];
+
+const successMetrics = [
+  "Active clients and entities onboarded",
+  "Settlement volume and value processed",
+  "Settlement success rate",
+  "Exception rate",
+  "Reconciliation break rate",
+  "Client liquidity benefit realised",
+  "Time saved versus existing operational process",
+  "Commercial revenue / retained operating balances",
+];
+
+const pmDimensions = [
   {
-    href: "/treasury",
-    icon: Landmark,
-    title: "Tokenised Treasury",
-    description:
-      "24/7 corporate treasury dashboard for issuing, transferring and redeeming tokenised bank deposits across group entities.",
+    icon: Users,
+    title: "Client value",
+    description: "Does this solve a liquidity problem the client actually has, better than their current process?",
   },
   {
-    href: "/bond-dvp",
-    icon: ArrowLeftRight,
-    title: "Bond DvP Settlement",
-    description:
-      "Atomic Delivery-versus-Payment settlement for tokenised fixed income — the asset and cash legs settle together, or not at all.",
+    icon: ShieldAlert,
+    title: "Risk",
+    description: "Financial crime, credit, liquidity and settlement-asset risk all need named controls, not assumptions.",
   },
   {
-    href: "/fx-pvp",
-    icon: Repeat,
-    title: "FX PvP Settlement",
-    description:
-      "Atomic Payment-versus-Payment FX settlement that removes principal risk by settling both currency legs simultaneously.",
+    icon: Scale,
+    title: "Legal finality",
+    description: "Technical settlement isn't legal settlement — jurisdictional legal opinions are a prerequisite, not an afterthought.",
+  },
+  {
+    icon: Workflow,
+    title: "Operations",
+    description: "Reconciliation, exception handling and incident response have to work on day one, at scale.",
+  },
+  {
+    icon: Settings2,
+    title: "Technology",
+    description: "The platform is an enabler for the proposition — not the product itself.",
+  },
+  {
+    icon: Rocket,
+    title: "Commercial rollout",
+    description: "A pricing model, a support model and a pilot-to-scale decision path are part of the product, not extras.",
   },
 ];
 
-const whyItMatters = [
-  {
-    icon: Globe2,
-    title: "24/7 liquidity movement",
-    description:
-      "Corporate treasury clients move value across entities and currencies outside traditional cut-off times and banking hours.",
-  },
-  {
-    icon: Eye,
-    title: "Real-time visibility",
-    description:
-      "Balances, transaction status and settlement events are visible as they happen, not batched overnight.",
-  },
-  {
-    icon: FileSpreadsheet,
-    title: "Reduced reconciliation effort",
-    description:
-      "Automated, continuous reconciliation between the settlement ledger and core banking records reduces manual effort and breaks.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Controlled programmable settlement",
-    description:
-      "Entitlements, screening and approvals are enforced programmatically, to the same control standard as traditional wholesale payments.",
-  },
-  {
-    icon: ArrowLeftRight,
-    title: "Atomic DvP / PvP risk reduction",
-    description:
-      "Linked settlement legs either both complete or both fail — removing principal and counterparty risk from the settlement window.",
-  },
-];
+export default function ExecutiveBriefPage() {
+  const router = useRouter();
 
-export default function OverviewPage() {
+  function startWalkthrough() {
+    try {
+      sessionStorage.setItem(TOUR_STORAGE_KEY, JSON.stringify({ active: true, step: 2 }));
+    } catch {
+      // sessionStorage unavailable — walkthrough just won't track progress
+    }
+    router.push(tourSteps[1].path);
+  }
+
   return (
     <div className="space-y-12">
-      <div className="rounded-2xl bg-charcoal-950 px-6 py-10 sm:px-10 sm:py-14">
+      <WalkthroughBar step={1} />
+
+      <PageHeader
+        eyebrow="Executive Brief"
+        title="Digital Settlement Studio — the 5-minute version"
+        description="A decision-ready summary of the product thesis, target client, flagship proposition and delivery strategy — built for a fast walkthrough, not a deep read."
+        actions={
+          <Button icon={<PlayCircle size={15} />} onClick={startWalkthrough}>
+            Start 5-minute walkthrough
+          </Button>
+        }
+      />
+
+      <Card className="border-charcoal-900 bg-charcoal-950">
         <Badge tone="brand" className="bg-brand-500/10 text-brand-300 ring-brand-400/25">
-          Independent product case study
+          Product thesis
         </Badge>
-        <h1 className="mt-5 max-w-2xl text-3xl font-semibold tracking-tight text-paper-0 sm:text-4xl">
-          Digital Settlement Studio
-        </h1>
-        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-ink-400">
-          A controlled, 24/7 settlement proposition for institutional treasury and tokenised
-          assets — designed for regulated financial infrastructure, not retail speculation.
+        <p className="mt-4 max-w-2xl text-[19px] font-semibold leading-snug text-paper-0 sm:text-[22px]">
+          &ldquo;Digital money is the settlement and liquidity layer that makes tokenised finance
+          commercially useful.&rdquo;
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <p className="mt-4 max-w-2xl text-[13px] leading-relaxed text-ink-400">
+          Tokenised assets are only as useful as the cash that can move against them, on demand,
+          under control. This product is that cash layer — starting with corporate treasury.
+        </p>
+      </Card>
+
+      <section className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <Card>
+          <CardHeader title="Target client" />
+          <p className="text-[13px] leading-relaxed text-ink-700">
+            Multinational corporates with multiple legal entities, cross-border liquidity needs,
+            frequent high-value treasury transfers, and operational cut-off constraints that
+            legacy payment rails cannot solve.
+          </p>
+        </Card>
+        <Card className="border-brand-500 bg-brand-50/40">
+          <CardHeader title="Flagship proposition" actions={<Badge tone="brand">24/7 Tokenised Treasury</Badge>} />
+          <p className="text-[13px] leading-relaxed text-charcoal-900">
+            Tokenised deposits enable instant, controlled movement of commercial-bank money
+            between approved corporate entities in supported corridors — 24 hours a day, with the
+            same control standard as traditional wholesale payments.
+          </p>
           <Link
             href="/treasury"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-4 py-2.5 text-[13px] font-medium text-charcoal-950 hover:bg-brand-400"
+            className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-medium text-brand-600"
           >
-            Explore Tokenised Treasury
-            <ArrowUpRight size={14} />
+            View the flagship flow
+            <ArrowRight size={13} />
           </Link>
-          <Link
-            href="/roadmap"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-charcoal-800 px-4 py-2.5 text-[13px] font-medium text-paper-100 ring-1 ring-inset ring-charcoal-600 hover:bg-charcoal-700"
-          >
-            View product roadmap
-          </Link>
-        </div>
-      </div>
+        </Card>
+      </section>
 
       <section>
-        <PageHeader eyebrow="Performance" title="Platform at a glance" />
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {kpis.map((kpi) => (
-            <KpiCard key={kpi.label} {...kpi} />
+        <PageHeader eyebrow="The problem" title="Core client problem" />
+        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {clientProblems.map((p) => {
+            const Icon = p.icon;
+            return (
+              <Card key={p.title}>
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-50 text-brand-600">
+                  <Icon size={16} />
+                </div>
+                <h3 className="mt-3.5 text-[13.5px] font-semibold text-charcoal-900">{p.title}</h3>
+                <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-500">{p.description}</p>
+              </Card>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div>
+          <PageHeader eyebrow="Context" title="Why now" />
+          <ul className="mt-5 space-y-3">
+            {whyNow.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-[13px] leading-relaxed text-ink-700">
+                <Radar size={15} className="mt-0.5 shrink-0 text-brand-500" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <PageHeader eyebrow="Delivery" title="Phased strategy" />
+          <div className="mt-5 space-y-2.5">
+            {phases.map((p) => (
+              <div
+                key={p.phase}
+                className="flex items-center gap-3 rounded-lg border border-paper-200 bg-paper-0 px-4 py-3"
+              >
+                <Badge tone="neutral">{p.phase}</Badge>
+                <span className="text-[13px] text-charcoal-900">{p.label}</span>
+              </div>
+            ))}
+          </div>
+          <Link
+            href="/roadmap"
+            className="mt-3 inline-flex items-center gap-1 text-[12.5px] font-medium text-brand-600"
+          >
+            View full roadmap with go/no-go gates
+            <ArrowRight size={13} />
+          </Link>
+        </div>
+      </section>
+
+      <section>
+        <PageHeader eyebrow="How we'll know it's working" title="Success metrics" />
+        <div className="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+          {successMetrics.map((m) => (
+            <div key={m} className="rounded-lg border border-paper-200 bg-paper-0 px-3.5 py-3 text-[12px] text-charcoal-900">
+              {m}
+            </div>
           ))}
         </div>
       </section>
 
       <section>
         <PageHeader
-          eyebrow="Settlement flows"
-          title="Explore the settlement propositions"
-          description="Three connected settlement flows built on the same control and entitlement model."
+          eyebrow="Discipline"
+          title="Why this is a product-management problem, not only a technology problem"
         />
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => {
-            const Icon = product.icon;
+        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {pmDimensions.map((d) => {
+            const Icon = d.icon;
             return (
-              <Link
-                key={product.href}
-                href={product.href}
-                className="group flex flex-col rounded-xl border border-paper-200 bg-paper-0 p-5 transition-colors hover:border-brand-400/50 hover:bg-brand-50/30"
-              >
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-charcoal-900 text-brand-400">
-                  <Icon size={17} />
-                </div>
-                <h3 className="mt-4 text-[14px] font-semibold text-charcoal-900">{product.title}</h3>
-                <p className="mt-2 flex-1 text-[12.5px] leading-relaxed text-ink-500">
-                  {product.description}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-[12.5px] font-medium text-brand-600">
-                  View flow
-                  <ArrowUpRight
-                    size={13}
-                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      <section>
-        <PageHeader
-          eyebrow="Client value"
-          title="Why this matters"
-          description="Digital settlement infrastructure is an enabler for client outcomes — not a product in its own right."
-        />
-        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {whyItMatters.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Card key={item.title} className="flex flex-col">
-                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-50 text-brand-600">
+              <Card key={d.title}>
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-charcoal-900 text-brand-400">
                   <Icon size={16} />
                 </div>
-                <h3 className="mt-3.5 text-[13.5px] font-semibold text-charcoal-900">{item.title}</h3>
-                <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-500">
-                  {item.description}
-                </p>
+                <h3 className="mt-3.5 text-[13.5px] font-semibold text-charcoal-900">{d.title}</h3>
+                <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-500">{d.description}</p>
               </Card>
             );
           })}
         </div>
+        <p className="mt-5 flex items-center gap-2 text-[12px] text-ink-500">
+          <ShieldCheck size={14} className="text-brand-500" />
+          Real implementation requires cross-functional collaboration across Product, Engineering,
+          Architecture, Operations, Legal, Compliance, Financial Crime, Risk, Sales and external
+          partners — see <Link href="/backlog" className="font-medium text-brand-600">Delivery Backlog</Link>.
+        </p>
       </section>
     </div>
   );

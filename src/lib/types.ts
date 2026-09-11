@@ -78,13 +78,20 @@ export interface UserStory {
   acceptanceCriteria: string[];
   points: number;
   priority: "Must" | "Should" | "Could";
+  dependency: string;
+}
+
+export interface EpicOwners {
+  product: string;
+  delivery: string;
+  risk: string;
 }
 
 export interface Epic {
   id: string;
   title: string;
   goal: string;
-  owner: string;
+  owners: EpicOwners;
   status: "Done" | "In Progress" | "Not Started";
   stories: UserStory[];
 }

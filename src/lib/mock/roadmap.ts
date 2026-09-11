@@ -1,57 +1,57 @@
 import type { RoadmapPhase } from "@/lib/types";
 
+const standardGateLabels = [
+  "Client-value validation",
+  "Legal and regulatory readiness",
+  "Financial-crime controls tested",
+  "Operational readiness",
+  "Resilience / incident testing completed",
+  "Commercial economics approved",
+  "Client-support readiness",
+];
+
+function gates(met: boolean[]) {
+  return standardGateLabels.map((label, i) => ({ label, met: met[i] }));
+}
+
 export const roadmapPhases: RoadmapPhase[] = [
   {
     id: "phase-1",
     phase: "Phase 1",
-    title: "Controlled intrabank tokenised-deposit pilot",
-    window: "Q1 – Q2 2026",
+    title: "Controlled intrabank treasury pilot",
+    window: "0–6 months",
     summary:
       "Launch a controlled pilot enabling a small group of corporate treasury clients to issue, transfer and redeem tokenised deposits within a single banking entity, proving the core settlement mechanics and control model.",
-    status: "Complete",
+    status: "In Progress",
     deliverables: [
       "Tokenised deposit issuance / redemption on permissioned ledger",
       "Entitlement and maker-checker controls",
       "Sanctions screening integrated into settlement flow",
       "Intraday reconciliation against core ledger",
     ],
-    gates: [
-      { label: "Client-value validation", met: true },
-      { label: "Legal and regulatory approval", met: true },
-      { label: "Operational readiness", met: true },
-      { label: "Financial-crime controls tested", met: true },
-      { label: "Resilience / incident testing completed", met: true },
-      { label: "Commercial and support model approved", met: true },
-    ],
+    gates: gates([true, true, true, true, false, true, false]),
   },
   {
     id: "phase-2",
     phase: "Phase 2",
-    title: "Corporate treasury rollout in selected corridors",
-    window: "Q3 2026 – Q1 2027",
+    title: "Selected cross-border corporate treasury corridors",
+    window: "6–18 months",
     summary:
       "Extend tokenised deposit transfers across group entities in priority corridors (HK–SG–US–UK), giving corporate treasury clients 24/7 intercompany liquidity movement beyond traditional cut-off times.",
-    status: "In Progress",
+    status: "Planned",
     deliverables: [
       "Multi-entity, multi-currency transfer flow (HKD, USD, GBP, SGD)",
       "Purpose-code tagging and enhanced transaction monitoring",
       "Client-facing balance and transaction reporting",
       "Expanded exception-handling and incident runbooks",
     ],
-    gates: [
-      { label: "Client-value validation", met: true },
-      { label: "Legal and regulatory approval", met: true },
-      { label: "Operational readiness", met: false },
-      { label: "Financial-crime controls tested", met: false },
-      { label: "Resilience / incident testing completed", met: false },
-      { label: "Commercial and support model approved", met: true },
-    ],
+    gates: gates([true, true, false, false, false, true, false]),
   },
   {
     id: "phase-3",
     phase: "Phase 3",
-    title: "Tokenised bond DvP settlement",
-    window: "Q2 – Q4 2027",
+    title: "Tokenised asset DvP pilot",
+    window: "18–30 months",
     summary:
       "Introduce atomic Delivery-versus-Payment settlement for tokenised fixed income, starting with a fictional tokenised green bond, connecting buy-side and sell-side institutional clients on a shared settlement rail.",
     status: "Planned",
@@ -61,20 +61,13 @@ export const roadmapPhases: RoadmapPhase[] = [
       "Pre-settlement checks: funds, holdings, approvals, screening",
       "Settlement-finality audit record and reporting",
     ],
-    gates: [
-      { label: "Client-value validation", met: false },
-      { label: "Legal and regulatory approval", met: false },
-      { label: "Operational readiness", met: false },
-      { label: "Financial-crime controls tested", met: false },
-      { label: "Resilience / incident testing completed", met: false },
-      { label: "Commercial and support model approved", met: false },
-    ],
+    gates: gates([false, false, false, false, false, false, false]),
   },
   {
     id: "phase-4",
     phase: "Phase 4",
-    title: "Cross-bank / network interoperability and FX PvP",
-    window: "2028",
+    title: "Cross-bank interoperability and selected FX PvP corridors",
+    window: "30–48 months",
     summary:
       "Extend settlement beyond a single institution: interoperate with other participant banks and market infrastructures, and introduce atomic Payment-versus-Payment FX settlement to remove principal risk on cross-currency trades.",
     status: "Planned",
@@ -84,36 +77,22 @@ export const roadmapPhases: RoadmapPhase[] = [
       "Cross-institution liquidity and screening coordination",
       "Shared governance and dispute-resolution framework",
     ],
-    gates: [
-      { label: "Client-value validation", met: false },
-      { label: "Legal and regulatory approval", met: false },
-      { label: "Operational readiness", met: false },
-      { label: "Financial-crime controls tested", met: false },
-      { label: "Resilience / incident testing completed", met: false },
-      { label: "Commercial and support model approved", met: false },
-    ],
+    gates: gates([false, false, false, false, false, false, false]),
   },
   {
     id: "phase-5",
     phase: "Phase 5",
-    title: "Regulated stablecoin and broader ecosystem connectivity",
-    window: "2029 and beyond",
+    title: "Broader regulated digital-money connectivity",
+    window: "48+ months",
     summary:
-      "Connect the settlement platform to regulated stablecoin infrastructure and a broader ecosystem of institutional participants, wallets and market venues, subject to full regulatory clearance.",
+      "Connect the settlement platform to a broader ecosystem of regulated digital-money infrastructure, institutional participants and market venues, subject to full regulatory clearance.",
     status: "Planned",
     deliverables: [
-      "Regulated stablecoin connectivity assessment",
+      "Regulated digital-money connectivity assessment",
       "Ecosystem partnership and interoperability framework",
       "Expanded asset classes beyond bonds and deposits",
       "Long-term commercial and pricing model",
     ],
-    gates: [
-      { label: "Client-value validation", met: false },
-      { label: "Legal and regulatory approval", met: false },
-      { label: "Operational readiness", met: false },
-      { label: "Financial-crime controls tested", met: false },
-      { label: "Resilience / incident testing completed", met: false },
-      { label: "Commercial and support model approved", met: false },
-    ],
+    gates: gates([false, false, false, false, false, false, false]),
   },
 ];

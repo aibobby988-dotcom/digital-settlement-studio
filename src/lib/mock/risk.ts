@@ -156,10 +156,11 @@ export const riskControls: RiskControl[] = [
     category: "Financial",
     risk: "Settlement-asset (tokenised deposit) value or redemption risk",
     riskLevel: "Low",
-    control: "1:1 backing, daily attestation and same-day redemption capability",
+    control:
+      "1:1 issuance and redemption controls, continuous reconciliation to the core banking ledger, defined redemption rights and liquidity-management controls",
     owner: "Treasury & Liquidity Management",
     status: "Effective",
-    evidence: "Daily attestation report ATT-2026-Q3",
+    evidence: "Reconciliation dashboard; redemption rights schedule RDM-2026-02",
   },
   {
     id: "rc-17",
@@ -190,6 +191,50 @@ export const riskControls: RiskControl[] = [
     owner: "Product Governance Committee",
     status: "Effective",
     evidence: "Audit trail export AUD-LOG-2026-09",
+  },
+  {
+    id: "rc-20",
+    category: "Technology",
+    risk: "Sensitive corporate transaction data exposed across participants",
+    riskLevel: "Medium",
+    control:
+      "Permissioned data-access model, encryption, data-minimisation and jurisdictional data-residency review",
+    owner: "Data Privacy & Protection Office",
+    status: "Monitoring",
+    evidence: "Data privacy impact assessment DPIA-2026-DC; residency review in progress",
+  },
+  {
+    id: "rc-21",
+    category: "Technology",
+    risk: "An automated ERP or AI agent initiates an unauthorised or out-of-policy payment",
+    riskLevel: "High",
+    control:
+      "Scoped API permissions, policy engine, payment limits, maker-checker approval, human escalation threshold and immutable audit trail",
+    owner: "Digital Assets Engineering",
+    status: "Monitoring",
+    evidence: "API entitlement policy API-POL-2026-03; agentic-payment control design under review",
+  },
+  {
+    id: "rc-22",
+    category: "Operational",
+    risk: "Ledger or network interruption prevents client settlement",
+    riskLevel: "Medium",
+    control:
+      "Service-continuity playbook, fallback payment route, client communication process, defined RTO/RPO, reconciliation after recovery",
+    owner: "Digital Assets Operations",
+    status: "Monitoring",
+    evidence: "Business continuity plan BCP-DC-2026; fallback route tabletop scheduled Phase 2",
+  },
+  {
+    id: "rc-23",
+    category: "Legal & Regulatory",
+    risk: "Technical atomicity is assumed to establish legal settlement finality without confirmation",
+    riskLevel: "High",
+    control:
+      "Legal opinion, participant agreements and jurisdictional analysis obtained per corridor before production use — technical atomicity alone is not treated as proof of legal finality",
+    owner: "General Counsel — Digital Assets",
+    status: "Monitoring",
+    evidence: "Legal finality opinion tracker LGL-FIN-2026; corridor coverage in progress",
   },
 ];
 

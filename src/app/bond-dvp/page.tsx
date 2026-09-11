@@ -1,4 +1,4 @@
-import { ArrowRight, Landmark, Leaf, ShieldCheck } from "lucide-react";
+import { ArrowRight, Landmark, Layers, Leaf, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -71,6 +71,21 @@ export default function BondDvpPage() {
         <StatCard icon={ShieldCheck} label="Settlement cycle" value={tradeDetails.settlementCycle} />
         <StatCard icon={ArrowRight} label="Gross consideration" value={formatCurrency(tradeDetails.grossConsideration, "USD")} />
       </section>
+
+      <div className="flex items-start gap-3 rounded-xl border border-paper-200 bg-paper-50 px-4 py-3.5">
+        <Layers size={16} className="mt-0.5 shrink-0 text-ink-500" />
+        <div className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <p className="font-semibold">Illustrative cross-functional model</p>
+          <ul className="mt-1.5 space-y-1 text-ink-700">
+            <li>· Digital Money platform provides the tokenised cash leg.</li>
+            <li>· Tokenised asset platform / custodian provides the asset and custody leg.</li>
+            <li>
+              · Settlement orchestration coordinates atomic DvP only after both legs satisfy
+              funds, holdings, approval, eligibility and compliance checks.
+            </li>
+          </ul>
+        </div>
+      </div>
 
       <section>
         <DvpSimulator />
