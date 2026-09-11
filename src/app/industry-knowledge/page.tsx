@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import {
   digitalMoneySpectrum,
+  glossary,
   regulatoryLandscape,
   settlementStandards,
 } from "@/lib/mock/industryKnowledge";
@@ -14,6 +15,25 @@ export default function IndustryKnowledgePage() {
         title="Industry & regulatory knowledge"
         description="A primer on the settlement standards, digital-money terminology and regulatory landscape this role explicitly tests — SWIFT, CLS, DvP/PvP models, and jurisdiction-by-jurisdiction context."
       />
+
+      <section>
+        <h2 className="mb-2 text-[18px] font-semibold text-charcoal-900">Glossary</h2>
+        <p className="mb-5 text-[13px] leading-relaxed text-ink-500">
+          Definitions where the term isn&apos;t self-explanatory, each paired with a concrete
+          example from this case study rather than a textbook abstraction.
+        </p>
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          {glossary.map((g) => (
+            <Card key={g.term}>
+              <p className="text-[13px] font-semibold text-charcoal-900">{g.term}</p>
+              <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{g.definition}</p>
+              <p className="mt-2.5 rounded-lg bg-paper-50 px-3 py-2 text-[12px] leading-relaxed text-brand-600">
+                <strong className="font-semibold">Example:</strong> {g.example}
+              </p>
+            </Card>
+          ))}
+        </div>
+      </section>
 
       <section>
         <h2 className="mb-5 text-[18px] font-semibold text-charcoal-900">
