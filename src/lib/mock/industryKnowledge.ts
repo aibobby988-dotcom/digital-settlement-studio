@@ -27,7 +27,7 @@ export const settlementStandards: Term[] = [
     term: "BIS Delivery-versus-Payment models (1, 2, 3)",
     explanation:
       "The Bank for International Settlements' classic 1992 framework for DvP: Model 1 settles both the securities and cash legs gross, trade by trade, simultaneously. Model 2 settles securities gross (trade by trade) but nets and settles cash at the end of the cycle. Model 3 nets and settles both legs at the end of the cycle. This case study's Bond DvP simulator is effectively a Model 1 implementation on a permissioned ledger — atomic, gross, trade-by-trade — worth being able to say explicitly.",
-    url: "https://www.bis.org/cpmi/index.htm",
+    url: "https://www.bis.org/cpmi/about/overview.htm",
   },
   {
     term: "RTGS (Real-Time Gross Settlement)",
@@ -90,7 +90,7 @@ export const regulatoryLandscape: RegRegime[] = [
     jurisdiction: "European Union",
     regime: "MiCA (Markets in Crypto-Assets Regulation)",
     note: "The EU's comprehensive framework for crypto-asset issuance and service provision, including e-money and asset-referenced tokens — the framework any EU stablecoin or tokenisation activity has to clear.",
-    url: "https://finance.ec.europa.eu/regulation-and-supervision/financial-services-legislation/implementing-and-delegated-acts/markets-crypto-assets-regulation-mica_en",
+    url: "https://esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica",
   },
   {
     jurisdiction: "United States",
