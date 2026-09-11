@@ -4,36 +4,59 @@ export interface Term {
   url?: string;
 }
 
-export const settlementStandards: Term[] = [
+export type TechStage = "Live today" | "Actively migrating" | "Reference framework" | "Being challenged";
+
+export interface SettlementStandard extends Term {
+  stage: TechStage;
+  today: string;
+  direction: string;
+}
+
+export const settlementStandards: SettlementStandard[] = [
   {
     term: "SWIFT MT → ISO 20022 (MX) migration",
     explanation:
       "SWIFT's global migration from legacy MT message formats to the richer, structured ISO 20022 (MX) standard for cross-border payments and reporting. MX carries far more structured data (purpose codes, richer remittance information) than MT ever could — directly relevant to why a tokenised settlement platform's purpose-code tagging and structured audit trail is a genuine improvement, not just a technology preference.",
     url: "https://www.swift.com/standards/iso-20022",
+    stage: "Actively migrating",
+    today: "The MT/MX coexistence period for cross-border payments (CBPR+) ended 22 Nov 2025 — MX is now the required format for in-scope SWIFT payment traffic. Most banks, including HSBC, have already cut over.",
+    direction: "Not finished: structured-address enforcement and the MT101 → pain.001 migration both land in Nov 2026, so this is a live, multi-year rollout still in its tail end, not a completed one-off event.",
   },
   {
     term: "SWIFT gpi",
     explanation:
       "SWIFT's Global Payments Innovation initiative — end-to-end payment tracking, same-day use of funds, and transparent fees for correspondent banking payments. The closest legacy-rail equivalent to the real-time visibility this case study's tokenised treasury proposition offers; worth being able to contrast the two directly.",
     url: "https://www.swift.com/our-solutions/swift-gpi",
+    stage: "Live today",
+    today: "Fully in production across correspondent banking — this is the current standard, not a pilot or a migration in progress.",
+    direction: "No planned replacement. It's being complemented by ISO 20022's richer data, not superseded — the upgrade path for this one is additive, not a rip-and-replace.",
   },
   {
     term: "CLS (Continuous Linked Settlement)",
     explanation:
       "The bank-owned market infrastructure that settles the majority of the world's FX trading volume on a PvP basis today, across 18+ currencies. It works by netting and settling both currency legs simultaneously through a central settlement system — eliminating Herstatt risk (the risk that one currency leg pays before the other settles). CLS is the incumbent PvP model; the FX PvP page in this case study is proposing an atomic, DLT-based alternative to the same underlying problem CLS already solves at scale — an interviewer may well ask directly how the two compare.",
     url: "https://www.cls-group.com",
+    stage: "Being challenged",
+    today: "Live and dominant — CLS settles the large majority of global FX volume today, and no bank is walking away from it in the near term.",
+    direction: "Not being formally replaced, but increasingly challenged at the edges: DLT-based atomic PvP (what this case study's FX PvP product proposes) targets currency pairs and corridors CLS doesn't cover well, rather than displacing CLS outright.",
   },
   {
     term: "BIS Delivery-versus-Payment models (1, 2, 3)",
     explanation:
       "The Bank for International Settlements' classic 1992 framework for DvP: Model 1 settles both the securities and cash legs gross, trade by trade, simultaneously. Model 2 settles securities gross (trade by trade) but nets and settles cash at the end of the cycle. Model 3 nets and settles both legs at the end of the cycle. This case study's Bond DvP simulator is effectively a Model 1 implementation on a permissioned ledger — atomic, gross, trade-by-trade — worth being able to say explicitly.",
     url: "https://www.bis.org/cpmi/about/overview.htm",
+    stage: "Reference framework",
+    today: "Still the industry-standard taxonomy for describing DvP settlement, over 30 years after publication — this isn't legacy tech to retire, it's the shared vocabulary regulators and banks both use.",
+    direction: "The three models themselves aren't being replaced — they're being re-implemented on new infrastructure. Tokenised-bond platforms (like this case study's Bond DvP) run the same Model 1 logic on a permissioned ledger instead of a traditional CSD.",
   },
   {
     term: "RTGS (Real-Time Gross Settlement)",
     explanation:
       "Central-bank-operated systems (e.g. CHAPS in the UK, Fedwire in the US) that settle high-value payments individually and irrevocably in real time, in central-bank money. RTGS is the ultimate settlement-finality benchmark tokenised platforms are usually compared against — and the reason 'settlement finality' is such a heavily scrutinised gate in this case study's risk framework.",
     url: "https://www.bis.org/cpmi/paysysinfo.htm",
+    stage: "Live today",
+    today: "Live, in daily production use, and still the gold-standard benchmark for settlement finality that every tokenised platform gets compared against.",
+    direction: "Central banks are piloting DLT/tokenised extensions alongside RTGS (e.g. Project Agorá) rather than retiring it — RTGS in central-bank money stays the finality benchmark even as the rails around it experiment.",
   },
 ];
 

@@ -1,12 +1,21 @@
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import {
   digitalMoneySpectrum,
   glossary,
   regulatoryLandscape,
   settlementStandards,
+  type TechStage,
 } from "@/lib/mock/industryKnowledge";
+
+const stageTone: Record<TechStage, "emerald" | "amber" | "neutral" | "rose"> = {
+  "Live today": "emerald",
+  "Actively migrating": "amber",
+  "Reference framework": "neutral",
+  "Being challenged": "rose",
+};
 
 export default function IndustryKnowledgePage() {
   return (
@@ -37,14 +46,29 @@ export default function IndustryKnowledgePage() {
       </section>
 
       <section>
-        <h2 className="mb-5 text-[18px] font-semibold text-charcoal-900">
+        <h2 className="mb-2 text-[18px] font-semibold text-charcoal-900">
           Settlement message standards & models
         </h2>
+        <p className="mb-5 text-[13px] leading-relaxed text-ink-500">
+          What&apos;s actually live in banks today versus what&apos;s mid-upgrade versus what&apos;s
+          a stable reference framework not going anywhere — each card below states its current
+          stage explicitly, plus where (if anywhere) it&apos;s headed next.
+        </p>
+        <div className="mb-5 flex flex-wrap gap-2">
+          {(Object.keys(stageTone) as TechStage[]).map((stage) => (
+            <Badge key={stage} tone={stageTone[stage]}>
+              {stage}
+            </Badge>
+          ))}
+        </div>
         <div className="space-y-3">
           {settlementStandards.map((t) => (
             <Card key={t.term}>
               <div className="flex items-start justify-between gap-3">
-                <p className="text-[13px] font-semibold text-charcoal-900">{t.term}</p>
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="text-[13px] font-semibold text-charcoal-900">{t.term}</p>
+                  <Badge tone={stageTone[t.stage]}>{t.stage}</Badge>
+                </div>
                 {t.url && (
                   <ExternalLink href={t.url} className="shrink-0 text-[11.5px]">
                     Reference
@@ -52,6 +76,20 @@ export default function IndustryKnowledgePage() {
                 )}
               </div>
               <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{t.explanation}</p>
+              <div className="mt-3 grid grid-cols-1 gap-2.5 border-t border-paper-200 pt-3 sm:grid-cols-2">
+                <div>
+                  <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                    Where it is today
+                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{t.today}</p>
+                </div>
+                <div>
+                  <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                    Where it&apos;s headed
+                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{t.direction}</p>
+                </div>
+              </div>
             </Card>
           ))}
         </div>
