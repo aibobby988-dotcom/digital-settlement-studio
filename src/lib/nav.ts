@@ -19,9 +19,9 @@ export const navItems: NavItem[] = [
 
 // Study materials: still public pages (same repo, same deploy), but grouped and
 // visually separated in the nav because they support interview prep rather than
-// present the product case study itself. Personal / behavioral prep content is
-// deliberately NOT here — see the private doc instead.
+// present the product case study itself.
 export const studyNavItems: NavItem[] = [
   { href: "/interview-prep", label: "Interview Prep", description: "Case-study Q&A, questions to ask, logistics" },
   { href: "/industry-knowledge", label: "Industry & Regulatory Knowledge", description: "SWIFT, CLS, DvP models, CBDC" },
+  { href: "/company-notes", label: "Company & Interviewer Notes", description: "Org structure, background, HSBC facts" },
 ];

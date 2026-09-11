@@ -15,6 +15,7 @@ import {
   Globe,
   GraduationCap,
   BookOpen,
+  Users,
 } from "lucide-react";
 import { navItems, studyNavItems, type NavItem } from "@/lib/nav";
 import { cn } from "@/lib/utils";
@@ -32,6 +33,7 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/backlog": ListChecks,
   "/interview-prep": GraduationCap,
   "/industry-knowledge": BookOpen,
+  "/company-notes": Users,
 };
 
 function NavList({ items, pathname }: { items: NavItem[]; pathname: string }) {

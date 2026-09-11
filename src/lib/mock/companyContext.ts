@@ -1,0 +1,160 @@
+export interface OrgNode {
+  role: string;
+  who: string;
+  note?: string;
+}
+
+export const orgChain: OrgNode[] = [
+  {
+    role: "Group Head of Digital Assets & Currencies",
+    who: "Managing Director — owns Orion (digital bonds), CBDC, stablecoins and crypto strategy group-wide",
+  },
+  {
+    role: "Global Payments Solutions (GPS)",
+    who: "The payments and transaction-banking business line",
+  },
+  {
+    role: "Global Head of Digital Money",
+    who: "Director — DLT-payments, Tokenised Deposit Service, stablecoin initiatives",
+  },
+  {
+    role: "Senior Product Manager — Digital Currencies",
+    who: "This role sits within the Digital Money team",
+  },
+];
+
+export interface CareerStop {
+  role: string;
+  org: string;
+  dates: string;
+  note?: string;
+}
+
+export const careerTimeline: CareerStop[] = [
+  {
+    role: "Global Head of Digital Money",
+    org: "HSBC, Global Payments Solutions",
+    dates: "Jun 2024 – Present",
+  },
+  {
+    role: "Global Head of Emerging Payments",
+    org: "HSBC, Global Payments Solutions",
+    dates: "Mar 2023 – Aug 2024",
+  },
+  {
+    role: "Regional Head of International Payments — Asia Pacific",
+    org: "HSBC, Global Liquidity & Cash Management",
+    dates: "Jul 2018 – Mar 2023 · Hong Kong",
+  },
+  {
+    role: "Country Product Manager, North Asia — Global Transaction Banking",
+    org: "ANZ",
+    dates: "2017 – Jul 2018 · HK / Taipei / Tokyo / Seoul",
+  },
+  {
+    role: "Country Product Manager, Hong Kong — Global Transaction Banking",
+    org: "ANZ",
+    dates: "2014 – 2017",
+  },
+  {
+    role: "Associate Director, Payment & Cash Management",
+    org: "ANZ, Global Transaction Banking",
+    dates: "Aug 2013 – 2014",
+  },
+  {
+    role: "VP, Senior Product Manager — Treasury & Trade Services",
+    org: "Citi",
+    dates: "2009 – Aug 2013",
+  },
+  {
+    role: "Assistant Vice President, APAC Payments & Cash Management",
+    org: "HSBC, Global Banking & Markets",
+    dates: "Aug 2005 – 2009 · Hong Kong",
+    note: "An earlier, separate stint — before Citi and ANZ.",
+  },
+  {
+    role: "Various roles — strategy consulting, SAP project management, e-commerce & internet startups",
+    org: "Consultancy, utilities & high-tech firms",
+    dates: "1998 – Aug 2005 · USA, Hong Kong",
+  },
+];
+
+export const education = [
+  "BSE, Computer Engineering — University of Michigan",
+  "MS, Information Economics — University of Michigan, School of Information",
+  "MS, E-Business Management — Chinese University of Hong Kong",
+];
+
+export const appointments = [
+  "Appointed member, Policy Research Committee, Financial Services Development Council (FSDC) — Jan 2023–present",
+  "Appointed member, Digital Economy Development Committee (DEDC), Digital Transformation Sub-group, HKSAR Government — Oct 2022–Nov 2023",
+  "Appointed member, Working Group on eCNY / CBDC Implementation, FSDC — Sep 2020–May 2021",
+];
+
+export const currentFocusTags = [
+  "Tokenisation",
+  "Stablecoins",
+  "CBDC",
+  "Blockchain",
+  "Fintech",
+  "Payments",
+  "Wholesale Settlement",
+];
+
+export interface Stat {
+  value: string;
+  label: string;
+}
+
+export const hkStats: Stat[] = [
+  { value: "#1", label: "Total deposits, total assets & business banking in Hong Kong" },
+  { value: "300k+", label: "Corporate clients in Hong Kong" },
+  { value: "35%", label: "Of group profit (FY23 PBT) from Hong Kong" },
+  { value: "USD 354Bn", label: "Assets managed across the wealth continuum in Asia" },
+  { value: "60+", label: "Markets Hong Kong connects to" },
+  { value: "6m+", label: "Retail customers in Hong Kong" },
+];
+
+export const globalStats: Stat[] = [
+  { value: "200,000", label: "Colleagues globally" },
+  { value: "40m+", label: "Customers across 64 countries & territories" },
+  { value: "160 yrs", label: "In Hong Kong — opened for business March 1865" },
+];
+
+export const recentNews = [
+  "HSBC facilitates world's largest digital bond issuance in Hong Kong",
+  "HSBC survey finds Hong Kong businesses gain trade clarity, increase diversification",
+  "HSBC continues to innovate mobile banking experience with fresh features",
+  "HSBC opens first Premier Elite Wealth Centre and first commercial wealth centre in Hong Kong",
+];
+
+export interface ValueItem {
+  title: string;
+  description: string;
+}
+
+export const values: ValueItem[] = [
+  { title: "We value difference", description: "Seeking out different perspectives" },
+  { title: "We succeed together", description: "Collaborating across boundaries" },
+  { title: "We take responsibility", description: "Holding ourselves accountable, taking the long view" },
+  { title: "We get it done", description: "Moving at pace and making things happen" },
+];
+
+export const strategyPillars: ValueItem[] = [
+  {
+    title: "Focus on strength",
+    description: "Leadership in scale markets, international connectivity, diversifying revenue with cost discipline",
+  },
+  {
+    title: "Energise for growth",
+    description: "Investing in people, leaders and colleague experience",
+  },
+  {
+    title: "Digitise at scale",
+    description: "Seamless, resilient, secure digital experience; distributed technologies; automate and simplify",
+  },
+  {
+    title: "Transition to net zero",
+    description: "Net zero in operations and supply chain by 2030",
+  },
+];
