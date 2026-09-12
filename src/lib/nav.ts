@@ -155,6 +155,14 @@ export const navGroups: NavGroup[] = [
         studyPriority: 1,
       },
       {
+        href: "/cv-alignment",
+        label: "My CV vs. the JD",
+        description: "Strengths to lead with, gaps that will be probed, and how to answer them",
+        use: "private",
+        guidance: "Private. Read the gaps section twice - three of them could decide the outcome, and all three are survivable only if you raise them before the interviewer does.",
+        studyPriority: 1,
+      },
+      {
         href: "/interview-prep",
         label: "Interview Prep",
         description: "Practise behavioural stories, questions to ask and case defence",
