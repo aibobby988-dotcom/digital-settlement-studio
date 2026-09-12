@@ -1,4 +1,15 @@
-import { AlertTriangle, Calculator, Coins, MessageSquareText, Octagon, TrendingDown } from "lucide-react";
+import {
+  AlertTriangle,
+  Calculator,
+  Coins,
+  Gauge,
+  MessageSquareText,
+  Network,
+  Octagon,
+  Scale,
+  Target,
+  TrendingDown,
+} from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
@@ -7,11 +18,18 @@ import { cn } from "@/lib/utils";
 import {
   businessCase,
   cfoQuestions,
+  clientSegments,
+  idealFirstClient,
+  judgementCalls,
   killCriteria,
+  kpis,
   pricingApproaches,
   revenueLines,
+  scaleGate,
   sensitivities,
+  stakeholderDepartments,
   unitEconomics,
+  vanityMetrics,
 } from "@/lib/mock/commercialModel";
 
 const dependabilityTone = {
@@ -24,6 +42,18 @@ const severityTone = {
   Critical: "rose",
   Material: "amber",
   Manageable: "neutral",
+} as const;
+
+const priorityTone = {
+  "Target first": "emerald",
+  "Second wave": "blue",
+  "Decline for now": "rose",
+} as const;
+
+const kpiTone = {
+  Leading: "blue",
+  Outcome: "emerald",
+  Guardrail: "amber",
 } as const;
 
 export default function CommercialModelPage() {
@@ -279,6 +309,220 @@ export default function CommercialModelPage() {
             <Card key={item.question}>
               <p className="text-[13px] font-semibold text-charcoal-900">{item.question}</p>
               <p className="mt-2 text-[12.5px] leading-relaxed text-ink-700">{item.answer}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div className="mb-4 flex items-center gap-2">
+          <Target size={18} className="text-brand-500" />
+          <div>
+            <h2 className="text-[18px] font-semibold text-charcoal-900">Which clients to target</h2>
+            <p className="mt-0.5 text-[12.5px] text-ink-500">
+              Being able to name who you would decline, and why, is worth more than a long list
+              of who you would sell to.
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {clientSegments.map((seg) => (
+            <Card
+              key={seg.segment}
+              className={seg.priority === "Decline for now" ? "border-l-4 border-l-rose-300" : undefined}
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <p className="max-w-2xl text-[13.5px] font-semibold text-charcoal-900">{seg.segment}</p>
+                <Badge tone={priorityTone[seg.priority]}>{seg.priority}</Badge>
+              </div>
+              <p className="mt-1.5 text-[12px] leading-relaxed text-ink-500">{seg.profile}</p>
+              <div className="mt-3 grid gap-3 lg:grid-cols-2">
+                <div className="rounded-xl bg-paper-50 p-3.5">
+                  <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                    {seg.priority === "Decline for now" ? "Why not" : "Why them"}
+                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{seg.whyThemFirst}</p>
+                </div>
+                <div className="rounded-xl border border-amber-100 bg-amber-50/40 p-3.5">
+                  <p className="text-[10.5px] font-semibold uppercase tracking-wide text-amber-700">
+                    Watch out
+                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{seg.watchOut}</p>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        <Card className="mt-4 border-brand-100 bg-brand-50/30">
+          <p className="text-[13px] font-semibold text-charcoal-900">
+            The qualifying checklist for a first client
+          </p>
+          <p className="mt-1 text-[12px] leading-relaxed text-ink-500">
+            If a prospect fails more than two of these, they are a second-wave client however
+            enthusiastic they are.
+          </p>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {idealFirstClient.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-[12.5px] leading-relaxed text-charcoal-900">
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-500" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Card>
+      </section>
+
+      <section>
+        <div className="mb-4 flex items-center gap-2">
+          <Gauge size={18} className="text-brand-500" />
+          <div>
+            <h2 className="text-[18px] font-semibold text-charcoal-900">
+              What would prove this should scale
+            </h2>
+            <p className="mt-0.5 text-[12.5px] text-ink-500">
+              Leading metrics tell you early, outcome metrics tell you whether it worked, and
+              guardrails tell you when to stop even if the first two look good.
+            </p>
+          </div>
+        </div>
+
+        <Card padded={false}>
+          <div className="overflow-x-auto scrollbar-thin">
+            <table className="w-full min-w-[680px] border-collapse text-left">
+              <thead>
+                <tr className="border-b border-paper-200 text-[11px] uppercase tracking-wide text-ink-400">
+                  <th className="py-2.5 pl-5 pr-4 font-medium">Metric</th>
+                  <th className="py-2.5 pr-4 font-medium">Type</th>
+                  <th className="py-2.5 pr-4 font-medium">What it tells you</th>
+                  <th className="py-2.5 pr-5 font-medium">Target</th>
+                </tr>
+              </thead>
+              <tbody>
+                {kpis.map((kpi) => (
+                  <tr key={kpi.metric} className="border-b border-paper-100 text-[12.5px] last:border-0">
+                    <td className="py-3.5 pl-5 pr-4 max-w-[190px] font-semibold text-charcoal-900">
+                      {kpi.metric}
+                    </td>
+                    <td className="py-3.5 pr-4">
+                      <Badge tone={kpiTone[kpi.kind]}>{kpi.kind}</Badge>
+                    </td>
+                    <td className="py-3.5 pr-4 max-w-[330px] leading-relaxed text-ink-500">{kpi.what}</td>
+                    <td className="py-3.5 pr-5 max-w-[170px] leading-relaxed text-charcoal-900">
+                      {kpi.target}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+
+        <div className="mt-4 grid gap-4 lg:grid-cols-2">
+          <Card className="border-brand-100 bg-brand-50/30">
+            <div className="flex items-start gap-2.5">
+              <Scale size={16} className="mt-0.5 shrink-0 text-brand-600" />
+              <div>
+                <p className="text-[13px] font-semibold text-charcoal-900">The scale decision itself</p>
+                <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{scaleGate}</p>
+              </div>
+            </div>
+          </Card>
+          <Card>
+            <p className="text-[13px] font-semibold text-charcoal-900">
+              Metrics I would refuse to be judged on
+            </p>
+            <ul className="mt-2.5 space-y-2">
+              {vanityMetrics.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-[12px] leading-relaxed text-ink-700">
+                  <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-rose-400" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Card>
+        </div>
+      </section>
+
+      <section>
+        <div className="mb-4 flex items-center gap-2">
+          <Network size={18} className="text-brand-500" />
+          <div>
+            <h2 className="text-[18px] font-semibold text-charcoal-900">
+              Who inside the bank decides whether this succeeds
+            </h2>
+            <p className="mt-0.5 max-w-3xl text-[12.5px] text-ink-500">
+              This role owns the outcome without owning the teams. Four of these can stop the
+              product outright, so knowing what each one cares about is the actual job.
+            </p>
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {stakeholderDepartments.map((dept) => (
+            <Card
+              key={dept.department}
+              className={dept.critical ? "border-brand-200 bg-brand-50/20" : undefined}
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <p className="text-[13.5px] font-semibold text-charcoal-900">{dept.department}</p>
+                {dept.critical && <Badge tone="brand">Can stop the product</Badge>}
+              </div>
+              <p className="mt-1.5 text-[12px] leading-relaxed text-ink-500">
+                <strong className="font-semibold text-charcoal-900">Owns:</strong> {dept.owns}
+              </p>
+
+              <div className="mt-3 grid gap-3 lg:grid-cols-2">
+                <div className="space-y-2.5">
+                  <div>
+                    <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                      What they care about
+                    </p>
+                    <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">
+                      {dept.theyCareAbout}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                      What you need from them
+                    </p>
+                    <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{dept.youNeed}</p>
+                  </div>
+                </div>
+                <div className="space-y-2.5">
+                  <div className="rounded-lg border border-amber-100 bg-amber-50/40 px-3 py-2">
+                    <p className="text-[10.5px] font-semibold uppercase tracking-wide text-amber-700">
+                      How they block you
+                    </p>
+                    <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">
+                      {dept.howTheyBlock}
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-emerald-100 bg-emerald-50/40 px-3 py-2">
+                    <p className="text-[10.5px] font-semibold uppercase tracking-wide text-emerald-700">
+                      How to bring them with you
+                    </p>
+                    <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{dept.howToWin}</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div className="mb-4">
+          <h2 className="text-[18px] font-semibold text-charcoal-900">
+            Four judgement calls I would make, and defend
+          </h2>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-2">
+          {judgementCalls.map((item) => (
+            <Card key={item.call}>
+              <p className="text-[13px] font-semibold text-charcoal-900">{item.call}</p>
+              <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{item.reasoning}</p>
             </Card>
           ))}
         </div>

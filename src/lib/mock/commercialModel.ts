@@ -209,3 +209,271 @@ export const killCriteria = [
   "Legal finality cannot be established in at least two priority corridors, capping the addressable market below break-even.",
   "A shared industry utility emerges that offers the same client outcome at lower cost, making a single-bank build the wrong structure.",
 ];
+
+// ---------------------------------------------------------------------------
+// Commercial judgement: who to sell to, how to know it is working, and who
+// inside the bank actually decides whether it succeeds.
+// ---------------------------------------------------------------------------
+
+export interface ClientSegment {
+  segment: string;
+  profile: string;
+  whyThemFirst: string;
+  watchOut: string;
+  priority: "Target first" | "Second wave" | "Decline for now";
+}
+
+export const clientSegments: ClientSegment[] = [
+  {
+    segment: "Multi-entity regional groups with an Asian treasury centre",
+    profile:
+      "Six to fifteen legal entities across three or more time zones, a central treasury in Hong Kong or Singapore, and frequent intra-group funding. Typically manufacturing, shipping, commodities or regional conglomerates.",
+    whyThemFirst:
+      "The cut-off problem is a daily operational reality for them, not a hypothetical. They already move money between their own entities constantly, so migration needs no new client behaviour — only a better rail for behaviour they already have.",
+    watchOut:
+      "Confirm the treasury centre has authority over subsidiary cash. If each subsidiary controls its own balances, the central buying decision does not exist and the deal stalls in a committee.",
+    priority: "Target first",
+  },
+  {
+    segment: "Asset managers and funds needing subscription and redemption settlement",
+    profile:
+      "Fund operators moving cash against unit creation and redemption, increasingly against tokenised fund units.",
+    whyThemFirst:
+      "Directly adjacent to the Hong Kong Monetary Authority's own pilot work on tokenised funds settling against tokenised deposits, so the regulatory path is already being trodden.",
+    watchOut:
+      "Settlement timing is driven by fund rules and cut-offs you do not control. The benefit is real but the sales cycle runs through the fund administrator too, not just the client.",
+    priority: "Second wave",
+  },
+  {
+    segment: "Digital-native platforms and marketplaces with 24/7 payout cycles",
+    profile:
+      "Businesses whose own customers transact at all hours, so treasury needs to fund positions outside banking windows.",
+    whyThemFirst:
+      "The always-on proposition is worth most to a business that is itself always on, and they typically have the engineering capability to integrate quickly.",
+    watchOut:
+      "Balances tend to be operational and thin rather than parked. Strong volume, weaker deposit retention — which undercuts the part of the business case that actually pays for the build.",
+    priority: "Second wave",
+  },
+  {
+    segment: "Single-entity domestic corporates",
+    profile: "One legal entity, one market, straightforward payables and receivables.",
+    whyThemFirst:
+      "No genuine use case. Without multiple entities there is no intra-group transfer to improve, and existing domestic rails already settle quickly.",
+    watchOut:
+      "Easy to onboard and therefore tempting for a pipeline number. Resist it — cost to serve exceeds any plausible value and it distorts the pilot evidence.",
+    priority: "Decline for now",
+  },
+  {
+    segment: "Clients seeking crypto exposure rather than treasury efficiency",
+    profile:
+      "Interested because it is blockchain, not because they have a cash-mobility problem.",
+    whyThemFirst:
+      "Wrong motivation produces wrong requirements. They will ask for public-chain interoperability and asset trading the product is not designed to provide.",
+    watchOut:
+      "These conversations are enthusiastic and can look like demand. They are the fastest way to pull a roadmap off course.",
+    priority: "Decline for now",
+  },
+];
+
+export const idealFirstClient = [
+  "Multiple legal entities in corridors where a legal-finality opinion already exists",
+  "At least 200 intra-group transfers a month, so migration produces a measurable signal",
+  "Meaningful operating balances already held with the bank, so retention can be attributed",
+  "In-house capability to integrate by interface rather than manual portal use",
+  "A treasurer who has already measured their own cut-off and reconciliation cost - without a baseline there is no way to prove value",
+  "Willing to be a named reference if the pilot succeeds",
+];
+
+export interface Kpi {
+  metric: string;
+  what: string;
+  target: string;
+  kind: "Leading" | "Outcome" | "Guardrail";
+}
+
+export const kpis: Kpi[] = [
+  {
+    metric: "Retained balances attributable to the product",
+    what: "Operating cash held with the bank that can be traced to entities active on the platform. This is the north-star metric because it is where the economics actually sit.",
+    target: "US$30m per anchor client within 12 months of go-live",
+    kind: "Outcome",
+  },
+  {
+    metric: "Share of eligible intra-group flow migrated",
+    what: "Of the transfers this client could route through the platform, the proportion that actually does. Measures whether the product has genuinely displaced the old habit or merely been added alongside it.",
+    target: "Above 60% by month 6",
+    kind: "Leading",
+  },
+  {
+    metric: "Activation rate",
+    what: "Share of onboarded entities completing a transfer within 30 days of access being granted. The earliest honest signal of whether the product is wanted or merely agreed to.",
+    target: "Above 70%",
+    kind: "Leading",
+  },
+  {
+    metric: "Transfers per active entity per month",
+    what: "Whether use is becoming habitual rather than experimental. A flat line here after month three means the product solved a one-off problem, not a recurring one.",
+    target: "Rising month on month through the pilot",
+    kind: "Leading",
+  },
+  {
+    metric: "Revenue and contribution per client",
+    what: "Fees plus attributed deposit contribution, less cost to serve. Proves the unit economics hold outside a spreadsheet.",
+    target: "Above US$400,000 annual contribution",
+    kind: "Outcome",
+  },
+  {
+    metric: "Settlement success rate",
+    what: "Proportion of instructions completing without operational failure. A scale decision taken while this is degrading simply multiplies a broken process.",
+    target: "At or above 99.9%, and not falling as volume grows",
+    kind: "Guardrail",
+  },
+  {
+    metric: "Exception resolution time",
+    what: "How long a held transaction takes to reach a decision. Directly shapes whether clients trust the always-on promise.",
+    target: "90% resolved within 2 hours",
+    kind: "Guardrail",
+  },
+  {
+    metric: "Support contacts per 100 transfers",
+    what: "A proxy for whether the product is self-explanatory. Rising contact rates mean cost to serve will not fall with scale, which breaks the business case.",
+    target: "Falling quarter on quarter",
+    kind: "Guardrail",
+  },
+];
+
+export const vanityMetrics = [
+  "Total value settled - impressive to quote and almost meaningless; a single large transfer can dwarf a month of genuine adoption.",
+  "Number of pilots or memoranda signed - measures sales activity, not client value received.",
+  "Cumulative transaction count - only ever rises, so it can never tell you to stop.",
+  "Press coverage and awards - relevant to the thought-leadership objective, but never evidence that the product should scale.",
+];
+
+export const scaleGate =
+  "I would take the scale decision only when three things hold together: above 60% of eligible flow migrated, attributable balances tracking towards target, and guardrails stable or improving as volume grows. Any one alone is misleading. High migration with flat balances means we have given clients a cheaper rail and gained nothing. Good balances with degrading exception times means we are about to damage the relationships we just won.";
+
+export interface StakeholderDept {
+  department: string;
+  owns: string;
+  theyCareAbout: string;
+  youNeed: string;
+  howTheyBlock: string;
+  howToWin: string;
+  critical?: boolean;
+}
+
+export const stakeholderDepartments: StakeholderDept[] = [
+  {
+    department: "Treasury / Asset and Liability Management",
+    owns: "The balance sheet, and the internal funds transfer pricing that decides how much value a product is credited for the deposits it raises.",
+    theyCareAbout: "Deposit quality, stability and duration - not transaction volume.",
+    youNeed:
+      "An agreed attribution method, so balances held by entities active on the platform are credited to this product rather than disappearing into a general pool.",
+    howTheyBlock:
+      "Without an attribution agreement the entire business case is unprovable. You will have raised the deposits and be unable to demonstrate you did.",
+    howToWin:
+      "Engage them before build, not at the first review. Frame the product as a deposit-stability instrument in their language, and agree the measurement method while it is still a hypothesis rather than a claim.",
+    critical: true,
+  },
+  {
+    department: "Global Payments Solutions sales and relationship managers",
+    owns: "The client relationships and the revenue conversation.",
+    theyCareAbout: "Whether this helps them retain and grow their accounts, and whether it is explainable without technical training.",
+    youNeed: "Qualified introductions to the right clients and honest feedback on objections.",
+    howTheyBlock:
+      "Quietly. They simply do not raise it in client meetings, and the product dies from absence rather than rejection.",
+    howToWin:
+      "Give them a one-page value narrative in client language, a qualifying checklist, and early wins they can point to. Never send them into a meeting needing to explain a ledger.",
+    critical: true,
+  },
+  {
+    department: "Financial Crime Compliance",
+    owns: "Screening standards, sanctions policy and the threshold for holding a payment.",
+    theyCareAbout: "That faster settlement never means weaker control, and that every hold is defensible to a regulator.",
+    youNeed: "Agreement on pre-settlement screening design and the exception path.",
+    howTheyBlock: "A late objection here can invalidate the core atomic-settlement design, because controls must complete before value moves.",
+    howToWin:
+      "Involve them in designing the unhappy path first. Arriving with the exception flow already drafted signals you understand their constraint is the product, not an obstacle to it.",
+    critical: true,
+  },
+  {
+    department: "Legal",
+    owns: "Settlement finality opinions per corridor, client terms and the enforceability of the arrangement.",
+    theyCareAbout: "Whether the bank's position holds if a counterparty fails, and whether obligations are clear.",
+    youNeed: "A finality opinion per corridor before that corridor is built, not after.",
+    howTheyBlock: "A corridor without an opinion cannot launch, stranding whatever integration spend already went into it.",
+    howToWin: "Sequence the roadmap so legal readiness is a gate ahead of build spend, and give them long lead times - opinions are slow by nature.",
+    critical: true,
+  },
+  {
+    department: "Operations",
+    owns: "Exception handling, reconciliation and the round-the-clock service model.",
+    theyCareAbout: "Whether they can actually staff and run the promise the product makes.",
+    youNeed: "A costed, staffable operating model for 24/7 cover.",
+    howTheyBlock: "An unrunnable promise gets diluted after launch, and the client experience quietly degrades to match.",
+    howToWin: "Cost the operating model honestly in the business case rather than treating always-on as free, and design exceptions with them rather than handing them over.",
+  },
+  {
+    department: "Technology and Engineering",
+    owns: "Build, integration to core systems, resilience and recovery targets.",
+    theyCareAbout: "Clear requirements, realistic sequencing and non-functional targets set early rather than retrofitted.",
+    youNeed: "Delivery capacity and honest estimates.",
+    howTheyBlock: "Integration to core banking is usually the longest pole; underestimating it moves every date.",
+    howToWin: "Prioritise a thin end-to-end path over breadth of features, so integration risk surfaces in month two rather than month ten.",
+  },
+  {
+    department: "Finance and Product Control",
+    owns: "The profit and loss account, pricing approval and cost allocation.",
+    theyCareAbout: "Whether revenue is incremental or cannibalised, and whether cost to serve falls with scale.",
+    youNeed: "Pricing sign-off and agreement on how deposit contribution is recognised.",
+    howTheyBlock: "They can refuse a price that undercuts existing payment revenue unless the balance argument is made explicitly.",
+    howToWin: "Bring the cannibalisation point yourself, with the balance retention case attached. Being the one who raises it earns far more credibility than being the one who omitted it.",
+  },
+  {
+    department: "Risk (Non-Financial Risk) and the New Product Approval forum",
+    owns: "Formal risk acceptance and the authority to permit launch.",
+    theyCareAbout: "That risks are identified, owned, controlled and evidenced - not that they are zero.",
+    youNeed: "Approval to launch, and to each subsequent phase.",
+    howTheyBlock: "No approval, no launch. This is an absolute gate rather than a negotiation.",
+    howToWin: "Treat the control framework as part of the product from the start. A risk register with named owners and tested controls moves far faster through this forum than a strong commercial case.",
+  },
+  {
+    department: "Regulatory Affairs and the regulator relationship",
+    owns: "The bank's supervisory dialogue, including with the Hong Kong Monetary Authority.",
+    theyCareAbout: "No surprises, and consistency with what the bank has already told its supervisor.",
+    youNeed: "A path into pilot programmes and early read on supervisory expectations.",
+    howTheyBlock: "Going around them damages a relationship worth far more than any single product.",
+    howToWin: "Give them early visibility and let them lead the conversation. The job description names regulator engagement directly, so demonstrating this instinct matters in the interview itself.",
+  },
+  {
+    department: "Marketing and Communications",
+    owns: "External positioning, media and thought-leadership opportunities.",
+    theyCareAbout: "Credible, approved messages that strengthen the bank's position.",
+    youNeed: "Support for the thought-leadership objective the job description sets out.",
+    howTheyBlock: "Rarely block, but can overstate a pilot as a launch - which creates a client and regulatory problem you then own.",
+    howToWin: "Give them precise language about what is live versus piloted, and review claims before they go out.",
+  },
+];
+
+export const judgementCalls = [
+  {
+    call: "Few deep pilots, not many shallow ones",
+    reasoning:
+      "Three genuinely committed clients produce better evidence than twelve curious ones. Shallow pilots generate activity metrics and no decision-grade signal, and they consume the same onboarding effort.",
+  },
+  {
+    call: "Refuse client-specific customisation in phase one",
+    reasoning:
+      "The first bespoke build feels like commercial flexibility and becomes a permanent maintenance cost that slows every later client. Say no early, and explain that a standard product is what makes it cheap for them.",
+  },
+  {
+    call: "Start where legal finality already exists",
+    reasoning:
+      "Corridor choice should follow legal readiness, not client enthusiasm. The most excited client in an unopined corridor is a slower path to revenue than a lukewarm one in a clear corridor.",
+  },
+  {
+    call: "Agree deposit attribution before building anything",
+    reasoning:
+      "If the internal funds transfer pricing model will not credit the product for balances it raises, the business case cannot be proven regardless of how well the product performs. This is an internal negotiation, and it decides the outcome more than any feature does.",
+  },
+];
