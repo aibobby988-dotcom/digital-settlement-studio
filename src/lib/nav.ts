@@ -90,6 +90,14 @@ export const navGroups: NavGroup[] = [
         studyPriority: 1,
       },
       {
+        href: "/commercial-model",
+        label: "Commercial Model",
+        description: "Revenue lines, unit economics, pricing and what breaks the case",
+        use: "screen-share",
+        guidance: "Open this when the conversation turns to money. Lead with the insight that retained balances are roughly five times the fee revenue, then volunteer the rate sensitivity before you are asked.",
+        studyPriority: 1,
+      },
+      {
         href: "/legacy-comparison",
         label: "Legacy vs. Tokenised",
         description: "Use when asked whether the change is worth the cost",

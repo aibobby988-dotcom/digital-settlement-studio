@@ -22,6 +22,7 @@ import {
   FileText,
   PlayCircle,
   Rocket,
+  Coins,
 } from "lucide-react";
 import { navGroups, pageUseMeta, type NavItem, type PageUse } from "@/lib/nav";
 import { cn } from "@/lib/utils";
@@ -49,6 +50,7 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/ai-preparation": Bot,
   "/ai-in-product": Bot,
   "/plain-english": BookOpen,
+  "/commercial-model": Coins,
 };
 
 const navUseClasses: Record<PageUse, string> = {
