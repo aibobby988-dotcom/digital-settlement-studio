@@ -1,5 +1,6 @@
 import { ArrowRight, Landmark, Layers, Leaf, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -17,6 +18,8 @@ export default function BondDvpPage() {
       />
 
       <TermsOnThisPage terms={["DvP", "Atomic settlement", "Escrow", "Legal finality", "CSD", "Settlement"]} />
+
+      <StrategyContext track="track2" />
 
       <Card className="bg-charcoal-950 border-charcoal-900">
         <div className="flex flex-wrap items-center gap-2 mb-3">

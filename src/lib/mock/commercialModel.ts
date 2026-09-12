@@ -70,7 +70,7 @@ export const unitEconomics: UnitEconomicRow[] = [
 export const businessCase = {
   buildInvestment: "US$6.5m over 18 months",
   buildDetail:
-    "Platform engineering, core-banking integration, financial-crime controls, legal opinions per corridor and the operating model to run it around the clock.",
+    "Extension cost, not a platform build — the tokenised-deposit rail already exists. This covers the cash-pooling policy and sweep engine, integration to client treasury systems, financial-crime controls for the new flows, legal opinions per corridor, and the operating model to run it around the clock. Framing this as an extension rather than a new platform is what makes it a realistic approval request.",
   annualRunCost: "US$2.8m a year",
   runDetail:
     "Product and engineering team, infrastructure, 24/7 operational cover and ongoing compliance monitoring. The always-on promise is a real, recurring cost, not a one-off build.",

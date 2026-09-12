@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { StakeholderDemo } from "@/components/demo/StakeholderDemo";
 
@@ -12,6 +13,8 @@ export default function StakeholderDemoPage() {
       />
 
       <TermsOnThisPage terms={["Tokenised deposit", "Maker-checker", "Sanctions screening", "Reconciliation", "RM", "Treasurer", "Exception handling"]} />
+
+      <StrategyContext track="track1" />
       <StakeholderDemo />
     </div>
   );

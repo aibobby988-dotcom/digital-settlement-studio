@@ -68,9 +68,9 @@ export const caseStudyScopeMapping: ScopeMapping[] = [
   },
   {
     page: "Bond DvP Settlement",
-    alignment: "Adjacent",
+    alignment: "Core",
     note:
-      "Tokenised bond DvP is closer to Orion / Capital Markets territory than to Digital Money specifically. Included because the JD lists familiarity with tokenised-asset settlement mechanisms as 'an advantage' — useful breadth, not the centre of this mandate. Worth being precise about this distinction if it comes up.",
+      "Split the two legs and this becomes core, not adjacent. Issuing and custodying the bond is Orion / Capital Markets territory. Providing the cash leg that settles against it is squarely Digital Money — and HSBC already proved exactly that in the Ensemble sandbox in August 2024, settling Orion digital bonds against its own tokenised deposits. Track 2 of the strategy extends that cash leg to assets HSBC does not issue. Be precise about which leg you are claiming.",
   },
 ];
 

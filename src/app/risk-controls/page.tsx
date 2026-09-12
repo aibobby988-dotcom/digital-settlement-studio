@@ -10,6 +10,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card } from "@/components/ui/Card";
 import { RiskBadge, StatusBadge, Badge } from "@/components/ui/Badge";
@@ -57,6 +58,8 @@ export default function RiskControlsPage() {
       />
 
       <TermsOnThisPage terms={["AML", "KYC", "Sanctions screening", "Legal finality", "Reconciliation", "NPA", "RTO and RPO", "SLA"]} />
+
+      <StrategyContext track="evidence" />
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <Card>

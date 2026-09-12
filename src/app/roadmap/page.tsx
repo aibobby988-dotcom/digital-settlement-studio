@@ -1,5 +1,6 @@
 import { Check, HelpCircle, X } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/ui/Badge";
@@ -20,6 +21,8 @@ export default function RoadmapPage() {
       />
 
       <TermsOnThisPage terms={["Go/no-go gate", "NPA", "Legal finality", "MVP", "Walking skeleton"]} />
+
+      <StrategyContext track="evidence" />
 
       <Card>
         <div className="flex items-start gap-2.5">

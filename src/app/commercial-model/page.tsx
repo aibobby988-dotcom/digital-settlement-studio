@@ -11,6 +11,7 @@ import {
   TrendingDown,
 } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -64,6 +65,8 @@ export default function CommercialModelPage() {
         title="How this actually makes money"
         description="The job description leads with commercialisation and go-to-market strategy. This is the business case: where the revenue comes from, what it costs to run, what breaks it, and what would make me stop."
       />
+
+      <StrategyContext track="evidence" />
 
       <TermsOnThisPage terms={["Treasurer", "Nostro account", "Cut-off time", "RM", "RFP", "Go/no-go gate"]} />
 

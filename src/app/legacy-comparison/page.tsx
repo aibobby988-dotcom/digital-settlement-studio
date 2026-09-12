@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -24,6 +25,8 @@ export default function LegacyComparisonPage() {
       />
 
       <TermsOnThisPage terms={["Correspondent banking", "RTGS", "Netting", "ISO 20022", "Cut-off time", "Nostro account", "Settlement"]} />
+
+      <StrategyContext track="evidence" />
 
       <section>
         <Card padded={false}>

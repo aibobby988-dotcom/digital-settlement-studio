@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -49,6 +50,8 @@ export default function ArchitecturePage() {
       />
 
       <TermsOnThisPage terms={["Orchestration", "API", "Permissioned network", "DLT", "Smart contract", "Reconciliation", "HSM"]} />
+
+      <StrategyContext track="foundation" />
 
       <section>
         <Card>

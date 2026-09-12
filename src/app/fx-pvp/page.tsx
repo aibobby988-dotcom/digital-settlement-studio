@@ -1,5 +1,6 @@
-import { ArrowLeftRight, Clock3, Droplets, Repeat } from "lucide-react";
+import { ArrowLeftRight, Clock3, Droplets, Repeat, TriangleAlert } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -17,6 +18,24 @@ export default function FxPvpPage() {
       />
 
       <TermsOnThisPage terms={["PvP", "FX", "Herstatt risk", "CLS", "Atomic settlement", "Netting"]} />
+
+      <StrategyContext track="forward" />
+
+      <div className="flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-100/30 px-4 py-3.5">
+        <TriangleAlert size={16} className="mt-0.5 shrink-0 text-amber-600" />
+        <p className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <strong className="font-semibold">Read this before you show this page.</strong> HSBC has
+          been running payment-versus-payment on distributed ledger since 2018 through FX
+          Everywhere — roughly US$250bn across 150,000 intragroup payments, and a bilateral
+          shared ledger with Wells Fargo since December 2021. Saying &ldquo;HSBC has not done
+          payment-versus-payment&rdquo; would be corrected on the spot. The accurate and far
+          more interesting observation is that FX Everywhere and the Tokenised Deposit Service
+          have never been converged, so a corporate client still cannot settle a cross-currency
+          payment with tokenised deposits on both legs. Treat that as a roadmap observation, not
+          a proposal you are volunteering to lead — FX Everywhere may well sit outside Global
+          Payments Solutions.
+        </p>
+      </div>
 
       <Card className="bg-charcoal-950 border-charcoal-900">
         <div className="flex flex-wrap items-center gap-2 mb-3">

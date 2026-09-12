@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/layout/PageHeader";
+import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { TransactionFlowAnimation } from "@/components/transaction-flow/TransactionFlowAnimation";
@@ -13,6 +14,8 @@ export default function TransactionFlowPage() {
       />
 
       <TermsOnThisPage terms={["Settlement", "Sanctions screening", "Exception handling", "Reconciliation", "Atomic settlement"]} />
+
+      <StrategyContext track="foundation" />
 
       <section>
         <TransactionFlowAnimation />
