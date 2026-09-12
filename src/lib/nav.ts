@@ -1,74 +1,234 @@
+export type PageUse =
+  | "must-show"
+  | "screen-share"
+  | "supporting"
+  | "study-first"
+  | "private"
+  | "review"
+  | "archive";
+
 export interface NavItem {
   href: string;
   label: string;
   description: string;
+  use: PageUse;
+  guidance: string;
+  studyPriority?: 1 | 2 | 3;
 }
 
 export interface NavGroup {
   section: string;
+  description: string;
   items: NavItem[];
 }
 
-// Grouped and ordered to read as a narrative for a first-time visitor:
-// what is this -> try the product -> how it works -> why built this way ->
-// how it's kept safe -> how it gets delivered.
+export const pageUseMeta: Record<PageUse, { label: string; shortLabel: string; tone: "brand" | "blue" | "emerald" | "amber" | "rose" | "neutral" }> = {
+  "must-show": { label: "Must show in interview", shortLabel: "Must show", tone: "amber" },
+  "screen-share": { label: "Interview-safe screen share", shortLabel: "Show", tone: "emerald" },
+  supporting: { label: "Optional supporting proof", shortLabel: "Optional", tone: "blue" },
+  "study-first": { label: "Study first - do not lead with it", shortLabel: "Study first", tone: "brand" },
+  private: { label: "Private study - do not screen-share", shortLabel: "Private", tone: "rose" },
+  review: { label: "Keep, but review before use", shortLabel: "Review", tone: "amber" },
+  archive: { label: "Keep for now - repetitive / archive candidate", shortLabel: "Archive", tone: "neutral" },
+};
+
+// This is intentionally a preparation hierarchy rather than a site map. It tells the
+// candidate what to show, what to study, and which older pages should not lead the story.
 export const navGroups: NavGroup[] = [
   {
-    section: "Start here",
+    section: "Interview path",
+    description: "Screen-share these in order. Keep the main walkthrough to four tabs.",
     items: [
-      { href: "/", label: "Executive Brief", description: "5-minute pitch: thesis, problem, flagship, roadmap" },
+      {
+        href: "/",
+        label: "Executive Brief",
+        description: "Open with the thesis, client problem and phased proposition",
+        use: "screen-share",
+        guidance: "Use this to frame the five-minute story. Do not dwell on detailed feature pages before the client problem and product decision are clear.",
+      },
+      {
+        href: "/stakeholder-demo",
+        label: "Stakeholder Demo",
+        description: "Run the client experience, control plane and both outcomes",
+        use: "must-show",
+        guidance: "This is the primary live demonstration. Run the happy path, then the safe-hold path, and narrate the client value and control trade-off.",
+      },
+      {
+        href: "/roadmap",
+        label: "Product Roadmap",
+        description: "Show sequencing, gates and product judgement",
+        use: "screen-share",
+        guidance: "Use this after the demo to prove you can sequence a regulated product. Present the phases as an illustrative proposal, not HSBC's roadmap.",
+      },
+      {
+        href: "/ai-in-product",
+        label: "AI in This Product",
+        description: "Where AI fits, agentic payments, and what you would refuse",
+        use: "screen-share",
+        guidance: "The job description names AI/ML and agentic payments directly. Lead with the boundary - AI prepares evidence, humans or pre-agreed mandates approve movement - then give one concrete use case.",
+        studyPriority: 1,
+      },
+      {
+        href: "/risk-controls",
+        label: "Risk & Controls",
+        description: "Prove the proposition can operate safely in a bank",
+        use: "screen-share",
+        guidance: "Open this only if the conversation turns to risk, legal finality, operational readiness or governance. It is proof, not the opening act.",
+      },
     ],
   },
   {
-    section: "The product",
+    section: "Interview-safe support",
+    description: "Relevant evidence if asked. Do not make these part of the default tour.",
     items: [
-      { href: "/overview", label: "Overview", description: "KPIs and all three settlement flows at a glance" },
-      { href: "/treasury", label: "Tokenised Treasury", description: "Flagship — try the transfer flow" },
-      { href: "/bond-dvp", label: "Bond DvP Settlement", description: "Try atomic Delivery-versus-Payment" },
-      { href: "/fx-pvp", label: "FX PvP Settlement", description: "Try atomic Payment-versus-Payment" },
+      {
+        href: "/industry-knowledge",
+        label: "Industry & Regulatory Knowledge",
+        description: "Current HK/APAC and global evidence with sources",
+        use: "supporting",
+        guidance: "Study the current signals first. Screen-share one sourced item only when it changes the client, partner or regulatory decision being discussed.",
+        studyPriority: 1,
+      },
+      {
+        href: "/legacy-comparison",
+        label: "Legacy vs. Tokenised",
+        description: "Use when asked whether the change is worth the cost",
+        use: "supporting",
+        guidance: "Useful for trade-offs and commercial judgement. State the limitations as clearly as the benefits; do not present speed or atomicity as universal guarantees.",
+      },
+      {
+        href: "/architecture",
+        label: "Architecture",
+        description: "Technical appendix: control gates and system boundaries",
+        use: "supporting",
+        guidance: "Use only with a technical interviewer. Focus on orchestration, controls and reconciliation rather than claiming a specific live architecture.",
+      },
+      {
+        href: "/treasury",
+        label: "Tokenised Treasury",
+        description: "Optional product sandbox behind the flagship demo",
+        use: "supporting",
+        guidance: "The Stakeholder Demo tells the interview story more clearly. Use this only if someone asks to explore the detailed client workflow or lifecycle.",
+      },
+      {
+        href: "/bond-dvp",
+        label: "Bond DvP Settlement",
+        description: "Adjacent tokenised-asset settlement knowledge",
+        use: "supporting",
+        guidance: "Useful breadth, but explicitly frame it as a later, capital-markets-adjacent use case rather than the flagship GPS proposition.",
+      },
+      {
+        href: "/fx-pvp",
+        label: "FX PvP Settlement",
+        description: "Later-phase cross-border settlement knowledge",
+        use: "supporting",
+        guidance: "Use to discuss principal-risk design and interoperability. Do not claim it replaces CLS or is a near-term production commitment.",
+      },
     ],
   },
   {
-    section: "How it works",
+    section: "Study first",
+    description: "Build your knowledge and answers here. These tabs are for preparation, not the default screen share.",
     items: [
-      { href: "/architecture", label: "Architecture", description: "System design & decision flows" },
-      { href: "/transaction-flow", label: "Transaction Flow", description: "Animated happy path vs. exception path" },
-      { href: "/zero-to-one", label: "Building 0 → 1", description: "Full build narrative for all three products" },
+      {
+        href: "/jd-alignment",
+        label: "JD & Site Alignment",
+        description: "The verbatim job description, then a proof point for every line of it",
+        use: "study-first",
+        guidance: "Start here before rehearsing. The posting itself is reproduced at the top, followed by what each theme tests, the evidence to show, the trade-offs to own and the questions to expect.",
+        studyPriority: 1,
+      },
+      {
+        href: "/plain-english",
+        label: "Plain English",
+        description: "Every acronym and term on this site, explained with examples",
+        use: "study-first",
+        guidance: "Read this whenever something elsewhere loses you. Every term is spelled out in full with a concrete example and why it matters for this role. Nothing here assumes prior knowledge.",
+        studyPriority: 1,
+      },
+      {
+        href: "/interview-prep",
+        label: "Interview Prep",
+        description: "Practise behavioural stories, questions to ask and case defence",
+        use: "private",
+        guidance: "Private rehearsal material. Use it to prepare truthful personal stories and questions; do not screen-share this page in an interview.",
+        studyPriority: 2,
+      },
+      {
+        href: "/company-notes",
+        label: "Company & Interviewer Notes",
+        description: "Private context on role, organisation and public background",
+        use: "private",
+        guidance: "Private pre-read only. Some organisational details, interviewer background and older statistics may change, so verify them and never screen-share this page.",
+        studyPriority: 2,
+      },
+      {
+        href: "/zero-to-one",
+        label: "Building 0 to 1",
+        description: "Learn product sequencing, scope and de-risking",
+        use: "private",
+        guidance: "Useful to learn the product-manager logic behind the roadmap. It is more delivery-detailed than this senior interview requires, so do not lead with it.",
+        studyPriority: 3,
+      },
+      {
+        href: "/backlog",
+        label: "Delivery Backlog",
+        description: "Private delivery-detail appendix",
+        use: "private",
+        guidance: "Keep as evidence that you understand delivery, but do not show fictional story points or backlog detail unless specifically asked about execution mechanics.",
+        studyPriority: 3,
+      },
+      {
+        href: "/user-stories-guide",
+        label: "Writing User Stories",
+        description: "Private product-delivery skills drill",
+        use: "private",
+        guidance: "Good for learning clear requirements and acceptance criteria. It is not a useful tab to show for this senior, externally-facing product role.",
+        studyPriority: 3,
+      },
+      {
+        href: "/ai-preparation",
+        label: "Using AI to Prepare",
+        description: "Private AI study and product-control material",
+        use: "private",
+        guidance: "Use the AI-in-product guardrails to learn. Do not screen-share the preparation/disclosure material; discuss AI only through the product controls and accountability model.",
+        studyPriority: 3,
+      },
     ],
   },
   {
-    section: "Why this approach",
+    section: "Keep, but do not use yet",
+    description: "Nothing is deleted. These older pages are repetitive or need factual cleanup before they should influence your interview story.",
     items: [
-      { href: "/legacy-comparison", label: "Legacy vs. Tokenised", description: "Trade-offs, effort, is it worth it" },
-      { href: "/ecosystem", label: "Ecosystem & Market", description: "Build/buy/partner and market landscape" },
-    ],
-  },
-  {
-    section: "Staying in control",
-    items: [
-      { href: "/risk-controls", label: "Risk & Controls", description: "Control framework" },
-    ],
-  },
-  {
-    section: "Delivery",
-    items: [
-      { href: "/roadmap", label: "Product Roadmap", description: "Phased delivery plan" },
-      { href: "/backlog", label: "Delivery Backlog", description: "Epics and user stories" },
+      {
+        href: "/overview",
+        label: "Overview",
+        description: "Older portfolio dashboard with simulated platform KPIs",
+        use: "archive",
+        guidance: "Repetitive with the Executive Brief and Stakeholder Demo. Keep it for reference, but do not use the simulated performance numbers or present it as a live platform.",
+      },
+      {
+        href: "/transaction-flow",
+        label: "Transaction Flow",
+        description: "Older happy/unhappy animation now covered by the demo",
+        use: "archive",
+        guidance: "Repetitive with the Stakeholder Demo's paired scenarios. Keep it as a technical reference, but do not screen-share it unless the animation adds something the demo did not answer.",
+      },
+      {
+        href: "/ecosystem",
+        label: "Ecosystem & Market",
+        description: "Useful research, but vendor conclusions need calibration",
+        use: "review",
+        guidance: "Keep the build/buy/partner framework, but do not use vendor 'picks' or inferred HSBC choices in an interview. Use the sourced Industry Knowledge tab for current market facts.",
+      },
     ],
   },
 ];
 
-// Flattened view of navGroups — kept for code that just needs "every case-study
-// page" without caring about grouping (e.g. the tour, active-route lookups).
-export const navItems: NavItem[] = navGroups.flatMap((g) => g.items);
+export const navItems: NavItem[] = navGroups.flatMap((group) => group.items);
 
-// Study materials: still public pages (same repo, same deploy), but grouped and
-// visually separated in the nav because they support interview prep rather than
-// present the product case study itself.
-export const studyNavItems: NavItem[] = [
-  { href: "/interview-prep", label: "Interview Prep", description: "Case-study Q&A, questions to ask, logistics" },
-  { href: "/user-stories-guide", label: "Writing User Stories", description: "INVEST, Gherkin ACs, worked examples" },
-  { href: "/industry-knowledge", label: "Industry & Regulatory Knowledge", description: "SWIFT, CLS, DvP models, CBDC" },
-  { href: "/company-notes", label: "Company & Interviewer Notes", description: "Org structure, background, HSBC facts" },
-  { href: "/ai-preparation", label: "Using AI to Prepare", description: "AI for prep, and AI in the product domain" },
-];
+// Kept for existing components that refer to study materials. The actual navigation order
+// is now governed by navGroups above.
+export const studyNavItems = navGroups
+  .filter((group) => group.section === "Study first" || group.section === "Keep, but do not use yet")
+  .flatMap((group) => group.items);

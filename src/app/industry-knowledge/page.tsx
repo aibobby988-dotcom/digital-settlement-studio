@@ -1,10 +1,12 @@
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import {
   digitalMoneySpectrum,
   glossary,
+  marketUpdates,
   regulatoryLandscape,
   settlementStandards,
   type TechStage,
@@ -25,6 +27,43 @@ export default function IndustryKnowledgePage() {
         title="Industry & regulatory knowledge"
         description="A primer on the settlement standards, digital-money terminology and regulatory landscape this role explicitly tests — SWIFT, CLS, DvP/PvP models, and jurisdiction-by-jurisdiction context."
       />
+
+      <TermsOnThisPage terms={["ISO 20022", "MT and MX", "CLS", "RTGS", "DvP", "PvP", "CBDC", "Stablecoin", "Tokenised deposit"]} />
+
+      <section>
+        <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <h2 className="text-[18px] font-semibold text-charcoal-900">Verified market signals</h2>
+            <p className="mt-1 text-[13px] leading-relaxed text-ink-500">
+              Fact-checked as of 12 September 2026. These are product and regulatory signals,
+              not legal advice or proof that a pilot is a production rail.
+            </p>
+          </div>
+          <Badge tone="brand">Primary sources linked</Badge>
+        </div>
+        <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+          {marketUpdates.map((update) => (
+            <Card key={update.title}>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <Badge tone="neutral">{update.region}</Badge>
+                <span className="text-[11px] font-medium text-ink-400">{update.date}</span>
+              </div>
+              <h3 className="mt-3 text-[13px] font-semibold text-charcoal-900">{update.title}</h3>
+              <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{update.summary}</p>
+              <div className="mt-3 rounded-lg bg-paper-50 px-3 py-2.5 text-[12px] leading-relaxed text-brand-600">
+                <strong className="font-semibold">Why it matters here:</strong> {update.implication}
+              </div>
+              <div className="mt-3 flex flex-wrap gap-x-3 gap-y-1.5">
+                {update.sources.map((source) => (
+                  <ExternalLink key={source.url} href={source.url} className="text-[11.5px]">
+                    {source.label}
+                  </ExternalLink>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
 
       <section>
         <h2 className="mb-2 text-[18px] font-semibold text-charcoal-900">Glossary</h2>

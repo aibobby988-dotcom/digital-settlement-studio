@@ -4,10 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { navGroups, navItems, studyNavItems, type NavItem } from "@/lib/nav";
+import { navGroups, navItems, pageUseMeta, type NavItem, type PageUse } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-const allItems = [...navItems, ...studyNavItems];
+const allItems = navItems;
+
+const navUseClasses: Record<PageUse, string> = {
+  "must-show": "bg-amber-300 text-charcoal-950",
+  "screen-share": "bg-emerald-300 text-charcoal-950",
+  supporting: "bg-blue-300 text-charcoal-950",
+  "study-first": "bg-brand-300 text-charcoal-950",
+  private: "bg-rose-300 text-charcoal-950",
+  review: "bg-amber-200 text-charcoal-950",
+  archive: "bg-charcoal-700 text-ink-200",
+};
 
 function MobileNavList({
   items,
@@ -33,9 +43,12 @@ function MobileNavList({
                   ? "bg-brand-500/12 text-paper-0 ring-1 ring-inset ring-brand-400/25"
                   : "text-ink-400 hover:bg-charcoal-800/70"
               )}
-            >
-              {item.label}
-            </Link>
+              >
+                <span>{item.label}</span>
+                <span className={cn("ml-2 rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide", navUseClasses[item.use])}>
+                  {pageUseMeta[item.use].shortLabel}
+                </span>
+              </Link>
           </li>
         );
       })}
@@ -46,7 +59,8 @@ function MobileNavList({
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const current = allItems.find((item) => item.href === pathname);
+  const normalisedPathname = pathname === "/" ? pathname : pathname.replace(/\/$/, "");
+  const current = allItems.find((item) => item.href === normalisedPathname);
   const close = () => setOpen(false);
 
   return (
@@ -68,26 +82,16 @@ export function MobileNav() {
       </div>
       {open && (
         <nav className="border-t border-charcoal-800 px-3 py-3 max-h-[75vh] overflow-y-auto">
-          <p className="px-3 pb-2 pt-1 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
-            Product case study
-          </p>
-          <div className="space-y-3">
+          <p className="px-3 pb-2 pt-1 text-[10px] font-semibold uppercase tracking-wider text-ink-500">Your preparation map</p>
+          <div className="space-y-4">
             {navGroups.map((group) => (
               <div key={group.section}>
-                <p className="px-3 pb-1.5 text-[10.5px] font-medium text-brand-300/80">
-                  {group.section}
-                </p>
-                <MobileNavList items={group.items} pathname={pathname} onNavigate={close} />
+                <p className="px-3 text-[10.5px] font-medium text-brand-300/80">{group.section}</p>
+                <p className="px-3 pb-1.5 pt-0.5 text-[10px] leading-relaxed text-ink-500">{group.description}</p>
+                <MobileNavList items={group.items} pathname={normalisedPathname} onNavigate={close} />
               </div>
             ))}
           </div>
-
-          <div className="my-3 border-t border-charcoal-800" />
-
-          <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
-            Study materials
-          </p>
-          <MobileNavList items={studyNavItems} pathname={pathname} onNavigate={close} />
         </nav>
       )}
     </div>

@@ -1,5 +1,6 @@
 import { Building2, Lightbulb, Link2, Info, Network, Trophy } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ExternalLink } from "@/components/ui/ExternalLink";
@@ -25,6 +26,8 @@ export default function EcosystemPage() {
         title="Build, buy, partner — and who else is building this"
         description="Senior product judgement on infrastructure dependencies, vendor evaluation and where this proposition sits in the wider institutional digital-assets market."
       />
+
+      <TermsOnThisPage terms={["Permissioned network", "DLT", "MPC", "HSM", "CSD", "SPV"]} />
 
       <div className="flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-100/20 px-4 py-3.5">
         <Info size={16} className="mt-0.5 shrink-0 text-blue-600" />

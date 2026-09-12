@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { TransactionFlowAnimation } from "@/components/transaction-flow/TransactionFlowAnimation";
 
@@ -10,6 +11,8 @@ export default function TransactionFlowPage() {
         title="Transaction flow — happy path vs. exception path"
         description="The same transfer, played two ways: everything clearing normally, and a real control stopping it. Watch how atomic settlement handles both."
       />
+
+      <TermsOnThisPage terms={["Settlement", "Sanctions screening", "Exception handling", "Reconciliation", "Atomic settlement"]} />
 
       <section>
         <TransactionFlowAnimation />

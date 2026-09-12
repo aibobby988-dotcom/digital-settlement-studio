@@ -1,5 +1,6 @@
 import { ArrowRight, Landmark, Layers, Leaf, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { DvpSimulator } from "@/components/settlement/DvpSimulator";
@@ -14,6 +15,8 @@ export default function BondDvpPage() {
         title="Delivery versus Payment"
         description="Atomic settlement for tokenised fixed income — the bond and cash legs transfer together, or neither transfers at all."
       />
+
+      <TermsOnThisPage terms={["DvP", "Atomic settlement", "Escrow", "Legal finality", "CSD", "Settlement"]} />
 
       <Card className="bg-charcoal-950 border-charcoal-900">
         <div className="flex flex-wrap items-center gap-2 mb-3">

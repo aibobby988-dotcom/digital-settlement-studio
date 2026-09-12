@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Compass, Layers, ShieldAlert, Target, XCircle } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { framework, productBuilds } from "@/lib/mock/zeroToOne";
@@ -13,6 +14,8 @@ export default function ZeroToOnePage() {
         title="Building 0 → 1: how each product actually got built"
         description="Not the craft of writing a story — the full reasoning that comes before one: discovery, MVP scope, the thinnest slice that proves it, and what has to be true before it leaves pilot. Walked through for all three settlement flows."
       />
+
+      <TermsOnThisPage terms={["MVP", "Walking skeleton", "Go/no-go gate", "Jobs to be done", "RFP"]} />
 
       <section>
         <div className="mb-1 flex items-center gap-2">

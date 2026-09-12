@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { SystemArchitectureDiagram } from "@/components/architecture/SystemArchitectureDiagram";
@@ -46,6 +47,8 @@ export default function ArchitecturePage() {
         title="System architecture & decision flows"
         description="How the settlement platform's components connect, and how a request moves through checks and decision points before it settles."
       />
+
+      <TermsOnThisPage terms={["Orchestration", "API", "Permissioned network", "DLT", "Smart contract", "Reconciliation", "HSM"]} />
 
       <section>
         <Card>

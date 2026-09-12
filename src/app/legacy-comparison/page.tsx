@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import {
@@ -21,6 +22,8 @@ export default function LegacyComparisonPage() {
         title="Legacy vs. tokenised — the honest trade-off"
         description="What tokenised settlement actually buys you versus today's rails, what it costs to build, and where it isn't worth it yet."
       />
+
+      <TermsOnThisPage terms={["Correspondent banking", "RTGS", "Netting", "ISO 20022", "Cut-off time", "Nostro account", "Settlement"]} />
 
       <section>
         <Card padded={false}>

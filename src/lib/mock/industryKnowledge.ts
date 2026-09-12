@@ -90,6 +90,145 @@ export interface RegRegime {
   url?: string;
 }
 
+export interface MarketUpdate {
+  region: string;
+  date: string;
+  title: string;
+  summary: string;
+  implication: string;
+  sources: Array<{ label: string; url: string }>;
+}
+
+// Dated, primary-source-led signals used in the interview narrative. These are
+// deliberately separate from the evergreen regulatory table below.
+export const marketUpdates: MarketUpdate[] = [
+  {
+    region: "Hong Kong",
+    date: "12 Sep 2026",
+    title: "Fact check: BlackRock, HKDAP and EnsembleTX are three different things",
+    summary:
+      "No primary source supports a claim that BlackRock launched an HKD Digital Fund powered by HKDAP on EnsembleTX. BlackRock is an EnsembleTX industry pioneer; HKDAP is Anchorpoint Financial's HKD-backed stablecoin, in beta since 12 August 2026 and issued on supported blockchains. They should not be presented as one product launch.",
+    implication:
+      "The useful client story is the emerging settlement stack: tokenised assets, tokenised bank deposits and regulated stablecoins may connect over time, but product, issuer, legal claim and settlement rail must be distinguished precisely.",
+    sources: [
+      {
+        label: "HKMA EnsembleTX participant list",
+        url: "https://www.hkma.gov.hk/media/eng/doc/key-information/press-release/2025/20251113e3a1.pdf",
+      },
+      {
+        label: "Anchorpoint HKDAP whitepaper",
+        url: "https://anchorpoint.hk/hkdap-whitepaper/",
+      },
+    ],
+  },
+  {
+    region: "Hong Kong",
+    date: "May 2026",
+    title: "EnsembleTX has moved from sandbox to controlled real-value pilot",
+    summary:
+      "HKMA launched EnsembleTX in November 2025 for controlled real-value transactions in tokenised HKD deposits and digital assets. The broader fixed-income roadmap records sandbox tests of tokenised money-market funds settling through tokenised deposits, as well as digital-bond settlement and corporate treasury use cases.",
+    implication:
+      "This is the closest local market context for a tokenised-treasury or fund-settlement product. It validates the direction, not a claim that open, retail or 24/7 production infrastructure is already available.",
+    sources: [
+      {
+        label: "HKMA legislative briefing",
+        url: "https://www.hkma.gov.hk/media/eng/doc/about-the-hkma/legislative-council-issues/20260504e1.pdf",
+      },
+      {
+        label: "HKMA fixed-income roadmap",
+        url: "https://www.hkma.gov.hk/media/eng/doc/key-information/press-release/2025/20250925e3a1.pdf",
+      },
+    ],
+  },
+  {
+    region: "Canada",
+    date: "10 Sep 2026",
+    title: "OSFI clarified that tokenised deposits are not a new legal category",
+    summary:
+      "Canada's prudential supervisor said that the underlying technology does not determine a product's legal nature and that tokenised deposits are not legally distinct from traditional deposits. Federally regulated institutions must still meet applicable risk, technology and third-party requirements and engage their lead supervisor before novel launches.",
+    implication:
+      "This is regulatory clarity, not a blanket approval of every blockchain product. It supports the bank-product framing used in this case study: start with a regulated deposit liability, then prove controls, resilience and legal treatment.",
+    sources: [
+      {
+        label: "OSFI statement",
+        url: "https://www.osfi-bsif.gc.ca/en/news/statement-tokenized-other-digitally-represented-deposits",
+      },
+      {
+        label: "Bank of Canada Project Samara",
+        url: "https://www.bankofcanada.ca/2026/03/bank-canada-export-development-canada-rbc-td-successfully-complete-bond-issuance-experiment-distributed-ledger-technology/",
+      },
+    ],
+  },
+  {
+    region: "Korea",
+    date: "15 Jan 2026",
+    title: "Korea enacted a legal framework for token securities",
+    summary:
+      "Korea's National Assembly passed amendments recognising distributed ledgers as securities account infrastructure and enabling token securities, with preparatory work ahead of commencement. The framework keeps token securities inside capital-markets rules rather than creating an unregulated parallel market.",
+    implication:
+      "Korea is a serious regional capital-markets signal. I found no official evidence for a government-run tokenised-stock experiment on Avalanche, so that specific claim should not be used in a Vincent demo without a named institution and primary announcement.",
+    sources: [
+      {
+        label: "Korea FSC announcement (Korean)",
+        url: "https://www.fsc.go.kr/no010101/86064?curPage=1&srchBeginDt=&srchCtgry=&srchEndDt=&srchKey=sj&srchText=",
+      },
+    ],
+  },
+  {
+    region: "Cross-border",
+    date: "Jul 2026",
+    title: "BIS Project Agorá completed real-value testing",
+    summary:
+      "The BIS project tested tokenised commercial-bank deposits and tokenised central-bank reserves on a shared multi-currency platform. Twenty-eight institutions and central banks completed 17 real-value scenarios across six currencies; the project remains experimental rather than a production payment network.",
+    implication:
+      "This is strong evidence for the product thesis behind atomic PvP, intragroup liquidity and cross-border treasury, while also reinforcing why legal finality, AML, privacy and core-system integration remain roadmap gates.",
+    sources: [
+      {
+        label: "BIS Project Agorá",
+        url: "https://www.bis.org/project/agora",
+      },
+    ],
+  },
+  {
+    region: "United States",
+    date: "22 Jul 2026",
+    title: "The CLARITY Act is advancing, but is not law",
+    summary:
+      "The Senate process released updated Digital Asset Market CLARITY Act text after a bipartisan Banking Committee vote. The bill aims to establish market-structure rules and allocate responsibilities across US digital-asset regulation; it still needs to complete Congress and be enacted.",
+    implication:
+      "Treat it as a policy signal, not a current operating permission. It matters most for US-facing digital-asset intermediaries and market structure, rather than changing Hong Kong tokenised-deposit rules today.",
+    sources: [
+      {
+        label: "US Senate update",
+        url: "https://www.lummis.senate.gov/press-releases/lummis-releases-updated-clarity-act-text/",
+      },
+      {
+        label: "Official bill text",
+        url: "https://www.govinfo.gov/app/details/BILLS-119hr3633rs",
+      },
+    ],
+  },
+  {
+    region: "Europe / global asset management",
+    date: "Aug 2026",
+    title: "BlackRock expanded tokenised money-market products outside Hong Kong",
+    summary:
+      "BlackRock launched tokenised money-market products in the US in August, including on-chain shares of an existing Treasury liquidity fund on Ethereum and a new stablecoin-reserve vehicle. Separately, the European Commission is proposing to broaden its DLT Pilot Regime after modest take-up.",
+    implication:
+      "The global pattern is clear: regulated fund structures are being retained while ownership and servicing move on-chain. The commercial question is operational utility and distribution, not whether a token exists.",
+    sources: [
+      {
+        label: "BlackRock cash-management release",
+        url: "https://www.blackrock.com/cash/en-us/press-release-t3",
+      },
+      {
+        label: "European Commission update",
+        url: "https://finance.ec.europa.eu/news/dlt-and-tokenisation-paving-way-internet-value-2026-04-21_en",
+      },
+    ],
+  },
+];
+
 export const regulatoryLandscape: RegRegime[] = [
   {
     jurisdiction: "Hong Kong",

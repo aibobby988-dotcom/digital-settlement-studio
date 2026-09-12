@@ -1,5 +1,6 @@
 import { ArrowLeftRight, Clock3, Droplets, Repeat } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { PvpSimulator } from "@/components/settlement/PvpSimulator";
@@ -14,6 +15,8 @@ export default function FxPvpPage() {
         title="Payment versus Payment"
         description="Atomic settlement of both currency legs of an FX trade — removing principal risk from the settlement window."
       />
+
+      <TermsOnThisPage terms={["PvP", "FX", "Herstatt risk", "CLS", "Atomic settlement", "Netting"]} />
 
       <Card className="bg-charcoal-950 border-charcoal-900">
         <div className="flex flex-wrap items-center gap-2 mb-3">

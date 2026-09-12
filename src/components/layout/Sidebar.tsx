@@ -20,13 +20,15 @@ import {
   GitCompareArrows,
   Scale,
   FileText,
+  PlayCircle,
   Rocket,
 } from "lucide-react";
-import { navGroups, studyNavItems, type NavItem } from "@/lib/nav";
+import { navGroups, pageUseMeta, type NavItem, type PageUse } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
   "/": Presentation,
+  "/stakeholder-demo": PlayCircle,
   "/overview": LayoutDashboard,
   "/treasury": Landmark,
   "/bond-dvp": ArrowLeftRight,
@@ -39,11 +41,24 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/risk-controls": ShieldCheck,
   "/roadmap": Map,
   "/backlog": ListChecks,
+  "/jd-alignment": FileText,
   "/interview-prep": GraduationCap,
   "/user-stories-guide": FileText,
   "/industry-knowledge": BookOpen,
   "/company-notes": Users,
   "/ai-preparation": Bot,
+  "/ai-in-product": Bot,
+  "/plain-english": BookOpen,
+};
+
+const navUseClasses: Record<PageUse, string> = {
+  "must-show": "bg-amber-300 text-charcoal-950",
+  "screen-share": "bg-emerald-300 text-charcoal-950",
+  supporting: "bg-blue-300 text-charcoal-950",
+  "study-first": "bg-brand-300 text-charcoal-950",
+  private: "bg-rose-300 text-charcoal-950",
+  review: "bg-amber-200 text-charcoal-950",
+  archive: "bg-charcoal-700 text-ink-200",
 };
 
 function NavList({ items, pathname }: { items: NavItem[]; pathname: string }) {
@@ -51,7 +66,9 @@ function NavList({ items, pathname }: { items: NavItem[]; pathname: string }) {
     <ul className="space-y-1">
       {items.map((item) => {
         const active = pathname === item.href;
-        const Icon = icons[item.href];
+        // Nav entries and this icon map are maintained separately, so a new route
+        // must not be able to crash the whole shell before its icon is added.
+        const Icon = icons[item.href] ?? FileText;
         return (
           <li key={item.href}>
             <Link
@@ -65,6 +82,9 @@ function NavList({ items, pathname }: { items: NavItem[]; pathname: string }) {
             >
               <Icon size={16} strokeWidth={2} />
               <span className="flex-1">{item.label}</span>
+              <span className={cn("rounded-full px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wide", navUseClasses[item.use])}>
+                {pageUseMeta[item.use].shortLabel}
+              </span>
               {active && <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />}
             </Link>
           </li>
@@ -76,6 +96,7 @@ function NavList({ items, pathname }: { items: NavItem[]; pathname: string }) {
 
 export function Sidebar() {
   const pathname = usePathname();
+  const normalisedPathname = pathname === "/" ? pathname : pathname.replace(/\/$/, "");
 
   return (
     <aside className="hidden lg:flex lg:w-72 lg:shrink-0 lg:flex-col lg:fixed lg:inset-y-0 bg-charcoal-950 text-paper-50 border-r border-charcoal-800">
@@ -100,25 +121,17 @@ export function Sidebar() {
 
       <nav className="flex-1 overflow-y-auto px-3 py-5">
         <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
-          Product case study
+          Your preparation map
         </p>
-        <div className="space-y-4">
+        <div className="space-y-5">
           {navGroups.map((group) => (
             <div key={group.section}>
-              <p className="px-3 pb-1.5 text-[10.5px] font-medium text-brand-300/80">
-                {group.section}
-              </p>
-              <NavList items={group.items} pathname={pathname} />
+              <p className="px-3 text-[10.5px] font-medium text-brand-300/80">{group.section}</p>
+              <p className="px-3 pb-1.5 pt-0.5 text-[10px] leading-relaxed text-ink-500">{group.description}</p>
+              <NavList items={group.items} pathname={normalisedPathname} />
             </div>
           ))}
         </div>
-
-        <div className="my-4 border-t border-charcoal-800" />
-
-        <p className="px-3 pb-2 text-[10px] font-semibold uppercase tracking-wider text-ink-500">
-          Study materials
-        </p>
-        <NavList items={studyNavItems} pathname={pathname} />
       </nav>
 
       <div className="border-t border-charcoal-800 px-6 py-5">

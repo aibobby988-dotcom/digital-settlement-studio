@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { PageGuidance } from "@/components/layout/PageGuidance";
 import { Footer } from "@/components/layout/Footer";
 import { ToastProvider } from "@/components/ui/Toast";
 
@@ -31,7 +32,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <MobileNav />
           <div className="app-shell flex min-h-screen flex-col lg:pl-72">
             <main className="flex-1 px-4 py-8 sm:px-6 lg:px-10 lg:py-10">
-              <div className="mx-auto w-full max-w-6xl">{children}</div>
+              <div className="mx-auto w-full max-w-6xl">
+                <PageGuidance />
+                {children}
+              </div>
             </main>
             <div className="mx-auto w-full max-w-6xl">
               <Footer />

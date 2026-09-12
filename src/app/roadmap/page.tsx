@@ -1,5 +1,6 @@
 import { Check, HelpCircle, X } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/ui/Badge";
 import { PrintButton } from "@/components/ui/PrintButton";
@@ -17,6 +18,8 @@ export default function RoadmapPage() {
         description="Each phase expands scope only after measurable go/no-go gates are met — client value, legal readiness, operational and financial-crime controls, resilience, and a supportable commercial model."
         actions={<PrintButton />}
       />
+
+      <TermsOnThisPage terms={["Go/no-go gate", "NPA", "Legal finality", "MVP", "Walking skeleton"]} />
 
       <Card>
         <div className="flex items-start gap-2.5">

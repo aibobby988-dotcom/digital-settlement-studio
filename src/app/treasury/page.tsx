@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowDownToLine, ArrowRight, ArrowUpFromLine, CheckCircle2, Info, Layers, Send } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { StatusBadge, Badge } from "@/components/ui/Badge";
@@ -108,6 +109,8 @@ export default function TreasuryPage() {
           }
         />
       </div>
+
+      <TermsOnThisPage terms={["Tokenised deposit", "Settlement", "Reconciliation", "Maker-checker", "Sanctions screening", "Treasurer", "Cut-off time"]} />
 
       <div className="flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-100/20 px-4 py-3.5">
         <Info size={16} className="mt-0.5 shrink-0 text-blue-600" />

@@ -10,6 +10,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card } from "@/components/ui/Card";
 import { RiskBadge, StatusBadge, Badge } from "@/components/ui/Badge";
 import { PrintButton } from "@/components/ui/PrintButton";
@@ -54,6 +55,8 @@ export default function RiskControlsPage() {
         description="Every identified risk maps to a named control, an accountable owner, a current status and traceable evidence — the same standard applied to traditional wholesale payment products."
         actions={<PrintButton onBeforePrint={() => setActiveCategory("All")} />}
       />
+
+      <TermsOnThisPage terms={["AML", "KYC", "Sanctions screening", "Legal finality", "Reconciliation", "NPA", "RTO and RPO", "SLA"]} />
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <Card>
