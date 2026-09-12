@@ -24,6 +24,7 @@ import {
   Rocket,
   Coins,
   UserRound,
+  Layers,
 } from "lucide-react";
 import { navGroups, pageUseMeta, type NavItem, type PageUse } from "@/lib/nav";
 import { cn } from "@/lib/utils";
@@ -53,6 +54,7 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/plain-english": BookOpen,
   "/commercial-model": Coins,
   "/cv-alignment": UserRound,
+  "/tds-strategy": Layers,
 };
 
 const navUseClasses: Record<PageUse, string> = {

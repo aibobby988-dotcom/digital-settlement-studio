@@ -40,6 +40,14 @@ export const navGroups: NavGroup[] = [
     description: "Screen-share these in order. Keep the main walkthrough to four tabs.",
     items: [
       {
+        href: "/tds-strategy",
+        label: "Extending TDS",
+        description: "What HSBC already has, and the two tracks to pitch",
+        use: "must-show",
+        guidance: "Start here, in prep and in the room. It proves you know what is already live before you propose anything - which is the difference between extending their product and narrating it back to them.",
+        studyPriority: 1,
+      },
+      {
         href: "/",
         label: "Executive Brief",
         description: "Open with the thesis, client problem and phased proposition",
