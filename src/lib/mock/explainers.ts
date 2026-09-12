@@ -561,6 +561,39 @@ export const explainers: Explainer[] = [
 
   // ----------------------------------------------- Product and delivery
   {
+    term: "Wholesale payment client base",
+    full: "",
+    simple:
+      "Plain translation: the big organisations a bank moves money for, as opposed to ordinary consumers. Large corporates, financial institutions, asset managers, governments. 'Wholesale' here means high-value and institutional — it has nothing to do with wholesale trade or buying in bulk.",
+    example:
+      "PayMe is retail — millions of people sending each other small amounts. A multinational moving US$50m between its Hong Kong and Singapore entities is wholesale. Same bank, completely different client, controls and economics.",
+    why:
+      "This is the first requirement on the job description, and it is the gap in most candidates' backgrounds including this one. Knowing that it means corporate treasurers and institutions rather than consumers is the minimum; knowing what those clients actually worry about is the differentiator.",
+    category: "Bank operations",
+  },
+  {
+    term: "Transaction banking",
+    full: "",
+    simple:
+      "The unglamorous, high-volume side of corporate banking: moving clients' money, managing their cash, financing their trade. It is the day-to-day plumbing a company needs to operate, as distinct from lending them money or advising on a merger.",
+    example:
+      "A Hong Kong exporter gets paid by a German buyer, needs the cash swept into a central account, wants visibility of every subsidiary's balance, and needs to pay suppliers in four currencies. All of that is transaction banking. Global Payments Solutions is HSBC's transaction-banking business.",
+    why:
+      "The posting requires eight years of it. Worth knowing that it is prized inside banks precisely because it is sticky and deposit-rich — clients rarely switch, and the balances fund the bank. That is the commercial logic behind this whole product area.",
+    category: "Bank operations",
+  },
+  {
+    term: "Go-to-market",
+    full: "GTM",
+    simple:
+      "The plan for how a product actually reaches and wins customers: which segment first, through which sales channel, at what price, with what proof, and who needs to be trained to sell it.",
+    example:
+      "In traditional finance this is concrete, not abstract. For a cash-management product it means: pick multinational clients with an Asian treasury centre, sell through the relationship managers who already cover them, arm those managers with a one-page value story and a qualifying checklist, waive the implementation fee for the first three reference clients, and price transactions below the wires being replaced so migration has no barrier.",
+    why:
+      "Named directly in the job description under value proposition development. In a bank the hardest part is rarely the product — it is getting a large, busy sales force to actually put it in front of clients.",
+    category: "Product and delivery",
+  },
+  {
     term: "MVP",
     full: "Minimum Viable Product",
     simple:

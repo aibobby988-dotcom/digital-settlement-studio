@@ -54,6 +54,7 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/plain-english": BookOpen,
   "/commercial-model": Coins,
   "/cv-alignment": UserRound,
+  "/vincent-tests": GraduationCap,
   "/tds-strategy": Layers,
 };
 

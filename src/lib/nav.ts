@@ -163,6 +163,14 @@ export const navGroups: NavGroup[] = [
         studyPriority: 1,
       },
       {
+        href: "/vincent-tests",
+        label: "The 45 Minutes",
+        description: "The five things Vincent will test, with fact-checked answers",
+        use: "private",
+        guidance: "Rehearse from this. Each answer is checked against the rest of the site, and the watch-out notes flag where a confident-sounding answer is actually wrong - particularly on CLS and on atomicity versus legal finality.",
+        studyPriority: 1,
+      },
+      {
         href: "/cv-alignment",
         label: "My CV vs. the JD",
         description: "Strengths to lead with, gaps that will be probed, and how to answer them",

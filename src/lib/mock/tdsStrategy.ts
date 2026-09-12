@@ -21,7 +21,7 @@ export const hsbcEstate: EstateItem[] = [
     status: "Live",
     what: "Live in six markets — Hong Kong, Singapore, Luxembourg, the UK, the UAE and the US, the last added in April 2026. Supports 24/7 movement of tokenised deposits between a client's own entities.",
     soWhat:
-      "This is the rail. It exists and it works. Any proposal that amounts to 'build a tokenised deposit service' is proposing something already shipped.",
+      "This is the rail. It exists and it works, with Ant International as a named early user in Hong Kong. Any proposal that amounts to 'build a tokenised deposit service' is proposing something already shipped.",
     source: {
       label: "HSBC press release: US expansion, April 2026",
       url: "https://www.about.us.hsbc.com/newsroom/press-releases/hsbc-expands-tokenized-deposit-service-to-the-united-states",
@@ -41,7 +41,7 @@ export const hsbcEstate: EstateItem[] = [
   {
     asset: "Cross-bank tokenised deposit transfer",
     status: "Proven in pilot",
-    what: "Interbank transfer of tokenised deposits between HSBC and Hang Seng Bank via the Ensemble interoperability platform, part of the same August 2024 set. HSBC has since completed a first live cross-bank transaction in EnsembleTX.",
+    what: "Interbank transfer of tokenised deposits between HSBC and Hang Seng Bank via the Ensemble interoperability platform, part of the same August 2024 set. HSBC has since integrated the Tokenised Deposit Service with the EnsembleTX interoperability layer and, on 13 November, completed the first live cross-bank transaction on it — moving HK$3.8m for Ant International from an HSBC-held wallet to its wallet at another domestic bank.",
     soWhat:
       "Interoperability beyond HSBC's own ledger is no longer theoretical. That matters because it means a third-party cash-leg proposition has a route to market.",
   },
@@ -62,7 +62,7 @@ export const hsbcEstate: EstateItem[] = [
   {
     asset: "HSBC Orion",
     status: "Live",
-    what: "HSBC's digitally native bond issuance platform. Issued the world's first multi-currency digital bonds in February 2024 and was selected for the UK's digital gilt pilot.",
+    what: "HSBC's digitally native bond issuance platform, sitting in Markets & Securities Services under Patrick George. Over US$3.5bn of digital-bond issuance, the world's first multi-currency digital bonds in February 2024, selected for the UK digital gilt pilot, and approved to operate in the UK's Digital Securities Sandbox.",
     soWhat:
       "This is the asset leg, and it sits closer to Capital Markets than to Digital Money. Know it, reference it, but do not propose to run it — that is outside this role's remit.",
   },

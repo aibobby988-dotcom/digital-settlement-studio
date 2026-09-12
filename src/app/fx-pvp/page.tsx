@@ -127,6 +127,38 @@ export default function FxPvpPage() {
         </ul>
       </Card>
 
+      <Card>
+        <CardHeader
+          title="The corporate-treasury story to tell"
+          subtitle="Say this before touching the simulator — it is the version a treasurer recognises"
+        />
+        <div className="space-y-3 text-[12.5px] leading-relaxed text-ink-700">
+          <p>
+            <strong className="text-charcoal-900">The setup.</strong> A United States manufacturer
+            must fund a EUR 20m supplier invoice from its European subsidiary. Its treasury sells
+            dollars for euros with its bank.
+          </p>
+          <p>
+            <strong className="text-charcoal-900">The risk without payment-versus-payment.</strong>{" "}
+            The dollar leg leaves New York during US hours. Because of time zones and cut-offs, the
+            euro leg may not credit until hours later or the next morning. In that window the
+            company has paid out and holds nothing. If the counterparty fails mid-window, the
+            dollars are gone, the supplier is unpaid, and production halts.
+          </p>
+          <p>
+            <strong className="text-charcoal-900">With it.</strong> Both legs are funded into a
+            protected settlement position and verified clear of compliance holds. The system
+            releases them simultaneously — the corporate receives euros in Europe at the same
+            moment the bank receives dollars in New York.
+          </p>
+          <p className="rounded-lg bg-paper-50 px-3 py-2.5 text-charcoal-900">
+            <strong className="font-semibold">The benefit in the treasurer&apos;s words:</strong>{" "}
+            the exposure window disappears and less intraday liquidity sits idle waiting for the
+            other leg. Not &ldquo;we used a blockchain&rdquo;.
+          </p>
+        </div>
+      </Card>
+
       <section>
         <PvpSimulator />
       </section>

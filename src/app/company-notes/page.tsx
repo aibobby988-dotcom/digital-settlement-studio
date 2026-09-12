@@ -15,6 +15,8 @@ import {
   hsbcNewsroomUrl,
   orgChain,
   recentNews,
+  siblingDivision,
+  orgInsight,
   siblingFunctions,
   strategyPillars,
   values,
@@ -69,11 +71,27 @@ export default function CompanyNotesPage() {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-[11.5px] text-ink-500">
-            Not fully confirmed by public sources: the exact reporting line between the Digital
-            Money team and the Group Head of Digital Assets &amp; Currencies — a legitimate,
-            interest-signalling question to ask directly.
-          </p>
+          <div className="mt-5 border-t border-paper-200 pt-4">
+            <p className="text-[11.5px] font-semibold uppercase tracking-wide text-ink-400">
+              The other half of the division — the asset leg
+            </p>
+            <div className="mt-2.5 flex flex-col gap-2">
+              {siblingDivision.map((node, idx) => (
+                <div key={node.role} className="flex flex-col items-start" style={{ marginLeft: idx * 28 }}>
+                  {idx > 0 && <ArrowDown size={14} className="mb-2 ml-4 text-ink-400" />}
+                  <div className="rounded-lg border border-paper-200 bg-paper-50 px-4 py-3">
+                    <p className="text-[13px] font-semibold text-charcoal-900">{node.role}</p>
+                    <p className="mt-0.5 text-[12px] text-ink-500">{node.who}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-4 rounded-xl border border-brand-100 bg-brand-50/40 px-4 py-3.5">
+            <p className="text-[12.5px] font-semibold text-charcoal-900">{orgInsight.headline}</p>
+            <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{orgInsight.body}</p>
+          </div>
         </Card>
       </section>
 

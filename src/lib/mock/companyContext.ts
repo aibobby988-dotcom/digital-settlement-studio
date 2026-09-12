@@ -7,24 +7,41 @@ export interface OrgNode {
 
 export const orgChain: OrgNode[] = [
   {
-    role: "Group Head of Digital Assets & Currencies",
-    who: "Managing Director — the umbrella covering Orion (digital bonds), custody, CBDC, stablecoins and crypto strategy group-wide",
-    url: "https://www.financeasia.com/article/qa-john-oneill-group-head-of-digital-assets-and-currencies-at-hsbc/503385",
+    role: "Corporate & Institutional Banking",
+    who: "The division. Two business lines below it matter for this role — one owns the cash, the other owns the assets.",
   },
   {
-    role: "Global Payments Solutions (GPS)",
-    who: "The payments and transaction-banking business line — one of several functions under the umbrella above",
+    role: "Global Payments Solutions (GPS) — the cash side",
+    who: "Head: Manish Kohli, Group Head of GPS since October 2021, previously 24 years at Citi in transaction banking. Owns global payments, cash management, liquidity and payment/FX flows.",
   },
   {
-    role: "Global Head of Digital Money",
-    who: "Director — DLT-payments, Tokenised Deposit Service, stablecoin initiatives",
+    role: "Digital Money / Digital Currencies",
+    who: "Vincent Lau, Global Head of Digital Money. Owns tokenised deposits, programmable and conditional payments, cross-border clearing, stablecoin propositions and the cash leg used to settle tokenised assets.",
     url: "https://www.fsdc.org.hk/media/2vtpabre/vincent-lau_bio.pdf",
   },
   {
     role: "Senior Product Manager — Digital Currencies",
-    who: "This role sits within the Digital Money team, inside GPS",
+    who: "This role. Inside Vincent's team, inside GPS, inside Corporate & Institutional Banking.",
   },
 ];
+
+/** The other half of Corporate & Institutional Banking — the asset leg, and a partner rather than a rival. */
+export const siblingDivision: OrgNode[] = [
+  {
+    role: "Markets & Securities Services (MSS) — the asset side",
+    who: "Head: Patrick George, Global Head of MSS, at HSBC since 1996. Owns securities services, custody and market infrastructure.",
+  },
+  {
+    role: "Digital Assets / HSBC Orion",
+    who: "Tokenised bond issuance, asset servicing and securities settlement, plus digital-asset custody. Over US$3.5bn of digital-bond issuance, selected for the UK Digital Gilt pilot and approved to operate in the UK's Digital Securities Sandbox.",
+  },
+];
+
+export const orgInsight = {
+  headline: "Why this structure is the whole strategy in one diagram",
+  body:
+    "A tokenised bond cannot settle safely without tokenised cash on the other side. Orion sits in Markets & Securities Services and owns the asset leg; Vincent's team sits in Global Payments Solutions and owns the cash leg. That is why Track 2 is legitimate rather than scope creep — you are not proposing to run Orion, you are proposing that the cash leg serves it, and everything like it. Get this boundary right and you sound like someone who already works there.",
+};
 
 export interface SiblingFunction {
   name: string;
