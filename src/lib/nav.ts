@@ -70,8 +70,8 @@ export const navGroups: NavGroup[] = [
       },
       {
         href: "/ai-in-product",
-        label: "AI in This Product",
-        description: "Where AI fits, agentic payments, and what you would refuse",
+        label: "AI Across Both Tracks",
+        description: "Where AI fits in Track 1 and Track 2, agentic payments, and the mandate demo",
         use: "screen-share",
         guidance: "The job description names AI/ML and agentic payments directly. Lead with the boundary - AI prepares evidence, humans or pre-agreed mandates approve movement - then give one concrete use case.",
         studyPriority: 1,

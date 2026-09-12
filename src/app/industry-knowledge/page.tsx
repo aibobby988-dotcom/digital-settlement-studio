@@ -3,6 +3,7 @@ import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ExternalLink } from "@/components/ui/ExternalLink";
+import { marketSignals, signalsSummary } from "@/lib/mock/marketSignals2026";
 import {
   digitalMoneySpectrum,
   glossary,
@@ -11,6 +12,12 @@ import {
   settlementStandards,
   type TechStage,
 } from "@/lib/mock/industryKnowledge";
+
+const weightTone = {
+  "Know cold": "brand",
+  "Know it": "blue",
+  "Useful colour": "neutral",
+} as const;
 
 const stageTone: Record<TechStage, "emerald" | "amber" | "neutral" | "rose"> = {
   "Live today": "emerald",
@@ -29,6 +36,74 @@ export default function IndustryKnowledgePage() {
       />
 
       <TermsOnThisPage terms={["ISO 20022", "MT and MX", "CLS", "RTGS", "DvP", "PvP", "CBDC", "Stablecoin", "Tokenised deposit"]} />
+
+      <section>
+        <Card className="border-brand-100 bg-brand-50/30">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-600">
+            {signalsSummary.headline}
+          </p>
+          <ul className="mt-2.5 space-y-2">
+            {signalsSummary.points.map((pt) => (
+              <li key={pt} className="flex items-start gap-2.5 text-[12.5px] leading-relaxed text-charcoal-900">
+                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-500" />
+                {pt}
+              </li>
+            ))}
+          </ul>
+        </Card>
+      </section>
+
+      <section>
+        <div className="mb-4">
+          <h2 className="text-[18px] font-semibold text-charcoal-900">
+            Current market signals
+          </h2>
+          <p className="mt-1 max-w-3xl text-[12.5px] leading-relaxed text-ink-500">
+            Researched 13 September 2026, newest and most relevant first. Each one states what
+            happened, why it matters for this role, and what not to overclaim — the last part is
+            what stops a good fact becoming a bad moment.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {marketSignals.map((sig) => (
+            <Card key={sig.id} className={sig.weight === "Know cold" ? "border-brand-200" : undefined}>
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Badge tone="neutral">{sig.region}</Badge>
+                  <span className="text-[11px] font-medium text-ink-400">{sig.date}</span>
+                </div>
+                <Badge tone={weightTone[sig.weight]}>{sig.weight}</Badge>
+              </div>
+
+              <h3 className="mt-2.5 text-[14px] font-semibold text-charcoal-900">{sig.headline}</h3>
+              <p className="mt-2 text-[12.5px] leading-relaxed text-ink-700">{sig.what}</p>
+
+              <div className="mt-3 rounded-xl bg-brand-50/50 px-3.5 py-3">
+                <p className="text-[10.5px] font-semibold uppercase tracking-wide text-brand-600">
+                  Why it matters for this role
+                </p>
+                <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{sig.whyItMatters}</p>
+              </div>
+
+              <div className="mt-2.5 rounded-xl border border-amber-100 bg-amber-50/40 px-3.5 py-2.5">
+                <p className="text-[10.5px] font-semibold uppercase tracking-wide text-amber-700">
+                  Do not overstate
+                </p>
+                <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{sig.dontOverstate}</p>
+              </div>
+
+              <div className="mt-2.5 flex flex-wrap gap-x-3 gap-y-1.5">
+                {sig.sources.map((src) => (
+                  <ExternalLink key={src.url} href={src.url} className="text-[11.5px]">
+                    {src.label}
+                  </ExternalLink>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
 
       <section>
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">

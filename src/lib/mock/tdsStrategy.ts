@@ -148,13 +148,14 @@ export const tracks: Track[] = [
       "The mechanism is already proven: the August 2024 sandbox settled Orion digital bonds against tokenised deposits, so this is scope extension rather than technical invention",
       "It multiplies addressable volume without a new platform, because HSBC does not need to issue the asset to earn the cash leg",
       "It gives the Digital Money team a defensible franchise across the whole tokenised-asset market rather than only HSBC-issued products",
+      "The regulator has already chosen this direction: EnsembleTX's stated first focus is using tokenised deposits to settle tokenised money-market fund transactions, with BlackRock and Franklin Templeton participating as asset managers. The third-party issuers this track exists to serve are already in the room",
       "It connects Digital Money to Securities Services and the wider Ensemble participant set, which is exactly the kind of cross-functional outcome this role exists to produce",
     ],
     whyApprovable:
       "The hard part — atomic settlement of a bond against tokenised deposits — has already been demonstrated to the regulator's own sandbox. What remains is commercial and operational scope, which is a far easier case to make than a first-of-kind build.",
     demoPage: { label: "Bond DvP Settlement", href: "/bond-dvp" },
     interviewLine:
-      "The second track commercialises what the Ensemble sandbox already proved. HSBC settled Orion bonds against tokenised deposits in 2024. The unbuilt step is doing that for assets HSBC does not issue — third-party funds and bonds — so the cash leg earns a position across the whole tokenised market, not just our own issuance.",
+      "The second track commercialises what the Ensemble sandbox already proved. HSBC settled Orion bonds against tokenised deposits in 2024. The unbuilt step is doing that for assets HSBC does not issue — and EnsembleTX has made tokenised money-market funds its first focus, with BlackRock and Franklin Templeton participating. The demand side already exists; what is missing is a commercial proposition around our cash leg.",
     risks: [
       "Introduces dependencies on external asset platforms, custodians and their settlement timetables",
       "Requires clear legal treatment of the asset leg, which HSBC does not control when it is not the issuer",

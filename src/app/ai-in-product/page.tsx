@@ -17,8 +17,8 @@ export default function AiInProductPage() {
     <div className="space-y-10">
       <PageHeader
         eyebrow="The product"
-        title="Artificial intelligence in this product"
-        description="The job description names AI and machine learning under Technology savvy, and calls out agentic payments in wholesale transaction banking as a strong advantage. This page is the answer to 'where does AI actually fit, and what would you refuse to let it do?'"
+        title="Artificial intelligence across both tracks"
+        description="The job description names AI and machine learning under Technology savvy, and calls out agentic payments in wholesale transaction banking as a strong advantage. This is where it fits across Track 1 and Track 2 — and, more importantly, what you would refuse to let it do."
       />
 
       <div className="flex items-start gap-3 rounded-xl border border-brand-100 bg-brand-50/40 px-4 py-3.5">

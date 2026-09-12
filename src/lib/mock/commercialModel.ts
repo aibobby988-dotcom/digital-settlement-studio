@@ -477,3 +477,37 @@ export const judgementCalls = [
       "If the internal funds transfer pricing model will not credit the product for balances it raises, the business case cannot be proven regardless of how well the product performs. This is an internal negotiation, and it decides the outcome more than any feature does.",
   },
 ];
+
+
+// ---------------------------------------------------------------------------
+// The unit economics above model Track 1. Track 2 has a different client, a
+// different revenue shape and materially different volume, so it is costed
+// separately rather than folded into the same worked example.
+// ---------------------------------------------------------------------------
+
+export const track2Economics = {
+  headline: "Track 2 earns differently — and that difference matters",
+  whySeparate:
+    "The cash-pooling numbers above assume one corporate treasury client with steady intra-group volume and, critically, balances that stay with the bank. Track 2 serves a different buyer — institutional investors and asset managers settling against third-party tokenised funds and bonds — and the money arrives in a different shape.",
+  lines: [
+    {
+      line: "Settlement fee per transaction",
+      how: "A fee on each cash leg provided against a third-party asset, typically priced per settlement rather than per dollar.",
+      note: "Smaller per transaction than a treasury subscription, but the volume ceiling is far higher because the bank does not need to have issued the asset to earn it.",
+    },
+    {
+      line: "Balances held pending settlement",
+      how: "Cash positioned ahead of subscription and redemption cycles sits with the bank between instruction and settlement.",
+      note: "Lower and more volatile than treasury operating balances, but real. Fund flows are lumpy, which makes this line harder to forecast than Track 1's.",
+    },
+    {
+      line: "Foreign-exchange spread on cross-currency settlement",
+      how: "Where the asset is priced in one currency and the investor funds in another.",
+      note: "Often the largest single line in this track, and the one most dependent on which corridors are opened first.",
+    },
+  ],
+  theRealPrize:
+    "Track 2's commercial logic is not the fee — it is position. If the bank is the default cash leg for tokenised fund settlement in a market, it sees the flow, holds the transitional balances and becomes very hard to displace. That is a market-structure argument rather than a revenue-per-client argument, and it should be made as one.",
+  honestCaveat:
+    "Track 2's revenue per client is lower and less predictable than Track 1's, and it depends on counterparties the bank does not control. It should be funded as a strategic position, not sold internally on near-term contribution — claiming otherwise invites a finance review that the numbers will not survive.",
+};

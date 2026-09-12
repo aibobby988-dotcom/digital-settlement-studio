@@ -472,4 +472,186 @@ export const epics: Epic[] = [
       },
     ],
   },
+
+  {
+    id: "epic-8",
+    title: "Track 1 — Automated cash pooling",
+    goal: "Let a treasurer set balance policy once and have the rail enforce it continuously, so funding happens on a rule rather than on an instruction. This is the epic that turns the existing transfer capability into a product.",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Engineering — Policy & Orchestration",
+      risk: "Operational Risk & Financial Crime Compliance",
+    },
+    status: "Not Started",
+    stories: [
+      {
+        id: "DST-801",
+        title: "Configure a group cash-pooling policy",
+        narrative:
+          "As a corporate treasurer, I want to set minimum balances, top-up targets and a daily sweep cap per entity so that funding happens automatically within limits I control.",
+        acceptanceCriteria: [
+          "Policy can be set per entity and per currency, with a minimum balance and a top-up target",
+          "A group-wide daily sweep cap can be set and cannot be exceeded by any combination of sweeps",
+          "Only entities that have passed onboarding and have an approved corridor can be selected as a funding destination",
+          "Policy changes require maker-checker approval and are written to the audit log with the approver's identity",
+          "The client can view the active policy and its full change history at any time",
+        ],
+        points: 13,
+        priority: "Must",
+        dependency: "Depends on DST-102, DST-103, DST-202",
+      },
+      {
+        id: "DST-802",
+        title: "Detect a threshold breach and raise a funding requirement",
+        narrative:
+          "As the platform, I want to evaluate entity balances continuously against policy so that a shortfall is identified the moment it occurs rather than at the next business day.",
+        acceptanceCriteria: [
+          "Balances are evaluated continuously, including outside business hours and at weekends",
+          "A breach generates a funding requirement calculated as the difference between current balance and top-up target",
+          "The requirement records which policy rule triggered it, for auditability",
+          "No funding requirement is generated for an entity whose corridor is not approved",
+          "Evaluation continues to function when one entity's balance feed is unavailable, and the gap is flagged rather than assumed",
+        ],
+        points: 13,
+        priority: "Must",
+        dependency: "Depends on DST-801, DST-301",
+      },
+      {
+        id: "DST-803",
+        title: "Execute an automated sweep within policy",
+        narrative:
+          "As a corporate treasurer, I want an approved shortfall funded automatically from the hub so that my subsidiaries are never short outside banking hours.",
+        acceptanceCriteria: [
+          "The full pre-settlement control sequence runs unchanged — entitlement, screening, funds check — before any value moves",
+          "The sweep executes only if it is within both the per-transaction and the group daily cap",
+          "The hub must have sufficient surplus after reserving its own minimum balance",
+          "Settlement is atomic: the debit and credit commit together or neither commits",
+          "Both entities receive a receipt showing the triggering rule, not just the amount",
+        ],
+        points: 21,
+        priority: "Must",
+        dependency: "Depends on DST-802, DST-202, DST-401",
+      },
+      {
+        id: "DST-804",
+        title: "Block and escalate a sweep that would breach a limit",
+        narrative:
+          "As a risk owner, I want any funding that would exceed the client's own limits to be refused and escalated so that automation never overrides a control the client set.",
+        acceptanceCriteria: [
+          "A sweep that would breach the daily cap is refused, and no partial amount is settled instead",
+          "A sweep to an unapproved corridor is refused with the specific reason recorded",
+          "A refusal creates a case with a named owner and notifies the client with an explanation, not a silent failure",
+          "The client can approve the exception manually through maker-checker, which is logged separately from automated activity",
+          "Refusals are reportable so that repeated breaches prompt a policy review conversation",
+        ],
+        points: 13,
+        priority: "Must",
+        dependency: "Depends on DST-803, DST-502",
+      },
+    ],
+  },
+  {
+    id: "epic-9",
+    title: "Track 2 — Cash leg for third-party tokenised assets",
+    goal: "Make tokenised deposits the settlement cash leg for assets HSBC does not issue, reached over a shared interoperability layer rather than a bilateral integration per counterparty.",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Engineering — Interoperability",
+      risk: "Legal, Operational Risk & Financial Crime Compliance",
+    },
+    status: "Not Started",
+    stories: [
+      {
+        id: "DST-901",
+        title: "Onboard an external asset platform as a settlement counterparty",
+        narrative:
+          "As a product owner, I want a defined process for admitting a third-party asset platform so that we can serve its settlement flow without building a bespoke integration each time.",
+        acceptanceCriteria: [
+          "Due diligence covers the platform's legal structure, asset custody model, operational resilience and financial-crime controls",
+          "A settlement-finality opinion exists for the jurisdiction and asset type before go-live",
+          "Connection uses the shared interoperability layer rather than a point-to-point build",
+          "Entitlements define exactly which clients and asset classes are in scope for that platform",
+          "An exit plan is documented before onboarding, not after",
+        ],
+        points: 21,
+        priority: "Must",
+        dependency: "Depends on DST-101",
+      },
+      {
+        id: "DST-902",
+        title: "Settle a third-party tokenised fund purchase against tokenised deposits",
+        narrative:
+          "As an institutional client, I want to buy units in a third-party tokenised money-market fund and have the cash leg settle atomically from my tokenised deposits so that I carry no settlement exposure between the legs.",
+        acceptanceCriteria: [
+          "Cash and asset legs commit together across the two platforms, or neither commits",
+          "The cash leg is refused if screening, entitlement or funds checks fail, and the asset leg is released back to the issuer",
+          "Settlement completes without the bank taking custody of, or a position in, the asset",
+          "Both platforms receive matching settlement references for reconciliation",
+          "A failure on the asset platform's side leaves the client's cash untouched and raises a case",
+        ],
+        points: 21,
+        priority: "Must",
+        dependency: "Depends on DST-901, DST-202",
+      },
+      {
+        id: "DST-903",
+        title: "Reconcile cross-platform settlement",
+        narrative:
+          "As an operations analyst, I want continuous reconciliation across the tokenised ledger, core banking and the external platform's confirmations so that a break between organisations is detected quickly.",
+        acceptanceCriteria: [
+          "Every cross-platform settlement is matched against the counterparty confirmation within the agreed window",
+          "An unmatched settlement raises a break with a named owner and a resolution SLA",
+          "Breaks are categorised by whether the cause sits with us, the counterparty or the interoperability layer",
+          "End-of-day evidence is produced in a form Finance and Audit can consume without manual assembly",
+        ],
+        points: 13,
+        priority: "Must",
+        dependency: "Depends on DST-902, DST-302",
+      },
+    ],
+  },
+  {
+    id: "epic-10",
+    title: "Forward look — Delegated mandates for agentic payments",
+    goal: "Let a client delegate bounded payment authority to software, with the mandate rather than the agent as the enforced control. Scoped deliberately after the two tracks are proven.",
+    owners: {
+      product: "Product — Digital Currencies",
+      delivery: "Engineering — Policy & Orchestration",
+      risk: "Operational Risk, Legal & Financial Crime Compliance",
+    },
+    status: "Not Started",
+    stories: [
+      {
+        id: "DST-1001",
+        title: "Grant a delegated payment mandate",
+        narrative:
+          "As an authorised client approver, I want to grant software a bounded mandate so that it can act on my behalf only within limits I have set in advance.",
+        acceptanceCriteria: [
+          "A mandate specifies permitted beneficiaries, per-transaction limit, daily limit and the triggering condition",
+          "Granting a mandate requires maker-checker approval from named human approvers",
+          "The mandate has an explicit expiry and can be revoked instantly by any authorised approver",
+          "The client can see every mandate currently in force and what each permits",
+        ],
+        points: 13,
+        priority: "Should",
+        dependency: "Depends on DST-801, DST-103",
+      },
+      {
+        id: "DST-1002",
+        title: "Enforce the mandate on every agent-initiated action",
+        narrative:
+          "As a risk owner, I want every action proposed by software checked against its mandate before execution so that accountability sits with the mandate and its human grantor, never with the software.",
+        acceptanceCriteria: [
+          "Every proposed action is evaluated against all mandate conditions before any control sequence begins",
+          "An action outside any condition is refused outright, and the agent cannot retry or escalate it itself",
+          "The refusal records the specific condition that caused it",
+          "Every executed action is attributed in the audit log to the mandate identifier and the human who granted it",
+          "Revoking a mandate takes effect immediately, including for actions already in flight but not yet settled",
+        ],
+        points: 21,
+        priority: "Should",
+        dependency: "Depends on DST-1001, DST-803",
+      },
+    ],
+  },
 ];

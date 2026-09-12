@@ -30,6 +30,7 @@ import {
   scaleGate,
   sensitivities,
   stakeholderDepartments,
+  track2Economics,
   unitEconomics,
   vanityMetrics,
 } from "@/lib/mock/commercialModel";
@@ -216,6 +217,42 @@ export default function CommercialModelPage() {
           <p className="mt-3 text-[12px] leading-relaxed text-ink-700">
             {businessCase.breakEvenDetail}
           </p>
+        </Card>
+      </section>
+
+      <section>
+        <Card className="border-blue-100 bg-blue-100/15">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-blue-700">
+            Track 2 economics
+          </p>
+          <h2 className="mt-1 text-[16px] font-semibold text-charcoal-900">
+            {track2Economics.headline}
+          </h2>
+          <p className="mt-2 text-[12.5px] leading-relaxed text-ink-700">
+            {track2Economics.whySeparate}
+          </p>
+
+          <div className="mt-3.5 space-y-2.5">
+            {track2Economics.lines.map((l) => (
+              <div key={l.line} className="rounded-lg bg-paper-0 px-3.5 py-2.5">
+                <p className="text-[12.5px] font-semibold text-charcoal-900">{l.line}</p>
+                <p className="mt-1 text-[12px] leading-relaxed text-ink-700">{l.how}</p>
+                <p className="mt-1 text-[11.5px] leading-relaxed text-ink-500">{l.note}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-3.5 rounded-lg border border-brand-100 bg-brand-50/50 px-3.5 py-3">
+            <p className="text-[12px] leading-relaxed text-charcoal-900">
+              <strong className="font-semibold">The real prize:</strong> {track2Economics.theRealPrize}
+            </p>
+          </div>
+          <div className="mt-2.5 rounded-lg border border-amber-100 bg-amber-50/40 px-3.5 py-3">
+            <p className="text-[12px] leading-relaxed text-charcoal-900">
+              <strong className="font-semibold">Be honest about this:</strong>{" "}
+              {track2Economics.honestCaveat}
+            </p>
+          </div>
         </Card>
       </section>
 
