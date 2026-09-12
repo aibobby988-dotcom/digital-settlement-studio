@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { StakeholderDemo } from "@/components/demo/StakeholderDemo";
@@ -6,6 +7,7 @@ import { StakeholderDemo } from "@/components/demo/StakeholderDemo";
 export default function StakeholderDemoPage() {
   return (
     <div className="space-y-10">
+      <WalkthroughBar step={2} />
       <PageHeader
         eyebrow="Live Product Demonstration"
         title="From client outcome to controlled settlement"

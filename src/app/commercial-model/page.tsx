@@ -11,6 +11,7 @@ import {
   TrendingDown,
 } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
@@ -60,6 +61,7 @@ const kpiTone = {
 export default function CommercialModelPage() {
   return (
     <div className="space-y-10">
+      <WalkthroughBar step={5} />
       <PageHeader
         eyebrow="Why this approach"
         title="How this actually makes money"

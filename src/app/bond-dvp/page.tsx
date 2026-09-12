@@ -1,5 +1,6 @@
 import { ArrowRight, Landmark, Layers, Leaf, ShieldCheck } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
@@ -11,6 +12,7 @@ import { formatCurrency, formatNumber } from "@/lib/utils";
 export default function BondDvpPage() {
   return (
     <div className="space-y-10">
+      <WalkthroughBar step={4} />
       <PageHeader
         eyebrow="Bond DvP Settlement"
         title="Delivery versus Payment"

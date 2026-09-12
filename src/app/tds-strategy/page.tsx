@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Ban, Layers, Megaphone, Route, Telescope } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -32,6 +33,7 @@ const vectorTone = {
 export default function TdsStrategyPage() {
   return (
     <div className="space-y-10">
+      <WalkthroughBar step={1} />
       <PageHeader
         eyebrow="Start here"
         title="Extending the cash leg — the strategy this case study argues for"

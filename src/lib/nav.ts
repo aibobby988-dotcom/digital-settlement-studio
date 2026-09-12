@@ -49,10 +49,10 @@ export const navGroups: NavGroup[] = [
       },
       {
         href: "/",
-        label: "Executive Brief",
-        description: "Open with the thesis, client problem and phased proposition",
+        label: "The Client Problem",
+        description: "Why a treasurer would pay for this — the evidence under the strategy",
         use: "screen-share",
-        guidance: "Use this to frame the five-minute story. Do not dwell on detailed feature pages before the client problem and product decision are clear.",
+        guidance: "Not the opening summary - Extending TDS is. Use this when someone asks why the client problem is real, or wants the thesis and phase sequencing behind the two tracks.",
       },
       {
         href: "/stakeholder-demo",

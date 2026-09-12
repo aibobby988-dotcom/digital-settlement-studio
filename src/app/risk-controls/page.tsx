@@ -49,7 +49,7 @@ export default function RiskControlsPage() {
 
   return (
     <div className="space-y-8">
-      <WalkthroughBar step={4} />
+      <WalkthroughBar step={6} />
       <PageHeader
         eyebrow="Risk & Controls"
         title="Risk and control framework"

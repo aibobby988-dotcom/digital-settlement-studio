@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/Badge";
 import { SystemArchitectureDiagram } from "@/components/architecture/SystemArchitectureDiagram";
 import { TransferDecisionFlowDiagram } from "@/components/architecture/TransferDecisionFlowDiagram";
 import { AtomicSettlementDiagram } from "@/components/architecture/AtomicSettlementDiagram";
-import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 
 const funnel = [
   "Client use case",
@@ -42,7 +41,6 @@ const operatingModels = [
 export default function ArchitecturePage() {
   return (
     <div className="space-y-10">
-      <WalkthroughBar step={3} />
       <PageHeader
         eyebrow="Architecture"
         title="System architecture & decision flows"

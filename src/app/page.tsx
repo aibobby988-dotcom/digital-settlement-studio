@@ -23,7 +23,6 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { WalkthroughBar } from "@/components/ui/WalkthroughBar";
 import { TOUR_STORAGE_KEY, tourSteps } from "@/lib/tour";
 
 const clientProblems = [
@@ -126,15 +125,14 @@ export default function ExecutiveBriefPage() {
 
   return (
     <div className="space-y-12">
-      <WalkthroughBar step={1} />
 
       <PageHeader
-        eyebrow="Executive Brief"
-        title="Digital Settlement Studio — the 5-minute version"
-        description="A decision-ready summary of the product thesis, target client, flagship proposition and delivery strategy — built for a fast walkthrough, not a deep read."
+        eyebrow="The client problem"
+        title="Why a treasurer would want this at all"
+        description="The five problems that make a tokenised cash leg worth paying for, the thesis behind it, and how the phases sequence. This is the substance underneath the strategy — not a second summary of it."
         actions={
           <Button icon={<PlayCircle size={15} />} onClick={startWalkthrough}>
-            Start 5-minute walkthrough
+            Start guided walkthrough
           </Button>
         }
       />
@@ -142,16 +140,16 @@ export default function ExecutiveBriefPage() {
       <div className="flex items-start gap-3 rounded-xl border border-brand-100 bg-brand-50/40 px-4 py-3.5">
         <Compass size={16} className="mt-0.5 shrink-0 text-brand-600" />
         <p className="text-[12.5px] leading-relaxed text-charcoal-900">
-          <strong className="font-semibold">What this is, and what it is not.</strong> Digital
-          Settlement Studio is a working prototype, not a proposed competitor to anything HSBC
-          already runs. HSBC&apos;s Tokenised Deposit Service is live in six markets — the
-          argument is never &ldquo;build this&rdquo;, it is &ldquo;here is how I would extend the
-          cash leg, and here is a working reference implementation of it&rdquo;. The client
-          problems and phases below are the substance behind{" "}
+          <strong className="font-semibold">Read the strategy first.</strong> This page is not the
+          opening summary —{" "}
           <Link href="/tds-strategy" className="font-medium text-brand-700">
-            the two-track strategy
-          </Link>
-          , which is the page to read first.
+            Extending TDS
+          </Link>{" "}
+          is. HSBC&apos;s Tokenised Deposit Service is already live in six markets, so the
+          argument is never &ldquo;build this&rdquo;; it is &ldquo;here is how I would extend the
+          cash leg&rdquo;. What follows is the evidence underneath that argument: why the client
+          problem is real, why now, and how the phases sequence. Digital Settlement Studio itself
+          is a working reference implementation of the extension, not a competing product.
         </p>
       </div>
 

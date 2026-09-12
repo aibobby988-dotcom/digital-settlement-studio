@@ -88,7 +88,7 @@ export default function TreasuryPage() {
 
   return (
     <div className="space-y-10">
-      <WalkthroughBar step={2} />
+      <WalkthroughBar step={3} />
       <div>
         <Badge tone="brand" className="mb-3">Flagship proposition</Badge>
         <PageHeader
