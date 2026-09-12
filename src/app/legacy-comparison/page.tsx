@@ -10,6 +10,8 @@ import {
   comparisonRows,
   disadvantages,
   effortBreakdown,
+  effortSummary,
+  trackDeltas,
   worthItFramework,
 } from "@/lib/mock/legacyComparison";
 
@@ -38,6 +40,57 @@ export default function LegacyComparisonPage() {
           plainly as the benefits.
         </p>
       </div>
+
+      <section>
+        <div className="mb-4">
+          <h2 className="text-[18px] font-semibold text-charcoal-900">
+            The comparison that actually matters
+          </h2>
+          <p className="mt-1 max-w-3xl text-[12.5px] leading-relaxed text-ink-500">
+            Tokenised versus conventional is the easy argument, and HSBC already won it — the
+            Tokenised Deposit Service is live in six markets. The harder and more useful question
+            is what each proposed track adds <em>on top of the rail that already exists</em>, what
+            it depends on, and what it honestly costs.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {trackDeltas.map((t) => (
+            <Card key={t.track} className="border-brand-100">
+              <p className="text-[14px] font-semibold text-charcoal-900">{t.track}</p>
+
+              <div className="mt-3 grid gap-3 lg:grid-cols-2">
+                <div className="rounded-xl bg-paper-50 p-3.5">
+                  <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                    Where HSBC is without it
+                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{t.todayWithoutIt}</p>
+                </div>
+                <div className="rounded-xl bg-brand-50/60 p-3.5">
+                  <p className="text-[10.5px] font-semibold uppercase tracking-wide text-brand-600">
+                    What the track adds
+                  </p>
+                  <p className="mt-1 text-[12px] leading-relaxed text-charcoal-900">{t.whatItAdds}</p>
+                </div>
+              </div>
+
+              <div className="mt-3 space-y-2.5">
+                <p className="text-[12px] leading-relaxed text-ink-700">
+                  <strong className="font-semibold text-charcoal-900">Anchored to HSBC:</strong>{" "}
+                  {t.hsbcAnchor}
+                </p>
+                <p className="text-[12px] leading-relaxed text-ink-700">
+                  <strong className="font-semibold text-charcoal-900">Depends on:</strong>{" "}
+                  {t.dependsOn}
+                </p>
+                <p className="rounded-lg border border-amber-100 bg-amber-50/40 px-3 py-2 text-[12px] leading-relaxed text-charcoal-900">
+                  <strong className="font-semibold">The honest cost:</strong> {t.honestCost}
+                </p>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
 
       <section>
         <Card padded={false}>
@@ -106,14 +159,19 @@ export default function LegacyComparisonPage() {
         />
         <Card className="mt-5" padded={false}>
           <div className="p-5 pb-0">
-            <CardHeader title="Effort by area" subtitle={`${totalPoints} points total across 7 epics — see the full backlog for story-level detail`} />
+            <CardHeader title="Effort by area" subtitle={`${totalPoints} points across 10 epics — ${effortSummary.baseRail} for the base rail, ${effortSummary.tracks} for the two tracks and mandates`} />
           </div>
           <div className="space-y-0 px-5 pb-5">
             {effortBreakdown.map((e) => (
               <div key={e.area} className="flex items-center gap-4 border-b border-paper-100 py-3 last:border-0">
                 <div className="flex-1">
-                  <p className="text-[12.5px] font-semibold text-charcoal-900">{e.area}</p>
-                  <p className="text-[11.5px] text-ink-500">{e.effort}</p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <p className="text-[12.5px] font-semibold text-charcoal-900">{e.area}</p>
+                    <Badge tone={e.scope === "Base rail" ? "neutral" : e.scope === "Track 1" ? "brand" : e.scope === "Track 2" ? "blue" : "amber"}>
+                      {e.scope}
+                    </Badge>
+                  </div>
+                  <p className="text-[11.5px] text-ink-500">{e.note}</p>
                 </div>
                 <div className="flex w-32 shrink-0 items-center gap-2">
                   <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-paper-100">
@@ -128,6 +186,9 @@ export default function LegacyComparisonPage() {
             ))}
           </div>
         </Card>
+        <div className="mt-3 rounded-xl border border-brand-100 bg-brand-50/40 px-4 py-3.5">
+          <p className="text-[12.5px] leading-relaxed text-charcoal-900">{effortSummary.insight}</p>
+        </div>
         <p className="mt-3 text-[12px] text-ink-500">
           <Link href="/backlog" className="font-medium text-brand-600">
             See the full delivery backlog
