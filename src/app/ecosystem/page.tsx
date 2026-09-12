@@ -141,8 +141,8 @@ export default function EcosystemPage() {
       <section>
         <PageHeader
           eyebrow="Vendor deep-dive"
-          title="What each vendor actually offers — and who wins for HSBC"
-          description="Knowing the category (custody, network, financial crime) is a weak answer on its own. Knowing which specific vendor HSBC has already backed, piloted with, or gone live on — and why — is what separates a rehearsed answer from real research."
+          title="What each vendor actually offers — and where the public evidence points"
+          description="Knowing the category (custody, network, financial crime) is a weak answer on its own. Knowing which specific vendor HSBC has already backed, piloted with or gone live on is what separates real research from a rehearsed answer. Read these as evidence of where HSBC has committed, not as procurement recommendations you are making — you would have no basis for the latter."
         />
         <div className="mt-6 space-y-8">
           {vendorDeepDive.map((cat) => (
@@ -164,7 +164,7 @@ export default function EcosystemPage() {
                         {v.isPick && (
                           <span className="inline-flex items-center gap-1 rounded-full bg-brand-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
                             <Trophy size={10} />
-                            Pick for HSBC
+                            Strongest public evidence
                           </span>
                         )}
                       </div>

@@ -118,6 +118,17 @@ export default function TreasuryPage() {
 
       <CashPoolingDemo />
 
+      <div className="flex items-start gap-3 rounded-xl border border-paper-200 bg-paper-50 px-4 py-3.5">
+        <Layers size={16} className="mt-0.5 shrink-0 text-ink-500" />
+        <p className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <strong className="font-semibold">Two demos on this page, deliberately.</strong> Above is
+          the cash-pooling engine — money moving because a policy said so, which is the Track 1
+          proposal. Below is the manual transfer workflow, lifecycle and balances, which is what
+          the tokenised rail does today. Show the policy engine to make the argument; show the
+          manual flow only if someone asks how a single instruction is actually controlled.
+        </p>
+      </div>
+
       <div className="flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-100/20 px-4 py-3.5">
         <Info size={16} className="mt-0.5 shrink-0 text-blue-600" />
         <p className="text-[12.5px] leading-relaxed text-charcoal-900">

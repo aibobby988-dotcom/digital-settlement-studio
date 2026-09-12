@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Network } from "lucide-react";
 import Link from "next/link";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { StrategyContext } from "@/components/ui/StrategyContext";
@@ -50,6 +50,17 @@ export default function ArchitecturePage() {
       <TermsOnThisPage terms={["Orchestration", "API", "Permissioned network", "DLT", "Smart contract", "Reconciliation", "HSM"]} />
 
       <StrategyContext track="foundation" />
+
+      <div className="flex items-start gap-3 rounded-xl border border-paper-200 bg-paper-50 px-4 py-3.5">
+        <Network size={16} className="mt-0.5 shrink-0 text-ink-500" />
+        <p className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <strong className="font-semibold">Read this as the extension layer, not a new platform.</strong>{" "}
+          The ledger, the core-banking connection and the deposit rail already exist at HSBC. What
+          is genuinely being proposed sits in the orchestration and policy tiers — the part that
+          decides whether a movement is allowed, sequences the controls, and enforces a client
+          mandate. If asked what you would actually build, point here rather than at the ledger.
+        </p>
+      </div>
 
       <section>
         <Card>

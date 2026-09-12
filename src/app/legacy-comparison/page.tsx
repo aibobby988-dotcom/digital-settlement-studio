@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, XCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, XCircle , Scale} from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
@@ -27,6 +27,17 @@ export default function LegacyComparisonPage() {
       <TermsOnThisPage terms={["Correspondent banking", "RTGS", "Netting", "ISO 20022", "Cut-off time", "Nostro account", "Settlement"]} />
 
       <StrategyContext track="evidence" />
+
+      <div className="flex items-start gap-3 rounded-xl border border-paper-200 bg-paper-50 px-4 py-3.5">
+        <Scale size={16} className="mt-0.5 shrink-0 text-ink-500" />
+        <p className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <strong className="font-semibold">What legacy means here.</strong> Not HSBC&apos;s
+          tokenised rail, which is already live — the comparison is against the conventional,
+          cut-off-bound payment process a treasurer uses today. This page answers &ldquo;is the
+          change worth the cost?&rdquo; for the two extension tracks, so state the limitations as
+          plainly as the benefits.
+        </p>
+      </div>
 
       <section>
         <Card padded={false}>

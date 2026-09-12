@@ -241,9 +241,9 @@ export const navGroups: NavGroup[] = [
       {
         href: "/ecosystem",
         label: "Ecosystem & Market",
-        description: "Useful research, but vendor conclusions need calibration",
-        use: "review",
-        guidance: "Keep the build/buy/partner framework, but do not use vendor 'picks' or inferred HSBC choices in an interview. Use the sourced Industry Knowledge tab for current market facts.",
+        description: "Build/buy/partner framework and where HSBC has publicly committed",
+        use: "supporting",
+        guidance: "Reframed: vendor sections now read as evidence of where HSBC has already committed - Metaco live, Canton piloted, Elliptic invested in - rather than as procurement picks you are recommending. Safe to reference on those terms; never present it as a vendor decision you would make.",
       },
     ],
   },
