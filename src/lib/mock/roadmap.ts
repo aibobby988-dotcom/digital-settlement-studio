@@ -44,12 +44,13 @@ export const roadmapPhases: RoadmapPhase[] = [
   {
     id: "phase-2",
     phase: "Phase 2",
-    title: "Selected cross-border corporate treasury corridors",
+    title: "Tokenised cash pooling and selected treasury corridors",
     window: "6–18 months",
     summary:
-      "Extend tokenised deposit transfers across group entities in priority corridors (HK–SG–US–UK), giving corporate treasury clients 24/7 intercompany liquidity movement beyond traditional cut-off times.",
+      "Commercialise 24/7 tokenised cash pooling across approved group entities in priority corridors (HK–SG–US–UK), using target balances and controlled sweeps to improve liquidity visibility beyond traditional cut-off times.",
     status: "Planned",
     deliverables: [
+      "Target-balance and cash-concentration policy engine",
       "Multi-entity, multi-currency transfer flow (HKD, USD, GBP, SGD)",
       "Purpose-code tagging and enhanced transaction monitoring",
       "Client-facing balance and transaction reporting",
@@ -76,10 +77,10 @@ export const roadmapPhases: RoadmapPhase[] = [
   {
     id: "phase-4",
     phase: "Phase 4",
-    title: "Cross-bank interoperability and selected FX PvP corridors",
+    title: "Cross-bank interoperability and selected FX PvP discovery corridors",
     window: "30–48 months",
     summary:
-      "Extend settlement beyond a single institution: interoperate with other participant banks and market infrastructures, and introduce atomic Payment-versus-Payment FX settlement to remove principal risk on cross-currency trades.",
+      "Assess settlement beyond a single institution: interoperate with participant banks and market infrastructures, then pilot atomic Payment-versus-Payment FX only where liquidity, legal finality and operational readiness are evidenced.",
     status: "Planned",
     deliverables: [
       "Network interoperability standard and participant onboarding model",

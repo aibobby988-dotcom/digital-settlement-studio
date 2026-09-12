@@ -112,8 +112,8 @@ export default function ArchitecturePage() {
       <section>
         <Card>
           <CardHeader
-            title="Atomic settlement — DvP / PvP"
-            subtitle="The same both-legs-or-neither mechanism underpins Bond DvP and FX PvP settlement."
+            title="Future settlement extensions — DvP / PvP"
+            subtitle="Cash pooling uses a governed intrabank transfer. DvP and PvP are later both-legs-or-neither settlement models."
           />
           <div className="overflow-x-auto scrollbar-thin">
             <div className="mx-auto max-w-[640px]">
@@ -121,11 +121,11 @@ export default function ArchitecturePage() {
             </div>
           </div>
           <p className="mt-5 border-t border-paper-200 pt-5 text-[12.5px] leading-relaxed text-ink-500">
-            Both legs are held in escrow until every pre-settlement check clears. If any check
-            fails — insufficient funds, insufficient holdings, a missing approval, or a screening
-            hit — the platform rolls back both legs to their original holders rather than
-            settling one side. This is what removes principal and counterparty risk from the
-            settlement window, for both a bond trade and an FX exchange.
+            DvP is needed when tokenised cash is exchanged for an asset; PvP is needed when one
+            currency is exchanged for another. Both legs are reserved until every pre-settlement
+            check clears. If any check fails — funds, holdings, approval, liquidity or screening
+            — neither leg settles. These models require additional participant, legal-finality,
+            liquidity and operating-model readiness beyond a V1 cash-pooling transfer.
           </p>
         </Card>
       </section>

@@ -11,7 +11,7 @@ export default function FxPvpPage() {
   return (
     <div className="space-y-10">
       <PageHeader
-        eyebrow="FX PvP Settlement"
+        eyebrow="Future strategic pilot · FX PvP"
         title="Payment versus Payment"
         description="Atomic settlement of both currency legs of an FX trade — removing principal risk from the settlement window."
       />
@@ -40,6 +40,13 @@ export default function FxPvpPage() {
           confirming receipt of the other currency.
         </p>
       </Card>
+
+      <div className="flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-100/20 px-4 py-3.5">
+        <Clock3 size={16} className="mt-0.5 shrink-0 text-amber-600" />
+        <p className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <strong className="font-semibold">Why this is not V1:</strong> PvP needs supported currency corridors, participant-bank commitments, prefunded liquidity, valid FX quotes, legal-finality analysis and an exception/unwind model. It is a credible future extension after the core tokenised-treasury control model is proven.
+        </p>
+      </div>
 
       <section>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch">

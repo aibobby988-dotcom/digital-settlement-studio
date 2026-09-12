@@ -117,8 +117,9 @@ export default function TreasuryPage() {
         <p className="text-[12.5px] leading-relaxed text-charcoal-900">
           <strong className="font-semibold">Tokenised deposits</strong> are digital representations
           of commercial bank money, issued 1:1 against a funded deposit at the issuing entity.
-          They move on a permissioned settlement ledger with the same legal and risk standing as
-          the underlying deposit, and can be redeemed to the originating account at any time.
+          They move on a permissioned settlement ledger. Legal treatment, redemption rights and
+          settlement finality must be confirmed through contractual documentation and
+          jurisdiction-specific analysis before each production corridor goes live.
         </p>
       </div>
 
@@ -143,6 +144,30 @@ export default function TreasuryPage() {
           </p>
         </Card>
       </section>
+
+      <Card className="border-brand-100 bg-brand-50/30">
+        <CardHeader
+          title="Flagship workflow: 24/7 tokenised cash pooling"
+          subtitle="A treasury-management product built on tokenised deposits — no DvP or PvP dependency in V1."
+        />
+        <div className="grid grid-cols-1 gap-4 text-[12.5px] leading-relaxed text-ink-700 sm:grid-cols-3">
+          <div>
+            <p className="font-semibold text-charcoal-900">1. Set policy</p>
+            <p className="mt-1">The treasury hub defines target balances, approved entities, currencies, limits and maker-checker rules.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-charcoal-900">2. Sweep or fund</p>
+            <p className="mt-1">Surplus is concentrated to the hub; an entity below target receives just-in-time funding through a controlled tokenised-deposit transfer.</p>
+          </div>
+          <div>
+            <p className="font-semibold text-charcoal-900">3. Reconcile in real time</p>
+            <p className="mt-1">ERP/TMS receives structured status and balance updates, while the tokenised and core-bank ledgers reconcile continuously.</p>
+          </div>
+        </div>
+        <p className="mt-4 border-t border-brand-100 pt-4 text-[12px] leading-relaxed text-ink-600">
+          <strong className="text-charcoal-900">Dependency boundary:</strong> V1 is an intrabank liquidity product. DvP is only needed when cash is exchanged for an asset; PvP is only needed when one currency is exchanged for another.
+        </p>
+      </Card>
 
       <div className="flex items-start gap-3 rounded-xl border border-amber-100 bg-amber-100/20 px-4 py-3.5">
         <Layers size={16} className="mt-0.5 shrink-0 text-amber-500" />

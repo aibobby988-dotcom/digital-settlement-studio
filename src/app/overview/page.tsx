@@ -49,15 +49,15 @@ const products = [
   {
     href: "/treasury",
     icon: Landmark,
-    title: "Tokenised Treasury",
+    title: "Tokenised Treasury & Cash Pooling",
     flagship: true,
     description:
-      "24/7 corporate treasury dashboard for issuing, transferring and redeeming tokenised bank deposits across group entities.",
+      "A 24/7 liquidity-management proposition: issue, transfer, redeem and automatically concentrate tokenised deposits across approved group entities.",
   },
   {
     href: "/bond-dvp",
     icon: ArrowLeftRight,
-    title: "Bond DvP Settlement",
+    title: "Bond DvP Settlement · Future extension",
     flagship: false,
     description:
       "Atomic Delivery-versus-Payment settlement for tokenised fixed income — the asset and cash legs settle together, or not at all.",
@@ -65,7 +65,7 @@ const products = [
   {
     href: "/fx-pvp",
     icon: Repeat,
-    title: "FX PvP Settlement",
+    title: "FX PvP Settlement · Future pilot",
     flagship: false,
     description:
       "Atomic Payment-versus-Payment FX settlement that removes principal risk by settling both currency legs simultaneously.",
@@ -99,9 +99,9 @@ const whyItMatters = [
   },
   {
     icon: ArrowLeftRight,
-    title: "Atomic DvP / PvP risk reduction",
+    title: "Expandable settlement capability",
     description:
-      "Linked settlement legs either both complete or both fail — removing principal and counterparty risk from the settlement window.",
+      "The same digital-cash foundation can later support DvP for tokenised assets and PvP for selected FX corridors, once market and legal readiness are proven.",
   },
 ];
 
@@ -116,15 +116,16 @@ export default function OverviewPage() {
           Digital Settlement Studio
         </h1>
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-ink-400">
-          A controlled, 24/7 settlement proposition for institutional treasury and tokenised
-          assets — designed for regulated financial infrastructure, not retail speculation.
+          A controlled, 24/7 liquidity-management proposition for corporate treasury, with
+          tokenised-asset and FX settlement as later extensions — designed for regulated
+          financial infrastructure, not retail speculation.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/treasury"
             className="inline-flex items-center gap-1.5 rounded-lg bg-brand-500 px-4 py-2.5 text-[13px] font-medium text-charcoal-950 hover:bg-brand-400"
           >
-            Explore Tokenised Treasury
+            Explore Cash Pooling
             <ArrowUpRight size={14} />
           </Link>
           <Link
