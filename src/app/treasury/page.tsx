@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { StatusBadge, Badge } from "@/components/ui/Badge";
 import { Timeline } from "@/components/ui/Timeline";
 import { TransferWizard } from "@/components/treasury/TransferWizard";
+import { CashPoolingDemo } from "@/components/treasury/CashPoolingDemo";
 import { IssueRedeemModal } from "@/components/treasury/IssueRedeemModal";
 import { balances, entities, transactions } from "@/lib/mock/entities";
 import type { CurrencyCode, TransferStage } from "@/lib/types";
@@ -114,6 +115,8 @@ export default function TreasuryPage() {
       <TermsOnThisPage terms={["Tokenised deposit", "Settlement", "Reconciliation", "Maker-checker", "Sanctions screening", "Treasurer", "Cut-off time"]} />
 
       <StrategyContext track="track1" />
+
+      <CashPoolingDemo />
 
       <div className="flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-100/20 px-4 py-3.5">
         <Info size={16} className="mt-0.5 shrink-0 text-blue-600" />

@@ -1,6 +1,7 @@
 import { Bot, Info, ShieldCheck, MessageSquareText } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card } from "@/components/ui/Card";
+import { MandateDemo } from "@/components/demo/MandateDemo";
 import { Badge } from "@/components/ui/Badge";
 import { Explain } from "@/components/ui/Explain";
 import { aiControls, aiInterviewAngles, aiUseCases } from "@/lib/mock/aiInProduct";
@@ -29,6 +30,10 @@ export default function AiInProductPage() {
           are answered before they are raised.
         </p>
       </div>
+
+      <section>
+        <MandateDemo />
+      </section>
 
       <section>
         <div className="mb-4">

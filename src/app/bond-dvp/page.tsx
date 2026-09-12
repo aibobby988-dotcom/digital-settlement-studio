@@ -6,7 +6,7 @@ import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { DvpSimulator } from "@/components/settlement/DvpSimulator";
-import { bond, buyer, seller, tradeDetails } from "@/lib/mock/bonds";
+import { bond, buyer, legOwnership, seller, tradeDetails, whyThirdParty } from "@/lib/mock/bonds";
 import { formatCurrency, formatNumber } from "@/lib/utils";
 
 export default function BondDvpPage() {
@@ -23,10 +23,49 @@ export default function BondDvpPage() {
 
       <StrategyContext track="track2" />
 
+      <Card className="border-brand-200 bg-brand-50/40">
+        <div className="flex items-start gap-3">
+          <Layers size={17} className="mt-0.5 shrink-0 text-brand-600" />
+          <div>
+            <p className="text-[13px] font-semibold text-charcoal-900">{whyThirdParty.headline}</p>
+            <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{whyThirdParty.body}</p>
+            <p className="mt-2.5 rounded-lg bg-paper-0 px-3 py-2 text-[12px] leading-relaxed text-brand-700">
+              <strong className="font-semibold">So what:</strong> {whyThirdParty.soWhat}
+            </p>
+            <div className="mt-3 grid gap-2.5 border-t border-brand-100 pt-3 sm:grid-cols-3">
+              <div>
+                <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                  Asset leg — not ours
+                </p>
+                <p className="mt-1 text-[11.5px] leading-relaxed text-charcoal-900">
+                  {legOwnership.assetLeg}
+                </p>
+              </div>
+              <div>
+                <p className="text-[10.5px] font-semibold uppercase tracking-wide text-brand-600">
+                  Cash leg — ours
+                </p>
+                <p className="mt-1 text-[11.5px] leading-relaxed text-charcoal-900">
+                  {legOwnership.cashLeg}
+                </p>
+              </div>
+              <div>
+                <p className="text-[10.5px] font-semibold uppercase tracking-wide text-ink-400">
+                  How they meet
+                </p>
+                <p className="mt-1 text-[11.5px] leading-relaxed text-charcoal-900">
+                  {legOwnership.connection}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
       <Card className="bg-charcoal-950 border-charcoal-900">
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <Badge tone="brand" className="bg-brand-500/10 text-brand-300 ring-brand-400/25">
-            <Leaf size={11} /> Tokenised green bond
+            <Leaf size={11} /> Third-party tokenised fund
           </Badge>
           <Badge tone="neutral" className="bg-charcoal-800 text-ink-400 ring-charcoal-700">
             {bond.isin}
