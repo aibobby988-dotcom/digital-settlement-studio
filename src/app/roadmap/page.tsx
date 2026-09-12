@@ -24,6 +24,37 @@ export default function RoadmapPage() {
 
       <StrategyContext track="evidence" />
 
+      <Card className="border-brand-100 bg-brand-50/30">
+        <p className="text-[13px] font-semibold text-charcoal-900">
+          How these phases map to the two tracks
+        </p>
+        <p className="mt-1 text-[12px] leading-relaxed text-ink-600">
+          Read alongside the strategy, this is the sequencing underneath it — and note where
+          HSBC already is, so you never present a completed phase as a proposal.
+        </p>
+        <ul className="mt-3 space-y-2 text-[12.5px] leading-relaxed text-charcoal-900">
+          <li>
+            <strong className="font-semibold">Phase 1 — already done by HSBC.</strong> Intrabank
+            tokenised treasury is live in six markets. Treat this phase as the starting position,
+            not something to propose.
+          </li>
+          <li>
+            <strong className="font-semibold">Phase 2 — this is Track 1.</strong> Tokenised cash
+            pooling, the commercial engine and where the retained balances come from.
+          </li>
+          <li>
+            <strong className="font-semibold">Phase 3 — this is Track 2.</strong> Tokenised-asset
+            delivery-versus-payment. Proven against Orion in the Ensemble sandbox in August 2024;
+            the proposal extends it to assets HSBC does not issue.
+          </li>
+          <li>
+            <strong className="font-semibold">Phases 4 and 5 — forward look only.</strong>{" "}
+            Cross-bank interoperability and payment-versus-payment convergence. Raise as roadmap,
+            never as an opening pitch.
+          </li>
+        </ul>
+      </Card>
+
       <Card>
         <div className="flex items-start gap-2.5">
           <HelpCircle size={16} className="mt-0.5 shrink-0 text-brand-500" />

@@ -17,6 +17,7 @@ import {
   Users,
   ArrowRight,
   PlayCircle,
+  Compass,
 } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Card, CardHeader } from "@/components/ui/Card";
@@ -137,6 +138,22 @@ export default function ExecutiveBriefPage() {
           </Button>
         }
       />
+
+      <div className="flex items-start gap-3 rounded-xl border border-brand-100 bg-brand-50/40 px-4 py-3.5">
+        <Compass size={16} className="mt-0.5 shrink-0 text-brand-600" />
+        <p className="text-[12.5px] leading-relaxed text-charcoal-900">
+          <strong className="font-semibold">What this is, and what it is not.</strong> Digital
+          Settlement Studio is a working prototype, not a proposed competitor to anything HSBC
+          already runs. HSBC&apos;s Tokenised Deposit Service is live in six markets — the
+          argument is never &ldquo;build this&rdquo;, it is &ldquo;here is how I would extend the
+          cash leg, and here is a working reference implementation of it&rdquo;. The client
+          problems and phases below are the substance behind{" "}
+          <Link href="/tds-strategy" className="font-medium text-brand-700">
+            the two-track strategy
+          </Link>
+          , which is the page to read first.
+        </p>
+      </div>
 
       <Card className="border-charcoal-900 bg-charcoal-950">
         <Badge tone="brand" className="bg-brand-500/10 text-brand-300 ring-brand-400/25">

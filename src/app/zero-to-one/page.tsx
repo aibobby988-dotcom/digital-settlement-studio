@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Compass, Layers, ShieldAlert, Target, XCircle } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { SupersededNotice } from "@/components/ui/SupersededNotice";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -14,6 +15,8 @@ export default function ZeroToOnePage() {
         title="Building 0 → 1: how each product actually got built"
         description="Not the craft of writing a story — the full reasoning that comes before one: discovery, MVP scope, the thinnest slice that proves it, and what has to be true before it leaves pilot. Walked through for all three settlement flows."
       />
+
+      <SupersededNotice what="Written when the case study argued for building a settlement product from scratch. The current thesis is the opposite: HSBC already has the rail, and the job is extending the cash leg. Still useful as evidence you understand product sequencing and de-risking - just do not present it as the plan." />
 
       <TermsOnThisPage terms={["MVP", "Walking skeleton", "Go/no-go gate", "Jobs to be done", "RFP"]} />
 

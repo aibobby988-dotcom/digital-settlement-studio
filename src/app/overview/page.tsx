@@ -14,6 +14,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { SupersededNotice } from "@/components/ui/SupersededNotice";
 import { KpiCard } from "@/components/ui/KpiCard";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -139,6 +140,8 @@ export default function OverviewPage() {
 
       <section>
         <PageHeader eyebrow="Performance" title="Platform at a glance" />
+
+      <SupersededNotice what="The performance figures on this page - settlement success rate, value settled, active entities - are invented for a platform that does not exist. They predate the current strategy and should not be quoted or studied as though they were real. The Stakeholder Demo and Commercial Model carry the current thinking on what to measure." />
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {kpis.map((kpi) => (
             <KpiCard key={kpi.label} {...kpi} />

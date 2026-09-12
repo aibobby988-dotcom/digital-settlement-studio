@@ -1,4 +1,5 @@
 import { PageHeader } from "@/components/layout/PageHeader";
+import { SupersededNotice } from "@/components/ui/SupersededNotice";
 import { StrategyContext } from "@/components/ui/StrategyContext";
 import { TermsOnThisPage } from "@/components/ui/TermsOnThisPage";
 import { Card, CardHeader } from "@/components/ui/Card";
@@ -14,6 +15,8 @@ export default function TransactionFlowPage() {
       />
 
       <TermsOnThisPage terms={["Settlement", "Sanctions screening", "Exception handling", "Reconciliation", "Atomic settlement"]} />
+
+      <SupersededNotice what="The paired happy and exception flows here are now covered more clearly by the Stakeholder Demo, which also shows the client view and the bank control plane side by side. Kept as a technical reference."  insteadHref="/stakeholder-demo" insteadLabel="Stakeholder Demo" />
 
       <StrategyContext track="foundation" />
 
