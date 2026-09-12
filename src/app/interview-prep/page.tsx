@@ -1,5 +1,6 @@
 import { HelpCircle, ListChecks, Info, Sparkles, MessageCircleQuestion } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { SupersededNotice } from "@/components/ui/SupersededNotice";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { caseStudyQA, logisticsNotes, questionsToAsk, quickFacts } from "@/lib/mock/interviewPrep";
@@ -13,6 +14,8 @@ export default function InterviewPrepPage() {
         title="Interview prep"
         description="Defending the case study, likely behavioral questions, questions worth asking, and logistics — written to be reusable by anyone preparing for a senior digital-currencies product interview, not only the author."
       />
+
+      <SupersededNotice what="Broader preparation material — behavioural questions, questions to ask, logistics. The five things most likely to be tested, with fact-checked answers, now live on The 45 Minutes. Read that first, then use this for breadth." insteadHref="/vincent-tests" insteadLabel="The 45 Minutes" />
 
       <div className="flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-100/20 px-4 py-3.5">
         <Info size={16} className="mt-0.5 shrink-0 text-blue-600" />

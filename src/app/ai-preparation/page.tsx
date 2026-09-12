@@ -1,5 +1,6 @@
 import { Bot, Sparkles, ShieldAlert } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { SupersededNotice } from "@/components/ui/SupersededNotice";
 import { Card, CardHeader } from "@/components/ui/Card";
 import { aiInDomain, aiPrepPrinciples, aiPrepUseCases } from "@/lib/mock/aiPrep";
 
@@ -11,6 +12,8 @@ export default function AiPreparationPage() {
         title="Using AI to prepare — and AI in the role itself"
         description="Two different things worth separating: how AI tools can help you prepare for an interview like this one, and how AI/agentic technology actually shows up in the digital-currencies product domain this role covers."
       />
+
+      <SupersededNotice what="This page mixes two different things: using AI as a study tool, and AI inside the product. The in-product half is now covered properly on AI Across Both Tracks, including the mandate demo. Keep this one for the revision techniques; do not use it for the product argument." insteadHref="/ai-in-product" insteadLabel="AI Across Both Tracks" />
 
       <section>
         <div className="mb-1 flex items-center gap-2">

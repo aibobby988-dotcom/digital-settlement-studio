@@ -236,6 +236,39 @@ export const riskControls: RiskControl[] = [
     status: "Monitoring",
     evidence: "Legal finality opinion tracker LGL-FIN-2026; corridor coverage in progress",
   },
+  {
+    id: "rc-24",
+    category: "Operational",
+    risk: "A misconfigured or runaway cash-pooling policy sweeps more than intended, draining the treasury hub",
+    riskLevel: "High",
+    control:
+      "Client-set group daily cap enforced before any sweep executes; hub minimum balance reserved and never breachable by automation; per-transaction limit; maker-checker on every policy change; automatic suspension of the policy after a defined number of consecutive triggers pending human review",
+    owner: "Digital Assets Engineering & Operational Risk",
+    status: "Monitoring",
+    evidence: "Policy engine control design POL-ENG-2026-01; cap enforcement test cases pending",
+  },
+  {
+    id: "rc-25",
+    category: "Legal & Regulatory",
+    risk: "A third-party asset platform fails mid-settlement after the cash leg has committed",
+    riskLevel: "High",
+    control:
+      "Atomic cross-platform commit so neither leg settles alone; counterparty due diligence and settlement-finality opinion required before onboarding; defined unwind and dispute process agreed contractually in advance; exposure limits per asset platform",
+    owner: "Legal & Digital Assets Product",
+    status: "Remediation in Progress",
+    evidence: "Cross-platform settlement legal review CPL-2026-04; unwind procedure drafted, not yet tested",
+  },
+  {
+    id: "rc-26",
+    category: "Financial",
+    risk: "The bank provides the cash leg for an asset it does not control, issue or value",
+    riskLevel: "Medium",
+    control:
+      "Explicit scope boundary that the bank settles cash and takes no position in, or custody of, the asset; eligibility criteria restricting which asset classes and issuers are in scope; client disclosure that asset risk remains with the issuer and investor",
+    owner: "Digital Assets Product & Risk",
+    status: "Monitoring",
+    evidence: "Track 2 scope-boundary paper TRK2-2026-02; eligibility criteria under legal review",
+  },
 ];
 
 export const riskCategoryOrder: RiskControl["category"][] = [
