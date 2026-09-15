@@ -520,7 +520,7 @@ export const epics: Epic[] = [
         id: "DST-803",
         title: "Execute an automated sweep within policy",
         narrative:
-          "As a corporate treasurer, I want an approved shortfall funded automatically from the hub so that my subsidiaries are never short outside banking hours.",
+          "As a corporate treasurer, I want an approved shortfall funded automatically from the hub so that my subsidiaries stay funded at any hour without anyone having to spot the shortfall and instruct a transfer.",
         acceptanceCriteria: [
           "The full pre-settlement control sequence runs unchanged — entitlement, screening, funds check — before any value moves",
           "The sweep executes only if it is within both the per-transaction and the group daily cap",

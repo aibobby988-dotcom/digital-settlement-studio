@@ -16,7 +16,7 @@ export default function StakeholderDemoPage() {
 
       <TermsOnThisPage terms={["Tokenised deposit", "Maker-checker", "Sanctions screening", "Reconciliation", "RM", "Treasurer", "Exception handling"]} />
 
-      <StrategyContext track="track1" />
+      <StrategyContext track="baseline" />
       <StakeholderDemo />
     </div>
   );

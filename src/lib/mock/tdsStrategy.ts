@@ -121,14 +121,14 @@ export interface Track {
 export const tracks: Track[] = [
   {
     number: 1,
-    name: "24/7 tokenised cash pooling",
+    name: "Automated cash pooling on the 24/7 rail",
     headline: "The commercial engine — scale the cash leg inside corporate treasury",
     targetClient:
       "Multinational corporates with multiple legal entities across HSBC markets and an Asian treasury centre.",
     problem:
-      "Liquidity trapped in the wrong entity overnight and at weekends, missed payment cut-offs, manual sweeps, and cash positions that are only visible the next morning.",
+      "Treasurers today have to choose between automation and availability. Conventional cash pooling is automated — target-balance and zero-balance sweeps run by rule — but only on scheduled cycles, typically end of day, bound by cut-offs and business days. The Tokenised Deposit Service is already available 24/7, but every movement still has to be spotted and instructed by a person or a client system. So liquidity either waits for the next sweep cycle, or waits for someone to notice.",
     proposition:
-      "Use the Tokenised Deposit Service to maintain target balances automatically and sweep surplus liquidity between approved group entities around the clock, rather than within banking windows.",
+      "Put the automation of traditional cash pooling on top of the always-on tokenised rail: the client sets target balances, floors, caps and approved entities once, and the policy engine funds and sweeps between group entities the moment a threshold is crossed — with no scheduled cycle and no manual instruction. The Tokenised Deposit Service already provides the 24/7 movement; this track adds the rule that decides when to move.",
     whyHsbc: [
       "Closest to the existing Global Payments Solutions cash-management franchise, so it sells through the relationship managers who are already there",
       "Fastest path to client adoption because it requires no new client behaviour — only a better rail for movement clients already perform",
@@ -139,7 +139,7 @@ export const tracks: Track[] = [
       "It is an extension of a live product to a known client segment. The approval question is scope and controls, not whether the platform should exist.",
     demoPage: { label: "Tokenised Treasury", href: "/treasury" },
     interviewLine:
-      "My first priority would be turning the Tokenised Deposit Service into a scalable liquidity-management proposition: 24/7 tokenised cash pooling for multinational treasury clients. It grows operating balances, which is where the commercial value of a treasury product really is.",
+      "My first priority would be turning the Tokenised Deposit Service into a scalable liquidity-management proposition: automated cash pooling that runs on the always-on rail, so group liquidity moves by policy the moment it is needed rather than waiting for a sweep cycle or a person. It grows operating balances, which is where the commercial value of a treasury product really is.",
     risks: [
       "Requires the client's treasury centre to have genuine authority over subsidiary cash, or the buying decision does not exist",
       "The always-on promise carries a real 24/7 operational support cost that must be in the business case, not assumed away",
@@ -207,7 +207,7 @@ export const doNotLeadWith = [
 
 export const openingNarrative = {
   script:
-    "I see the Tokenised Deposit Service as a reusable digital-cash foundation rather than a finished product. My strategy would run two tracks on the same rail. First, scale direct corporate treasury value through 24/7 tokenised cash pooling — that is the commercial engine and it grows operating balances. Second, commercialise the cash leg for third-party tokenised assets, extending what the Ensemble sandbox already proved with Orion to products HSBC does not itself issue. That balances near-term client adoption and deposits against a strategic position in digital-asset settlement, and neither track asks the bank to build a new platform.",
+    "I see the Tokenised Deposit Service as a reusable digital-cash foundation rather than a finished product. My strategy would run two tracks on the same rail. First, add automated cash pooling on top of the already-24/7 rail, so liquidity moves by policy rather than by instruction — that is the commercial engine and it grows operating balances. Second, commercialise the cash leg for third-party tokenised assets, extending what the Ensemble sandbox already proved with Orion to products HSBC does not itself issue. That balances near-term client adoption and deposits against a strategic position in digital-asset settlement, and neither track asks the bank to build a new platform.",
   whyItWorks:
     "It demonstrates that you know the estate before anyone briefs you on it, it keeps every proposal inside the cash leg where this role actually sits, and it frames both tracks as extensions of proven capability — which is the easiest thing for a director to take upward for funding.",
 };

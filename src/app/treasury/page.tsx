@@ -30,7 +30,8 @@ const stageOrder: TransferStage[] = [
 const SELECTED_ENTITY_KEY = "dss:treasury:selectedEntity";
 
 const clientValue = [
-  "24/7 movement in supported corridors",
+  "Funding and sweeps triggered by policy — no scheduled cycle, no manual instruction",
+  "24/7 movement in supported corridors (already provided by the tokenised rail)",
   "Real-time liquidity visibility",
   "Reduced manual reconciliation",
   "API-driven and conditional payment capability",
@@ -164,7 +165,7 @@ export default function TreasuryPage() {
 
       <Card className="border-brand-100 bg-brand-50/30">
         <CardHeader
-          title="Flagship workflow: 24/7 tokenised cash pooling"
+          title="Flagship workflow: automated cash pooling on the 24/7 rail"
           subtitle="A treasury-management product built on tokenised deposits — no DvP or PvP dependency in V1."
         />
         <div className="grid grid-cols-1 gap-4 text-[12.5px] leading-relaxed text-ink-700 sm:grid-cols-3">

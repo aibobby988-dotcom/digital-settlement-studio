@@ -47,7 +47,7 @@ export const roadmapPhases: RoadmapPhase[] = [
     title: "Tokenised cash pooling and selected treasury corridors",
     window: "6–18 months",
     summary:
-      "Commercialise 24/7 tokenised cash pooling across approved group entities in priority corridors (HK–SG–US–UK), using target balances and controlled sweeps to improve liquidity visibility beyond traditional cut-off times.",
+      "Commercialise automated cash pooling on the 24/7 tokenised rail across approved group entities in priority corridors (HK–SG–US–UK), using target balances and controlled sweeps to improve liquidity visibility beyond traditional cut-off times.",
     status: "Planned",
     deliverables: [
       "Target-balance and cash-concentration policy engine",

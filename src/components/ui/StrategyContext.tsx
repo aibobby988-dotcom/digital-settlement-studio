@@ -2,16 +2,21 @@ import Link from "next/link";
 import { Compass } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 
-type TrackKey = "track1" | "track2" | "forward" | "foundation" | "evidence";
+type TrackKey = "baseline" | "track1" | "track2" | "forward" | "foundation" | "evidence";
 
 const tracks: Record<
   TrackKey,
   { label: string; tone: "brand" | "blue" | "amber" | "neutral"; line: string }
 > = {
+  baseline: {
+    label: "Baseline — the rail HSBC already runs",
+    tone: "neutral",
+    line: "This demo shows a single instructed, 24/7 tokenised transfer with its controls — capability the Tokenised Deposit Service already has. It is the foundation Track 1 builds on. Track 1's actual addition, money moving by policy rather than instruction, is demonstrated on the Tokenised Treasury page.",
+  },
   track1: {
-    label: "Track 1 — Tokenised cash pooling",
+    label: "Track 1 — Automated cash pooling",
     tone: "brand",
-    line: "This page demonstrates the commercial engine: scaling the cash leg inside corporate treasury, where the deposits are.",
+    line: "This page demonstrates the commercial engine: automated, policy-driven pooling on a rail that is already 24/7 — where the deposits are.",
   },
   track2: {
     label: "Track 2 — Cash leg for tokenised assets",

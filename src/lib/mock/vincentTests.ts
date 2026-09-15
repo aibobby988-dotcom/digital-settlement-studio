@@ -78,7 +78,7 @@ export const preparedAnswers: PreparedAnswer[] = [
   {
     question: "Which digital-currency use case would you prioritise?",
     answer:
-      "Intrabank corporate treasury liquidity, extended into automated cash pooling. The pain is specific and measurable — cut-offs, trapped cash across time zones, manual reconciliation. The benefit is measurable in the same terms: faster movement, availability outside banking windows, real-time visibility. The complexity is materially lower than attempting a public-chain or multi-bank product first, because the bank controls the participants, the liability and the exception process. And it is aligned with where the Tokenised Deposit Service already is, so it is an extension rather than a new platform.",
+      "Intrabank corporate treasury liquidity, extended into automated cash pooling. The pain is specific and measurable: conventional pooling is automated but runs on end-of-day cycles bound by cut-offs, while the tokenised rail is already 24/7 but every movement still needs someone to instruct it. Combining the two means liquidity moves by policy the moment a threshold is crossed. The benefit is measurable in the same terms: less idle cash, fewer manual interventions, real-time visibility. The complexity is materially lower than attempting a public-chain or multi-bank product first, because the bank controls the participants, the liability and the exception process. And it is aligned with where the Tokenised Deposit Service already is, so it is an extension rather than a new platform.",
   },
   {
     question: "How would you assess a client proposal?",
