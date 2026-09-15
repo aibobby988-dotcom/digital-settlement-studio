@@ -27,7 +27,7 @@ export const comparisonRows: ComparisonRow[] = [
   {
     dimension: "Settlement speed",
     legacy: "Same-day to T+2 depending on corridor and rail (SWIFT, RTGS, correspondent chain)",
-    tokenised: "Seconds, atomic on-ledger. Citi and DBS settled cross-border on a Saturday in September 2026 against a two-business-day benchmark",
+    tokenised: "Seconds to minutes, atomic on-ledger. HSBC and Standard Chartered ran the first live interbank transaction on Swift's ledger in August 2026, and Citi and DBS settled cross-border on a Saturday in September against a two-business-day benchmark",
   },
   {
     dimension: "Visibility",
@@ -52,7 +52,7 @@ export const comparisonRows: ComparisonRow[] = [
   {
     dimension: "Interoperability",
     legacy: "Universal — every bank already speaks SWIFT",
-    tokenised: "Improving fast but still immature. EnsembleTX and Swift's shared ledger are the emerging answers; HSBC is live on the first and a pilot bank on the second",
+    tokenised: "Improving fast but still immature. EnsembleTX and Swift's Hyperledger Besu-based shared ledger are the emerging answers, and HSBC has executed live interbank transfers on both — Ant International on EnsembleTX in November 2025, Standard Chartered on Swift's ledger in August 2026",
   },
   {
     dimension: "Operational complexity",
@@ -110,7 +110,7 @@ export const trackDeltas: TrackDelta[] = [
     whatItAdds:
       "A client can delegate bounded authority to software: what it may pay, to whom, up to how much, how often, revocable instantly. The mandate is the control, and every action is attributed to the human who granted it.",
     hsbcAnchor:
-      "Swift has named agentic commerce as a planned application of its shared ledger, and HSBC is one of the 17 pilot banks. This is not a speculative direction — it is on the roadmap of the infrastructure HSBC is already piloting on.",
+      "Swift has named agentic commerce as a planned application of its shared ledger, and HSBC is one of its 17 founding banks — and executed the first live interbank transaction on it, with Standard Chartered, in August 2026. This is not a speculative direction — it is on the roadmap of the infrastructure HSBC is already piloting on.",
     dependsOn:
       "Track 1's policy engine, which is why it is sequenced after it rather than alongside. A mandate is a policy with an external actor attached.",
     honestCost:

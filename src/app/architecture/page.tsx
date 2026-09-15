@@ -47,7 +47,7 @@ export default function ArchitecturePage() {
         description="How the settlement platform's components connect, and how a request moves through checks and decision points before it settles."
       />
 
-      <TermsOnThisPage terms={["Orchestration", "API", "Permissioned network", "DLT", "Smart contract", "Reconciliation", "HSM"]} />
+      <TermsOnThisPage terms={["Orchestration", "API", "Permissioned network", "Hyperledger Besu", "QBFT", "DLT", "Smart contract", "Reconciliation", "HSM"]} />
 
       <StrategyContext track="foundation" />
 

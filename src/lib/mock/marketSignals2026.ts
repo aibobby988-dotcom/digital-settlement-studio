@@ -38,16 +38,35 @@ export const marketSignals: Signal[] = [
     ],
   },
   {
+    id: "hsbc-sc-swift-live",
+    date: "20 August 2026",
+    region: "Global · HSBC",
+    headline: "HSBC and Standard Chartered executed the first live interbank transaction on Swift's ledger",
+    what:
+      "On 20 August 2026 HSBC and Standard Chartered completed bank-to-bank tokenised deposit interoperability by executing what both banks describe as the first live cross-border transaction, and the first interbank transaction, on Swift's blockchain-based ledger. HSBC's spokesperson was Lewis Sun, Global Head of Digital Currencies, Corporate & Institutional Banking. It came roughly two weeks before Citi and DBS's weekend transaction on the same ledger.",
+    whyItMatters:
+      "This corrects an easy mistake: HSBC is not behind competitors on live tokenised-deposit interoperability — on Swift's ledger it went first. Combined with the Ant International cross-bank transfer on EnsembleTX in November 2025, HSBC has now moved tokenised deposits to another bank on both of the two main interoperability paths. For Track 2 that matters directly: the route to reaching counterparties outside HSBC is proven in live transactions, not just in design.",
+    dontOverstate:
+      "A first transaction proves interoperability works; it is not a client service at scale. The announcement did not specify the currency or corridor, so do not invent one.",
+    weight: "Know cold",
+    sources: [
+      {
+        label: "HSBC Hong Kong newsroom, 20 August 2026",
+        url: "https://www.about.hsbc.com.hk/news-and-media/hsbc-and-standard-chartered-execute-first-live-tokenised-deposit-transaction-on-swifts-blockchain",
+      },
+    ],
+  },
+  {
     id: "swift-ledger",
     date: "July 2026",
     region: "Global",
     headline: "Swift's blockchain ledger went live with 17 banks — HSBC among them",
     what:
-      "Swift released a blockchain-based shared ledger for 24/7 cross-border payments in tokenised deposits, built in nine months. The 17 pilot banks span six continents and include HSBC, Citi, DBS, Standard Chartered, BNY, UBS, Wells Fargo, MUFG, ANZ, OCBC, UOB, BNP Paribas, Lloyds, Itaú Unibanco, First Abu Dhabi Bank, FirstRand and Mashreq. Architecturally, each bank issues tokenised deposits on its own ledger while Swift provides an orchestration layer that records and validates commitments before final settlement through existing systems.",
+      "Swift released a blockchain-based shared ledger for 24/7 cross-border payments in tokenised deposits, built in nine months. The 17 pilot banks span six continents and include HSBC, Citi, DBS, Standard Chartered, BNY, UBS, Wells Fargo, MUFG, ANZ, OCBC, UOB, BNP Paribas, Lloyds, Itaú Unibanco, First Abu Dhabi Bank, FirstRand and Mashreq. Architecturally, each bank issues tokenised deposits on its own ledger while Swift provides an orchestration layer that records and validates commitments before final settlement through existing systems. The ledger is reported, from Swift's MVP announcement, to use an EVM-compatible architecture based on Hyperledger Besu, with the prototype delivered by Consensys.",
     whyItMatters:
-      "Two things. First, the architecture is a direct external validation of the approach on this site's Architecture page — the value sits in the orchestration and validation layer, not in the ledger itself. Second, Swift has said the next applications are programmable money and agentic commerce, which is the same forward path as the mandate layer in this case study. If asked whether agentic payments are real or speculative, this is your evidence.",
+      "Three things. First, the architecture is a direct external validation of the approach on this site's Architecture page — the value sits in the orchestration and validation layer, not in the ledger itself. Second, Swift has said the next applications are programmable money and agentic commerce, which is the same forward path as the mandate layer in this case study. If asked whether agentic payments are real or speculative, this is your evidence. Third, it runs on Hyperledger Besu, which executes the same Ethereum-standard smart contracts and token formats that major stablecoins such as USDC use on public Ethereum. A shared technical language is why tokenised deposits and stablecoins can plausibly interoperate later — though sharing a standard does not make them the same instrument.",
     dontOverstate:
-      "It is a pilot with early adopters, and settlement still completes through existing systems rather than on the ledger. Do not describe it as replacing correspondent banking.",
+      "Live transactions have now run on it, starting with HSBC and Standard Chartered in August 2026, but it is an early-adopter service rather than a scaled one, and final settlement still completes through existing systems. Do not describe it as replacing correspondent banking.",
     weight: "Know cold",
     sources: [
       {
@@ -60,11 +79,11 @@ export const marketSignals: Signal[] = [
     id: "dbs-citi-weekend",
     date: "5 September 2026",
     region: "Singapore / United States",
-    headline: "Citi and DBS settled the first weekend cross-border tokenised deposit — eight days ago",
+    headline: "Citi and DBS settled the first weekend cross-border tokenised deposit on 5 September 2026",
     what:
       "On Saturday 5 September 2026, Citi and DBS settled the first cross-border tokenised deposit transaction over a weekend using Swift's blockchain ledger — a US dollar payment between Singapore and the United States, executed from both banks' New York offices. It completed in minutes against a conventional benchmark of roughly two business days.",
     whyItMatters:
-      "The freshest competitive fact available, and it proves the 24/7 claim in production rather than in a deck. Use it to make the cut-off argument concrete: a weekend is no longer a structural barrier for banks that have built this. It also sharpens the urgency argument — competitors are converting pilots into live settlement while HSBC's equivalent capability is still framed as a pilot.",
+      "It proves the 24/7 claim in production rather than in a deck: a weekend is no longer a structural barrier on this ledger. Use it to make the cut-off argument concrete. Get the sequence right, though — HSBC and Standard Chartered ran the first live interbank transaction on the same ledger on 20 August; Citi and DBS's distinction is doing it on a weekend. Competitors are moving just as fast, which is the urgency argument, but HSBC is not behind.",
     dontOverstate:
       "One transaction between two banks is a milestone, not a scaled service. Do not imply either bank offers this broadly to corporate clients today.",
     weight: "Know cold",
@@ -158,6 +177,6 @@ export const signalsSummary = {
   points: [
     "EnsembleTX's first use case is tokenised money-market funds settled with tokenised deposits, with BlackRock and Franklin Templeton participating. Track 2 is not a speculative extension — it is the direction the regulator and the largest asset managers have already chosen.",
     "Swift's ledger puts the value in an orchestration layer above bank-issued tokens, with programmable money and agentic commerce named as the next applications. That independently validates both this site's architecture framing and its mandate layer.",
-    "Citi and DBS settled a cross-border tokenised deposit on a Saturday on 5 September 2026. The weekend barrier is gone in production for some competitors, which converts the cut-off argument from theory into a live commercial gap.",
+    "HSBC and Standard Chartered ran the first live interbank tokenised-deposit transaction on Swift's Besu-based ledger on 20 August 2026, and Citi and DBS then did one on a Saturday. Interoperability and the end of the weekend barrier are both proven in live transactions — the question is now who turns them into a client service first.",
   ],
 };

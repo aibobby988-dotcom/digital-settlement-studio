@@ -35,7 +35,7 @@ export default function IndustryKnowledgePage() {
         description="A primer on the settlement standards, digital-money terminology and regulatory landscape this role explicitly tests — SWIFT, CLS, DvP/PvP models, and jurisdiction-by-jurisdiction context."
       />
 
-      <TermsOnThisPage terms={["ISO 20022", "MT and MX", "CLS", "RTGS", "CHATS", "DvP", "PvP", "CBDC", "Stablecoin", "Tokenised deposit"]} />
+      <TermsOnThisPage terms={["ISO 20022", "MT and MX", "CLS", "RTGS", "CHATS", "Hyperledger Besu", "EVM", "DvP", "PvP", "CBDC", "Stablecoin", "Tokenised deposit"]} />
 
       <section>
         <Card className="border-brand-100 bg-brand-50/30">

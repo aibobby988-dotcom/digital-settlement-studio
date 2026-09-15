@@ -17,6 +17,7 @@ import {
   recentNews,
   siblingDivision,
   orgInsight,
+  digitalCurrenciesLead,
   siblingFunctions,
   strategyPillars,
   values,
@@ -86,6 +87,20 @@ export default function CompanyNotesPage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="mt-4 rounded-xl border border-amber-100 bg-amber-50/40 px-4 py-3.5">
+            <p className="text-[11px] font-semibold uppercase tracking-wide text-amber-700">
+              Also know this name — relationship to this role unconfirmed
+            </p>
+            <p className="mt-1.5 text-[13px] font-semibold text-charcoal-900">
+              {digitalCurrenciesLead.name}
+              <span className="ml-2 text-[12px] font-medium text-ink-500">{digitalCurrenciesLead.title}</span>
+            </p>
+            <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-700">{digitalCurrenciesLead.facts}</p>
+            <p className="mt-2 text-[12.5px] leading-relaxed text-charcoal-900">
+              <strong className="font-semibold">Why it matters:</strong> {digitalCurrenciesLead.whyItMatters}
+            </p>
           </div>
 
           <div className="mt-4 rounded-xl border border-brand-100 bg-brand-50/40 px-4 py-3.5">

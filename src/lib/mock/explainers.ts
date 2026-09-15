@@ -573,6 +573,40 @@ export const explainers: Explainer[] = [
 
   // ----------------------------------------------- Product and delivery
   {
+    term: "Hyperledger Besu",
+    full: "Hyperledger Besu (an enterprise Ethereum client)",
+    simple:
+      "Open-source software that runs an Ethereum-style blockchain. It can join the public Ethereum network, or run a private, permissioned network where only approved institutions are allowed in. It is maintained under the Linux Foundation's LF Decentralized Trust, and Consensys is a major contributor. Because it speaks Ethereum's standards, smart contracts and token formats written for Ethereum work on it unchanged.",
+    example:
+      "Swift's shared ledger for tokenised deposits — the one HSBC and Standard Chartered used for the first live interbank transaction in August 2026 — is reported to be built on Besu, with the prototype delivered by Consensys. Citi Token Services, Citi's tokenised deposit service, is also reported to run on Besu. Inside a bank network like this, Besu typically uses a consensus method called QBFT, so a transaction is final as soon as it is confirmed rather than 'probably final after a few blocks'.",
+    why:
+      "It is where tokenised deposits and stablecoins meet technically. Stablecoins such as USDC live on public Ethereum as standard tokens; Besu lets a bank run a private network using those same standards. That shared language is what makes future interoperability between a bank's tokenised deposits and regulated stablecoins plausible. Two precise points to hold: first, being on the same technology does not make a tokenised deposit a stablecoin — the legal claim is still completely different. Second, HSBC has not publicly said what its own Tokenised Deposit Service ledger is built on, so do not claim it runs on Besu; say that Swift's ledger, which HSBC transacts on, does.",
+    category: "Technology",
+    url: "https://www.lfdecentralizedtrust.org/projects/besu",
+  },
+  {
+    term: "EVM",
+    full: "Ethereum Virtual Machine",
+    simple:
+      "The engine that runs smart contracts on Ethereum. Any blockchain that is 'EVM-compatible' can run the same contracts and the same token formats, so code and tokens are portable between those networks.",
+    example:
+      "The ERC-20 format that USDC uses on public Ethereum can be deployed on a private Besu network or on Swift's EVM-compatible ledger without rewriting it. Think of it as a common operating system — an app built for it runs on any machine that has it installed.",
+    why:
+      "It is the reason 'EVM-compatible' appears in so many bank and Swift announcements. Compatibility means a much larger pool of tooling, auditors and developers, and an easier path to connecting with stablecoin and tokenised-asset networks later.",
+    category: "Technology",
+  },
+  {
+    term: "QBFT",
+    full: "Quorum Byzantine Fault Tolerance",
+    simple:
+      "A way for a small group of known, approved computers to agree on each new transaction. Once enough of them sign off, the transaction is final — there is no later reshuffle, and it keeps working even if some of them fail or misbehave.",
+    example:
+      "On a bank network of, say, seven validator nodes, a payment is final once at least five agree. That is very different from public Bitcoin, where anyone can take part and a payment only becomes 'probably final' after several blocks.",
+    why:
+      "Immediate, known finality is what banks and regulators require, and it is why permissioned networks like Besu-based ones use this rather than public-chain methods. It is a strong point on technical finality — but remember that technical finality is still not the same as legal finality.",
+    category: "Technology",
+  },
+  {
     term: "Wholesale payment client base",
     full: "",
     simple:

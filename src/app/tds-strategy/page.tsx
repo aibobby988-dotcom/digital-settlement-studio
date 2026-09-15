@@ -40,7 +40,7 @@ export default function TdsStrategyPage() {
         description="HSBC already has a Tokenised Deposit Service, live in six markets. The job is not to build one. It is to make the cash leg useful in more places. This page is the frame for everything else on the site."
       />
 
-      <TermsOnThisPage terms={["Tokenised deposit", "DvP", "PvP", "GPS", "Settlement", "Treasurer"]} />
+      <TermsOnThisPage terms={["Tokenised deposit", "DvP", "PvP", "Hyperledger Besu", "GPS", "Settlement", "Treasurer"]} />
 
       <section>
         <Card className="border-brand-100 bg-brand-50/30">

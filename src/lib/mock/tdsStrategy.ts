@@ -46,6 +46,17 @@ export const hsbcEstate: EstateItem[] = [
       "Interoperability beyond HSBC's own ledger is no longer theoretical. That matters because it means a third-party cash-leg proposition has a route to market.",
   },
   {
+    asset: "First live interbank transaction on Swift's shared ledger",
+    status: "Live",
+    what: "On 20 August 2026 HSBC and Standard Chartered executed what both banks describe as the first live cross-border transaction, and the first interbank transaction, on Swift's blockchain-based ledger — reported to be built on Hyperledger Besu. HSBC's spokesperson was Lewis Sun, Global Head of Digital Currencies, Corporate & Institutional Banking.",
+    soWhat:
+      "HSBC is ahead, not behind, on live interoperability: it went first on Swift's ledger, two weeks before Citi and DBS's weekend transaction. HSBC has now moved tokenised deposits to another bank on both main interoperability paths — EnsembleTX in Hong Kong and Swift globally.",
+    source: {
+      label: "HSBC Hong Kong newsroom, 20 August 2026",
+      url: "https://www.about.hsbc.com.hk/news-and-media/hsbc-and-standard-chartered-execute-first-live-tokenised-deposit-transaction-on-swifts-blockchain",
+    },
+  },
+  {
     asset: "Trade settlement using electronic bills of lading",
     status: "Proven in pilot",
     what: "Settlement of electronic bills of lading via tokenised deposits and the Ensemble interoperability platform, working with Ant Digital Technologies and GSBN.",
@@ -86,7 +97,7 @@ export const utilityMap: UtilityVector[] = [
   { vector: "More markets and currencies", status: "Live", note: "Six markets as of April 2026. Continues, but it is expansion rather than new utility." },
   { vector: "Intra-group liquidity movement", status: "Live", note: "The core use case today — moving a client's cash between its own entities." },
   { vector: "Delivery-versus-payment for HSBC's own assets", status: "Proven in pilot", note: "Orion digital bonds, August 2024 sandbox." },
-  { vector: "Cross-bank tokenised deposit transfer", status: "Proven in pilot", note: "Hang Seng via Ensemble; first live cross-bank transaction since completed." },
+  { vector: "Cross-bank tokenised deposit transfer", status: "Live", note: "Live transactions on both main paths: Ant International on EnsembleTX (Nov 2025) and Standard Chartered on Swift's Besu-based ledger (Aug 2026). Proven, not yet a scaled client service." },
   { vector: "Trade finance settlement", status: "Proven in pilot", note: "Electronic bills of lading with Ant Digital Technologies and GSBN." },
   { vector: "Payment-versus-payment", status: "Separate platform", note: "Exists via FX Everywhere since 2018, but has never been converged with the Tokenised Deposit Service or offered to corporate clients this way." },
   { vector: "Cash leg for third-party tokenised assets", status: "Open", note: "Proven against HSBC's own bond platform, not against assets HSBC does not issue. This is the clearest unbuilt extension." },

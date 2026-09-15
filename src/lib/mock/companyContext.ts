@@ -15,7 +15,7 @@ export const orgChain: OrgNode[] = [
     who: "Head: Manish Kohli, Group Head of GPS since October 2021, previously 24 years at Citi in transaction banking. Owns global payments, cash management, liquidity and payment/FX flows.",
   },
   {
-    role: "Digital Money / Digital Currencies",
+    role: "Digital Money",
     who: "Vincent Lau, Global Head of Digital Money. Owns tokenised deposits, programmable and conditional payments, cross-border clearing, stablecoin propositions and the cash leg used to settle tokenised assets.",
     url: "https://www.fsdc.org.hk/media/2vtpabre/vincent-lau_bio.pdf",
   },
@@ -36,6 +36,16 @@ export const siblingDivision: OrgNode[] = [
     who: "Tokenised bond issuance, asset servicing and securities settlement, plus digital-asset custody. Over US$3.5bn of digital-bond issuance, selected for the UK Digital Gilt pilot and approved to operate in the UK's Digital Securities Sandbox.",
   },
 ];
+
+/** A verified senior name with an unconfirmed relationship to this role — worth knowing, not assuming. */
+export const digitalCurrenciesLead = {
+  name: "Lewis Lei Sun",
+  title: "Global Head of Digital Currencies, Corporate & Institutional Banking",
+  facts:
+    "Hong Kong-based, joined HSBC in 2002, previously Regional Head of Product Management for Global Liquidity and Cash Management in Asia-Pacific. Under his digital-currencies remit HSBC became the first foreign bank in mainland China to offer e-CNY services. He was HSBC's spokesperson on the first live interbank tokenised-deposit transaction on Swift's ledger with Standard Chartered in August 2026.",
+  whyItMatters:
+    "This role is titled Senior Product Manager — Digital Currencies, and he is HSBC's Global Head of Digital Currencies. Public sources do not show how his function and Vincent Lau's Digital Money team fit together — shared remit, matrix, or separate lines. Do not guess in the room. It is a legitimate, well-informed question to ask, and knowing the name at all signals real research.",
+};
 
 export const orgInsight = {
   headline: "Why this structure is the whole strategy in one diagram",

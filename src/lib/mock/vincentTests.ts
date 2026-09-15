@@ -121,6 +121,10 @@ export const whatTheyAreReallyHiring = [
 
 export const closingQuestions = [
   {
+    q: "How does the Digital Money team work with Lewis Sun's Digital Currencies function in Corporate & Institutional Banking — and where would this role sit between them?",
+    why: "The role title says Digital Currencies, Lewis Sun is Global Head of Digital Currencies, and the hiring manager runs Digital Money. Public sources do not explain the relationship. Asking shows you researched the organisation deeply enough to notice, and the answer tells you who you would actually work with day to day.",
+  },
+  {
     q: "Where do you see the hardest current constraint — regulation, interoperability, liquidity, client adoption, or operating-model readiness?",
     why: "Excellent question. It is genuinely open, it signals you know all five are real, and his answer tells you exactly what the job will actually be about in year one.",
   },
