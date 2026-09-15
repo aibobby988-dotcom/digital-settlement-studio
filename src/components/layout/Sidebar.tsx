@@ -25,6 +25,7 @@ import {
   Coins,
   UserRound,
   Layers,
+  Cpu,
 } from "lucide-react";
 import { navGroups, pageUseMeta, type NavItem, type PageUse } from "@/lib/nav";
 import { cn } from "@/lib/utils";
@@ -57,6 +58,7 @@ const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: n
   "/cv-alignment": UserRound,
   "/vincent-tests": GraduationCap,
   "/tds-strategy": Layers,
+  "/besu": Cpu,
 };
 
 const navUseClasses: Record<PageUse, string> = {

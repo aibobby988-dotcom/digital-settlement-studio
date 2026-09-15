@@ -120,6 +120,14 @@ export const navGroups: NavGroup[] = [
         guidance: "Use only with a technical interviewer. Focus on orchestration, controls and reconciliation rather than claiming a specific live architecture.",
       },
       {
+        href: "/besu",
+        label: "Hyperledger Besu",
+        description: "The ledger software under TDS and Swift's ledger, briefed for a PM",
+        use: "supporting",
+        guidance: "Study the privacy and interoperability points - they are the most differentiating. In the room, attribute the TDS-on-Besu point to public reporting or ask it as a question; never cite a contact.",
+        studyPriority: 1,
+      },
+      {
         href: "/treasury",
         label: "Tokenised Treasury",
         description: "Optional product sandbox behind the flagship demo",
