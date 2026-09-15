@@ -52,7 +52,7 @@ export const settlementStandards: SettlementStandard[] = [
   {
     term: "RTGS (Real-Time Gross Settlement)",
     explanation:
-      "Central-bank-operated systems (e.g. CHAPS in the UK, Fedwire in the US) that settle high-value payments individually and irrevocably in real time, in central-bank money. RTGS is the ultimate settlement-finality benchmark tokenised platforms are usually compared against — and the reason 'settlement finality' is such a heavily scrutinised gate in this case study's risk framework.",
+      "Central-bank-operated systems (e.g. CHATS in Hong Kong, CHAPS in the UK, Fedwire in the US) that settle high-value payments individually and irrevocably in real time, in central-bank money. RTGS is the ultimate settlement-finality benchmark tokenised platforms are usually compared against — and the reason 'settlement finality' is such a heavily scrutinised gate in this case study's risk framework.",
     url: "https://www.bis.org/cpmi/paysysinfo.htm",
     stage: "Live today",
     today: "Live, in daily production use, and still the gold-standard benchmark for settlement finality that every tokenised platform gets compared against.",
@@ -371,6 +371,6 @@ export const glossary: GlossaryEntry[] = [
     definition:
       "Central-bank systems that settle high-value payments individually, in real time and in central-bank money — the benchmark 'gold standard' for settlement finality that most other systems are compared against.",
     example:
-      "See the Industry & Regulatory Knowledge section above — RTGS (e.g. CHAPS, Fedwire) is why 'settlement finality' is treated as such a heavily scrutinised gate throughout this case study.",
+      "Hong Kong's is CHATS (Clearing House Automated Transfer System), run by Hong Kong Interbank Clearing Limited in HKD, USD, EUR and RMB — HSBC is the settlement institution for USD CHATS, and EnsembleTX settles tokenised deposits between banks through HKD RTGS initially. Others include CHAPS in the UK and Fedwire in the US. RTGS is why 'settlement finality' is treated as such a heavily scrutinised gate throughout this case study.",
   },
 ];

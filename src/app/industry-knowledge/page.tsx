@@ -35,7 +35,7 @@ export default function IndustryKnowledgePage() {
         description="A primer on the settlement standards, digital-money terminology and regulatory landscape this role explicitly tests — SWIFT, CLS, DvP/PvP models, and jurisdiction-by-jurisdiction context."
       />
 
-      <TermsOnThisPage terms={["ISO 20022", "MT and MX", "CLS", "RTGS", "DvP", "PvP", "CBDC", "Stablecoin", "Tokenised deposit"]} />
+      <TermsOnThisPage terms={["ISO 20022", "MT and MX", "CLS", "RTGS", "CHATS", "DvP", "PvP", "CBDC", "Stablecoin", "Tokenised deposit"]} />
 
       <section>
         <Card className="border-brand-100 bg-brand-50/30">
@@ -108,10 +108,11 @@ export default function IndustryKnowledgePage() {
       <section>
         <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="text-[18px] font-semibold text-charcoal-900">Verified market signals</h2>
+            <h2 className="text-[18px] font-semibold text-charcoal-900">Fact-checks and corrections</h2>
             <p className="mt-1 text-[13px] leading-relaxed text-ink-500">
-              Fact-checked as of 12 September 2026. These are product and regulatory signals,
-              not legal advice or proof that a pilot is a production rail.
+              Claims checked on 12 September 2026 — several correct things that circulate wrongly,
+              such as treating BlackRock, HKDAP and EnsembleTX as one launch. Read these as
+              &ldquo;what not to get wrong&rdquo;, alongside the current signals above.
             </p>
           </div>
           <Badge tone="brand">Primary sources linked</Badge>

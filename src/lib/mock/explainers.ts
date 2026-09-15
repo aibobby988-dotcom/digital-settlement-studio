@@ -155,10 +155,22 @@ export const explainers: Explainer[] = [
     simple:
       "Central-bank systems that settle large payments one at a time, immediately and irreversibly, using central-bank money. 'Gross' means each payment settles individually rather than being bundled and netted off.",
     example:
-      "CHAPS in the United Kingdom is how the money moves when you buy a house — a single large payment settled on its own, same day, and impossible to reverse once done.",
+      "Every major financial centre has one. In Hong Kong it is CHATS; in the United Kingdom, CHAPS — how the money moves when you buy a house; in the United States, Fedwire. Each settles a single large payment on its own, same day, and impossible to reverse once done.",
     why:
-      "The benchmark every tokenised platform is measured against. When someone asks 'why is this better than what exists?', this is what 'what exists' means for high-value payments.",
+      "The benchmark every tokenised platform is measured against. When someone asks 'why is this better than what exists?', this is what 'what exists' means for high-value payments — and in your interview's city, that means CHATS.",
     category: "How settlement works",
+  },
+  {
+    term: "CHATS",
+    full: "Clearing House Automated Transfer System",
+    simple:
+      "Hong Kong's real-time gross settlement system — the plumbing that settles large interbank payments in Hong Kong one at a time, immediately and irreversibly. It is operated by Hong Kong Interbank Clearing Limited, which is jointly owned by the Hong Kong Monetary Authority and the Hong Kong Association of Banks, and it settles in four currencies: Hong Kong dollars, US dollars, euro and renminbi.",
+    example:
+      "When one Hong Kong bank pays another HK$500m, it settles through HKD CHATS, launched in December 1996. Scale for context: in 2023 HKD CHATS averaged around 30,000 transactions and roughly HK$1.1 trillion in value every operating day. The US dollar version, launched in August 2000, uses HSBC — The Hongkong and Shanghai Banking Corporation — as its settlement institution.",
+    why:
+      "Two reasons it matters directly. First, HSBC is the settlement institution for USD CHATS, so this is part of the bank's own payments franchise, not background knowledge. Second, EnsembleTX's interbank settlement of tokenised deposits runs initially through Hong Kong dollar RTGS — which is CHATS. The tokenised rail and the legacy rail are connected, not competing, and saying so precisely is a strong signal.",
+    category: "How settlement works",
+    url: "https://www.hkma.gov.hk/eng/key-functions/international-financial-centre/financial-market-infrastructure/payment-systems/",
   },
   {
     term: "Netting",

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { navGroups, navItems, pageUseMeta, type NavItem, type PageUse } from "@/lib/nav";
 import { cn } from "@/lib/utils";
+import { SearchButton } from "@/components/layout/SiteSearch";
 
 const allItems = navItems;
 
@@ -72,6 +73,8 @@ export function MobileNav() {
           </div>
           <span className="text-[13px] font-semibold">{current?.label ?? "Digital Settlement Studio"}</span>
         </div>
+        <div className="flex items-center gap-1">
+        <SearchButton variant="mobile" />
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle navigation"
@@ -79,6 +82,7 @@ export function MobileNav() {
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
+        </div>
       </div>
       {open && (
         <nav className="border-t border-charcoal-800 px-3 py-3 max-h-[75vh] overflow-y-auto">

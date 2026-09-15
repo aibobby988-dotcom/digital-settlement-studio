@@ -26,7 +26,7 @@ export default function LegacyComparisonPage() {
         description="What tokenised settlement actually buys you versus today's rails, what it costs to build, and where it isn't worth it yet."
       />
 
-      <TermsOnThisPage terms={["Correspondent banking", "RTGS", "Netting", "ISO 20022", "Cut-off time", "Nostro account", "Settlement"]} />
+      <TermsOnThisPage terms={["Correspondent banking", "RTGS", "CHATS", "Netting", "ISO 20022", "Cut-off time", "Nostro account", "Settlement"]} />
 
       <StrategyContext track="evidence" />
 

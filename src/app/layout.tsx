@@ -5,6 +5,7 @@ import { Sidebar } from "@/components/layout/Sidebar";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { PageGuidance } from "@/components/layout/PageGuidance";
 import { Footer } from "@/components/layout/Footer";
+import { SiteSearch } from "@/components/layout/SiteSearch";
 import { ToastProvider } from "@/components/ui/Toast";
 
 const inter = Inter({
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ToastProvider>
           <Sidebar />
           <MobileNav />
+          <SiteSearch />
           <div className="app-shell flex min-h-screen flex-col lg:pl-72">
             <main className="flex-1 px-4 py-8 sm:px-6 lg:px-10 lg:py-10">
               <div className="mx-auto w-full max-w-6xl">

@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { navGroups, pageUseMeta, type NavItem, type PageUse } from "@/lib/nav";
 import { cn } from "@/lib/utils";
+import { SearchButton } from "@/components/layout/SiteSearch";
 
 const icons: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
   "/": Presentation,
@@ -124,6 +125,10 @@ export function Sidebar() {
         <p className="mt-3 text-[11px] leading-relaxed text-ink-400">
           Institutional settlement product prototype
         </p>
+      </div>
+
+      <div className="px-4 pt-4">
+        <SearchButton variant="sidebar" />
       </div>
 
       <nav className="flex-1 overflow-y-auto px-3 py-5">
